@@ -9,7 +9,7 @@ interface Dotenv {
     companion object Factory {
         fun configure(): DotenvBuilder = DotenvBuilder()
     }
-    fun get(envVar: String): String?
+    operator fun get(envVar: String): String?
 }
 
 class DotEnvException : Exception {

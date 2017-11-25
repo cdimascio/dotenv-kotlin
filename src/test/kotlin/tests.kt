@@ -29,7 +29,7 @@ class DotEnvTest() {
 
         envVars.forEach {
             val expected = it.value
-            val actual = dotEnv.get(it.key)
+            val actual = dotEnv[it.key]
             assertEquals(expected, actual)
         }
 
