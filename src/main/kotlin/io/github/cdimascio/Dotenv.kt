@@ -1,9 +1,12 @@
-package io.cdimascio
+package io.github.cdimascio
 
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.stream.Collectors
 import java.util.stream.Stream
+import java.io.File
+import java.nio.file.Path
+
 
 interface Dotenv {
     companion object Factory {
@@ -19,12 +22,18 @@ class DotEnvException : Exception {
 
 class DotenvBuilder internal constructor() {
     private var filename = ".env"
+    private var resources = false
     private var directoryPath = System.getProperty("user.home")
     private var throwIfMissing = true
     private var throwIfMalformed = true
 
-    fun withDirectory(path: String = directoryPath): DotenvBuilder {
+    fun useDirectory(path: String = directoryPath): DotenvBuilder {
         directoryPath = path
+        return this
+    }
+
+    fun useResourceDirectory(): DotenvBuilder {
+        resources = true;
         return this
     }
 
@@ -39,7 +48,9 @@ class DotenvBuilder internal constructor() {
     }
 
     fun build(): Dotenv {
-        val reader = DotEnvReader(directoryPath, filename, throwIfMalformed, throwIfMissing)
+        if (resources && directoryPath != System.getProperty("user.home"))
+            throw DotEnvException("useResourceDirectory and withDirectory are mutually exclusive")
+        val reader = DotEnvReader(directoryPath, resources, filename, throwIfMalformed, throwIfMissing)
         val env = reader.read()
 //        applyEnv(env)
         return DotenvImpl(env)
@@ -64,6 +75,7 @@ private class DotenvImpl(envVars: List<Pair<String,String>>): Dotenv {
 
 private class DotEnvReader(
         val directory: String,
+        val useResources: Boolean,
         val filename: String = ".env",
         val throwIfMalformed: Boolean,
         val throwIfMissing: Boolean
@@ -78,9 +90,14 @@ private class DotEnvReader(
         val isComment = { s: String -> s.startsWith(commentHash) || s.startsWith(commentSlashes) }
         val parseLine = { s: String -> """^\s*([\w.\-]+)\s*(=)\s*(.*)?\s*$""".toRegex().matchEntire(s) }
 
-        val userSpecifiedPath = Paths.get(directory, filename)
-        val cwd = Paths.get(System.getProperty("user.dir"))
+        val classLoader = javaClass.classLoader
+        val userSpecifiedPath =
+            if (useResources) File(classLoader.getResource(filename)!!.file).toPath()
+            else Paths.get(directory, filename)
+
+        val cwd = if (useResources) Paths.get("./") else Paths.get(System.getProperty("user.dir"))
         val path = cwd.resolve(userSpecifiedPath)
+
         val lines =
                 try { Files.lines(path) }
                 catch (e: Exception) {

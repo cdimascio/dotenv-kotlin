@@ -22,7 +22,7 @@ Configure `java-dotenv` once in your application.
 ```kotlin
     val dotenv = Dotenv
             .configure()
-            .withDirectory("./src/test/resources")
+            .useDirectory("./src/test/resources")
             .ignoreIfMalformed()
             .build()
 ```
@@ -41,7 +41,7 @@ Configure `java-dotenv` once in your application.
 ```java
     Dotenv dotenv = Dotenv
             .configure()
-            .withDirectory("./src/test/resources")
+            .useDirectory("./src/test/resources")
             .ignoreIfMalformed()
             .build();
 ```
