@@ -5,6 +5,24 @@ Dotenv is a zero-dependency module that loads environment variables from a `.env
 
 **Note:** Java does not provide a way to set environment variables on a currently running process. Thus, once `java-dotenv` is configured, you can use the `dotenv.get("...")` API to get environment variables, instead of `System.getenv(...)`.
 
+## Install
+
+### Maven 
+```xml
+<dependency>
+    <groupId>io.github.cdimascio</groupId>
+    <artifactId>java-dotenv</artifactId>
+    <version>0.6.1</version>
+</dependency>
+```
+
+### Gradle
+
+```
+compile 'io.github.cdimascio:java-dotenv:0.6.1'
+```
+
+
 ## Usage
 
 ### Create a `.env` file
@@ -54,4 +72,5 @@ Note, environment variables specified in `.env` take precedence over those confi
 ```
 
 ## License
-Apache 2.0
+
+[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
