@@ -38,11 +38,11 @@ MY_EVV_VAR2=My second env var
 Configure `java-dotenv` once in your application.
 
 ```kotlin
-    val dotenv = Dotenv
-            .configure()
-            .useDirectory("./src/test/resources")
-            .ignoreIfMalformed()
-            .build()
+val dotenv = Dotenv
+        .configure()
+        .useDirectory("./src/test/resources")
+        .ignoreIfMalformed()
+        .build()
 ```
 	
 #### Get an environment variable
@@ -50,7 +50,7 @@ Note, environment variables specified in `.env` take precedence over those confi
 
 with Kotlin
 ```Kotlin
-	dotenv["MY_ENV_VAR1"]
+dotenv["MY_ENV_VAR1"]
 ```
 
 
@@ -59,18 +59,18 @@ with Kotlin
 Configure `java-dotenv` once in your application.
 
 ```java
-    Dotenv dotenv = Dotenv.Instance
-            .configure()
-            .useDirectory("./src/test/resources")
-            .ignoreIfMalformed()
-            .build();
+Dotenv dotenv = Dotenv.Instance
+        .configure()
+        .useDirectory("./src/test/resources")
+        .ignoreIfMalformed()
+        .build();
 ```
 
 #### Get an environment variable
 Note, environment variables specified in `.env` take precedence over those configured in the actual environment.
 
 ```
-	dotenv.get("MY_ENV_VAR1");
+dotenv.get("MY_ENV_VAR1");
 ```
 
 ## License
