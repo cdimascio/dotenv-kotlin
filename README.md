@@ -48,7 +48,6 @@ val dotenv = Dotenv
 #### Get an environment variable
 Note, environment variables specified in `.env` take precedence over those configured in the actual environment.
 
-with Kotlin
 ```kotlin
 dotenv["MY_ENV_VAR1"]
 ```
