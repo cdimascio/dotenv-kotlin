@@ -9,7 +9,7 @@ import java.nio.file.Path
 
 
 interface Dotenv {
-    companion object Factory {
+    companion object Instance {
         fun configure(): DotenvBuilder = DotenvBuilder()
     }
     operator fun get(envVar: String): String?

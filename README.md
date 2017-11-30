@@ -12,14 +12,14 @@ Dotenv is a zero-dependency module that loads environment variables from a `.env
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>java-dotenv</artifactId>
-    <version>0.6.1</version>
+    <version>0.7.1</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```
-compile 'io.github.cdimascio:java-dotenv:0.6.1'
+compile 'io.github.cdimascio:java-dotenv:0.7.1'
 ```
 
 
@@ -48,16 +48,18 @@ Configure `java-dotenv` once in your application.
 #### Get an environment variable
 Note, environment variables specified in `.env` take precedence over those configured in the actual environment.
 
-```
+with Kotlin
+```Kotlin
 	dotenv["MY_ENV_VAR1"]
 ```
+
 
 ### Java
 #### Configure java-dotenv
 Configure `java-dotenv` once in your application.
 
 ```java
-    Dotenv dotenv = Dotenv
+    Dotenv dotenv = Dotenv.Instance
             .configure()
             .useDirectory("./src/test/resources")
             .ignoreIfMalformed()
