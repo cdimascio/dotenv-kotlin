@@ -67,12 +67,12 @@ Do not throw when `.env` entries are malformed. Malformed entries are skipped.
 
 Do not throw when `.env` does not exist. Dotenv will continue to retrieve environment variables that are set in the environment e.g. `dotenv["HOME"]`
 
-## Configuration Examples
+## Configuration examples
 
 ```java
 Dotenv dotenv = Dotenv.Instance
         .configure()
-        .directory("./src/test/resources")
+        .directory("./some/path")
         .ignoreIfMalformed()
         .ignoreIfMissing()
         .build();
