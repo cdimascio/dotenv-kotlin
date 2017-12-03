@@ -28,7 +28,7 @@ compile 'io.github.cdimascio:java-dotenv:1.0.0'
 
 ### Create a `.env` file
 
-```
+```dosini
 # formatted as key=value
 MY_ENV_VAR1=My first env var configure dotenv
 MY_EVV_VAR2=My second env var
