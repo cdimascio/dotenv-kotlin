@@ -14,14 +14,14 @@ Dotenv is a zero-dependency module that loads environment variables from a `.env
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>java-dotenv</artifactId>
-    <version>1.0.3</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```
-compile 'io.github.cdimascio:java-dotenv:1.0.3'
+compile 'io.github.cdimascio:java-dotenv:1.1.0'
 ```
 
 
@@ -39,10 +39,18 @@ MY_EVV_VAR2=My second env var
 #### Configure java-dotenv 
 Configure `java-dotenv` once in your application.
 
+Simple
+
+```kotlin
+val dotenv = Dotenv.configure().build()
+```
+
+Advanced
+
 ```kotlin
 val dotenv = Dotenv
         .configure()
-        .directory("./") // set to the current directory
+        .directory("./some/path") // set to the current directory - defaults to current dir
         .ignoreIfMalformed() // do not throw an error if .env is malformed
         .ignoreIfMissing() // do not throw an error if .env is missing
         .build()
@@ -77,7 +85,7 @@ dotenv.get("MY_ENV_VAR1");
 
 ## Configuration options
 
-### *required* `directory(path: String)` 
+### *optional* `directory(path: String)` 
 `path` specifies the directory containing `.env`. Dotenv first searches for `.env` using the given path on the filesystem. If not found it searches the given path on the classpath.
 
 ### *optional* `ignoreIfMalformed()`

@@ -50,6 +50,17 @@ class DotEnvTest() {
         assertEquals(expectedHome, actualHome)
     }
 
+    @test fun resourceCurrent() {
+        val dotenv = Dotenv.configure()
+                .ignoreIfMalformed()
+                .build()
+        assertEquals("my test ev 1", dotenv["MY_TEST_EV1"])
+
+        val expectedHome = System.getProperty("user.home")
+        val actualHome = dotenv.get("HOME")
+        assertEquals(expectedHome, actualHome)
+    }
+
     @test(expected = DotEnvException::class) fun dotenvMissing() {
         Dotenv.configure()
                 .directory("/missing/.env")
