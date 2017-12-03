@@ -35,29 +35,14 @@ MY_ENV_VAR1=My first env var configure dotenv
 MY_EVV_VAR2=My second env var
 ```
 
-### Configure (using Kotlin)
-
-Configure `java-dotenv` once in your application. (see below for [Java](#configure-(using-java-8)) usage)
-
-```kotlin
-val dotenv = Dotenv.configure().build()
-```
-
-see [configuration options](#configuration-options)
-	
-### Get environment variable
-Note, environment variables specified in `.env` take precedence over those configured in the actual environment.
+### Configure
+Configure `java-dotenv` once in your application. 
+See below for [Kotlin usage](#kotlin-usage)
 
 ```kotlin
-dotenv["MY_ENV_VAR1"]
-```
-
-
-### Configure (using Java 8)
-Configure `java-dotenv` once in your application.
-
-```kotlin
-Dotenv dotenv = Dotenv.configure().build();
+Dotenv dotenv = Dotenv.Instance
+    .configure()
+    .build();
 ```
 
 see [configuration options](#configuration-options)
@@ -84,7 +69,35 @@ Do not throw when `.env` does not exist. Dotenv will continue to retrieve enviro
 
 ## Configuration Examples
 
-### Kotlin
+```java
+Dotenv dotenv = Dotenv.Instance
+        .configure()
+        .directory("./src/test/resources")
+        .ignoreIfMalformed()
+        .ignoreIfMissing()
+        .build();
+```
+
+## Kotlin usage
+
+### Configure
+
+Configure `java-dotenv` once in your application. (see below for [Java](#configure-(using-java-8)) usage)
+
+```kotlin
+val dotenv = Dotenv.configure().build()
+```
+
+see [configuration options](#configuration-options)
+	
+### Get environment variable
+Note, environment variables specified in `.env` take precedence over those configured in the actual environment.
+
+```kotlin
+dotenv["MY_ENV_VAR1"]
+```
+
+with configuration options
 
 ```kotlin
 val dotenv = Dotenv
@@ -95,15 +108,8 @@ val dotenv = Dotenv
         .build()
 ```
 
-### Java 8
 
-```java
-Dotenv dotenv = Dotenv.Instance
-        .configure()
-        .directory("./src/test/resources")
-        .ignoreIfMalformed()
-        .build();
-```
+
 
 
 ## License
