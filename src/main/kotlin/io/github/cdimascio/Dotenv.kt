@@ -105,6 +105,7 @@ private object PathResolver {
         val useFileScheme = directory.toLowerCase().startsWith("file:")
         val fullPath = if (isFullPath) directory else "$directory${File.separator}$filename"
         var path = if (useFileScheme) Paths.get(URI.create(fullPath)) else Paths.get(fullPath)
+        path = path.normalize()
 
         if (!Files.exists(path, *arrayOfNulls<LinkOption>(0))) {
             path = javaClass.classLoader.getResource(fullPath)?.let {
