@@ -1,7 +1,8 @@
 # java-dotenv 
 
+![](https://img.shields.io/badge/build-passing-green.svg)![](https://img.shields.io/badge/tests-passing-green.svg) ![](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
 
-<img src="https://raw.githubusercontent.com/cdimascio/java-dotenv/master/assets/java-dotenv.png" alt="dotenv" align="right" />
+<img src="https://raw.githubusercontent.com/cdimascio/java-dotenv/master/assets/java-dotenv.png" alt="dotenv" align="right" /> 
 
 Dotenv is a zero-dependency module that loads environment variables from a `.env`. Storing configuration in the environment separate from code is based on The [The Twelve-Factor App](http://12factor.net/config) methodology.
 
