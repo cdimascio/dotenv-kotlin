@@ -42,8 +42,9 @@ Configure `java-dotenv` once in your application.
 ```kotlin
 val dotenv = Dotenv
         .configure()
-        .directory("./src/test/resources")
-        .ignoreIfMalformed()
+        .directory("./") // set to the current directory
+        .ignoreIfMalformed() // do not throw an error if .env is malformed
+        .ignoreIfMissing() // do not throw an error if .env is missing
         .build()
 ```
 	
@@ -73,6 +74,19 @@ Note, environment variables specified in `.env` take precedence over those confi
 ```java
 dotenv.get("MY_ENV_VAR1");
 ```
+
+## Configuration options
+
+### *required* `directory(path: String)` 
+`path` specifies the directory containing `.env`. Dotenv first searches for `.env` using the given path on the filesystem. If not found it searches the given path on the classpath.
+
+### *optional* `ignoreIfMalformed()`
+
+Do not throw when `.env` entries are malformed. Malformed entries are skipped.
+
+### *optional* `ignoreIfMissing()` 
+
+Do not throw when `.env` does not exist. Dotenv will continue to retrieve environment variables that are set in the environment e.g. `dotenv["HOME"]`
 
 ## License
 
