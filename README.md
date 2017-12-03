@@ -36,8 +36,8 @@ MY_EVV_VAR2=My second env var
 ```
 
 ### Configure (using Kotlin)
-(see below for [Java](#configure-(using-java-8)))
-Configure `java-dotenv` once in your application.
+
+Configure `java-dotenv` once in your application. (see below for [Java](#configure-(using-java-8)) usage)
 
 **Simple configuration**:
 
