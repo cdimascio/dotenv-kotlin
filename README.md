@@ -20,7 +20,7 @@ Dotenv is a zero-dependency module that loads environment variables from a `.env
 
 ### Gradle
 
-```
+```groovy
 compile 'io.github.cdimascio:java-dotenv:1.1.0'
 ```
 
@@ -39,22 +39,24 @@ MY_EVV_VAR2=My second env var
 #### Configure java-dotenv 
 Configure `java-dotenv` once in your application.
 
-Simple
+**Simple configuration**:
 
 ```kotlin
 val dotenv = Dotenv.configure().build()
 ```
 
-Advanced
+**Configuration with options**
 
 ```kotlin
 val dotenv = Dotenv
         .configure()
-        .directory("./some/path") // set to the current directory - defaults to current dir
+        .directory("./some/path") // set the directory containing .env
         .ignoreIfMalformed() // do not throw an error if .env is malformed
         .ignoreIfMissing() // do not throw an error if .env is missing
         .build()
 ```
+
+see [configuration options](#configuration-options)
 	
 #### Get an environment variable
 Note, environment variables specified in `.env` take precedence over those configured in the actual environment.
@@ -68,6 +70,15 @@ dotenv["MY_ENV_VAR1"]
 #### Configure java-dotenv
 Configure `java-dotenv` once in your application.
 
+
+**Simple configuration**:
+
+```kotlin
+Dotenv dotenv = Dotenv.configure().build();
+```
+
+**Configuration with options**
+
 ```java
 Dotenv dotenv = Dotenv.Instance
         .configure()
@@ -75,6 +86,8 @@ Dotenv dotenv = Dotenv.Instance
         .ignoreIfMalformed()
         .build();
 ```
+
+see [configuration options](#configuration-options)
 
 #### Get an environment variable
 Note, environment variables specified in `.env` take precedence over those configured in the actual environment.
@@ -86,7 +99,7 @@ dotenv.get("MY_ENV_VAR1");
 ## Configuration options
 
 ### *optional* `directory(path: String)` 
-`path` specifies the directory containing `.env`. Dotenv first searches for `.env` using the given path on the filesystem. If not found it searches the given path on the classpath.
+`path` specifies the directory containing `.env`. Dotenv first searches for `.env` using the given path on the filesystem. If not found, it searches the given path on the classpath. If `directory` is not specified it defaults to searching the current working directory on the filesystem. If not found, it searches the current directory on the classpath.
 
 ### *optional* `ignoreIfMalformed()`
 
