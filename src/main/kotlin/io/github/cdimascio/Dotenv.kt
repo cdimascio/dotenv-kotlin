@@ -108,13 +108,15 @@ private object PathResolver {
         path = path.normalize()
 
         if (!Files.exists(path, *arrayOfNulls<LinkOption>(0))) {
-            path = javaClass.classLoader.getResource(fullPath)?.let {
+            val normalizedPath = path.toFile().path
+            path = javaClass.classLoader.getResource(normalizedPath)?.let {
+                Paths.get(it.toURI())
+            } ?: ClassLoader.getSystemResource(normalizedPath)?.let {
                 Paths.get(it.toURI())
             }
         }
         if (path === null) {
-            println("$path")
-            throw DotEnvException("${fullPath} not found")
+            throw DotEnvException("$fullPath not found")
         }
         return path
     }
