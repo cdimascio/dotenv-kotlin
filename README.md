@@ -35,8 +35,7 @@ MY_ENV_VAR1=My first env var configure dotenv
 MY_EVV_VAR2=My second env var
 ```
 
-### Kotlin
-#### Configure java-dotenv 
+### Configure (using Kotlin)
 Configure `java-dotenv` once in your application.
 
 **Simple configuration**:
@@ -58,7 +57,7 @@ val dotenv = Dotenv
 
 see [configuration options](#configuration-options)
 	
-#### Get an environment variable
+#### Get environment variable
 Note, environment variables specified in `.env` take precedence over those configured in the actual environment.
 
 ```kotlin
@@ -66,10 +65,8 @@ dotenv["MY_ENV_VAR1"]
 ```
 
 
-### Java
-#### Configure java-dotenv
+### Configure (using Java 8)
 Configure `java-dotenv` once in your application.
-
 
 **Simple configuration**:
 
@@ -89,7 +86,7 @@ Dotenv dotenv = Dotenv.Instance
 
 see [configuration options](#configuration-options)
 
-#### Get an environment variable
+#### Get environment variables
 Note, environment variables specified in `.env` take precedence over those configured in the actual environment.
 
 ```java
