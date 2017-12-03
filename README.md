@@ -39,13 +39,11 @@ MY_EVV_VAR2=My second env var
 
 Configure `java-dotenv` once in your application. (see below for [Java](#configure-(using-java-8)) usage)
 
-**Simple configuration**:
-
 ```kotlin
 val dotenv = Dotenv.configure().build()
 ```
 
-**Configuration with options**
+or with options:
 
 ```kotlin
 val dotenv = Dotenv
@@ -69,13 +67,11 @@ dotenv["MY_ENV_VAR1"]
 ### Configure (using Java 8)
 Configure `java-dotenv` once in your application.
 
-**Simple configuration**:
-
 ```kotlin
 Dotenv dotenv = Dotenv.configure().build();
 ```
 
-**Configuration with options**
+or with options:
 
 ```java
 Dotenv dotenv = Dotenv.Instance
