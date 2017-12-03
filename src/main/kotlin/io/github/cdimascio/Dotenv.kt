@@ -114,7 +114,7 @@ private object PathResolver {
         }
         if (path === null) {
             println("$path")
-            throw DotEnvException("${path} not found")
+            throw DotEnvException("${fullPath} not found")
         }
         return path
     }
