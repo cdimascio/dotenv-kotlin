@@ -29,7 +29,7 @@ compile 'io.github.cdimascio:java-dotenv:0.7.1'
 
 ```
 # formatted as key=value
-MY_ENV_VAR1=My first env var with dotenv
+MY_ENV_VAR1=My first env var configure dotenv
 MY_EVV_VAR2=My second env var
 ```
 
@@ -40,7 +40,7 @@ Configure `java-dotenv` once in your application.
 ```kotlin
 val dotenv = Dotenv
         .configure()
-        .useDirectory("./src/test/resources")
+        .directory("./src/test/resources")
         .ignoreIfMalformed()
         .build()
 ```
@@ -60,7 +60,7 @@ Configure `java-dotenv` once in your application.
 ```java
 Dotenv dotenv = Dotenv.Instance
         .configure()
-        .useDirectory("./src/test/resources")
+        .directory("./src/test/resources")
         .ignoreIfMalformed()
         .build();
 ```

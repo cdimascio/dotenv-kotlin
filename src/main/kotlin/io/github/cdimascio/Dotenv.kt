@@ -1,43 +1,39 @@
 package io.github.cdimascio
 
+import java.io.File
+import java.net.URI
 import java.nio.file.Files
+import java.nio.file.LinkOption
+import java.nio.file.Path
 import java.nio.file.Paths
 import java.util.stream.Collectors
-import java.util.stream.Stream
-import java.io.File
-import java.nio.file.Path
 
 
 interface Dotenv {
     companion object Instance {
         fun configure(): DotenvBuilder = DotenvBuilder()
     }
+
     operator fun get(envVar: String): String?
 }
 
 class DotEnvException : Exception {
-    constructor(message: String): super(message)
-    constructor(throwable: Throwable): super(throwable)
+    constructor(message: String) : super(message)
+    constructor(throwable: Throwable) : super(throwable)
 }
 
 class DotenvBuilder internal constructor() {
     private var filename = ".env"
-    private var resources = false
     private var directoryPath = System.getProperty("user.home")
     private var throwIfMissing = true
     private var throwIfMalformed = true
 
-    fun useDirectory(path: String = directoryPath): DotenvBuilder {
+    fun directory(path: String = directoryPath): DotenvBuilder {
         directoryPath = path
         return this
     }
 
-    fun useResourceDirectory(): DotenvBuilder {
-        resources = true;
-        return this
-    }
-
-    fun ingoreIfMissing(): DotenvBuilder {
+    fun ignoreIfMissing(): DotenvBuilder {
         throwIfMissing = false
         return this
     }
@@ -48,26 +44,13 @@ class DotenvBuilder internal constructor() {
     }
 
     fun build(): Dotenv {
-        if (resources && directoryPath != System.getProperty("user.home"))
-            throw DotEnvException("useResourceDirectory and withDirectory are mutually exclusive")
-        val reader = DotEnvReader(directoryPath, resources, filename, throwIfMalformed, throwIfMissing)
+        val reader = DotEnvReader(directoryPath, filename, throwIfMalformed, throwIfMissing)
         val env = reader.read()
-//        applyEnv(env)
         return DotenvImpl(env)
     }
-
-//    private fun applyEnv(pairs: List<Pair<String, String>>) {
-//        val processBuilder = ProcessBuilder()
-//        val env = processBuilder.environment()
-//        pairs.forEach {
-//            println("applying to env ${it.first} ${it.second}")
-//            env[it.first] = it.second
-//        }
-//
-//    }
 }
 
-private class DotenvImpl(envVars: List<Pair<String,String>>): Dotenv {
+private class DotenvImpl(envVars: List<Pair<String, String>>) : Dotenv {
     val map = envVars.associateBy({ it.first }, { it.second })
 
     override fun get(envVar: String): String? = map[envVar] ?: System.getenv(envVar)
@@ -75,34 +58,28 @@ private class DotenvImpl(envVars: List<Pair<String,String>>): Dotenv {
 
 private class DotEnvReader(
         val directory: String,
-        val useResources: Boolean,
         val filename: String = ".env",
         val throwIfMalformed: Boolean,
         val throwIfMissing: Boolean
 ) {
-    private val commentHash = "#"
-    private val commentSlashes = """//"""
+    val isWhiteSpace = { s: String -> """^\s*${'$'}""".toRegex().matches(s) }
+    val isComment = { s: String -> s.startsWith("#") || s.startsWith("""//""") }
+    val parseLine = { s: String -> """^\s*([\w.\-]+)\s*(=)\s*(.*)?\s*$""".toRegex().matchEntire(s) }
 
     fun read() = parse()
 
     private fun parse(): List<Pair<String, String>> {
-        val isWhiteSpace = { s: String -> """^\s*${'$'}""".toRegex().matches(s) }
-        val isComment = { s: String -> s.startsWith(commentHash) || s.startsWith(commentSlashes) }
-        val parseLine = { s: String -> """^\s*([\w.\-]+)\s*(=)\s*(.*)?\s*$""".toRegex().matchEntire(s) }
-
-        val classLoader = javaClass.classLoader
-        val userSpecifiedPath =
-            if (useResources) File(classLoader.getResource(filename)!!.file).toPath()
-            else Paths.get(directory, filename)
-
-        val cwd = if (useResources) Paths.get("./") else Paths.get(System.getProperty("user.dir"))
-        val path = cwd.resolve(userSpecifiedPath)
+        val path = try {
+            PathResolver.resolve(directory, filename)
+        } catch (e: DotEnvException) {
+            if (throwIfMissing) throw e
+            else return listOf()
+        }
 
         val lines =
                 try { Files.lines(path) }
                 catch (e: Exception) {
-                    if (throwIfMissing) throw DotEnvException(e)
-                    else Stream.empty<String>()
+                    throw DotEnvException(e)
                 }.collect(Collectors.toList())
 
         return lines
@@ -122,3 +99,22 @@ private class DotEnvReader(
     }
 }
 
+private object PathResolver {
+    fun resolve(directory: String, filename: String): Path {
+        val isFullPath = directory.endsWith(filename)
+        val useFileScheme = directory.toLowerCase().startsWith("file:")
+        val fullPath = if (isFullPath) directory else "$directory${File.separator}$filename"
+        var path = if (useFileScheme) Paths.get(URI.create(fullPath)) else Paths.get(fullPath)
+
+        if (!Files.exists(path, *arrayOfNulls<LinkOption>(0))) {
+            path = javaClass.classLoader.getResource(fullPath)?.let {
+                Paths.get(it.toURI())
+            }
+        }
+        if (path === null) {
+            println("$path")
+            throw DotEnvException("${path} not found")
+        }
+        return path
+    }
+}

@@ -3,7 +3,7 @@ package tests
 import io.github.cdimascio.DotEnvException
 import io.github.cdimascio.Dotenv
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
+import kotlin.test.assertNull
 import org.junit.Test as test
 
 class DotEnvTest() {
@@ -15,14 +15,14 @@ class DotEnvTest() {
     @test(expected = DotEnvException::class) fun dotenvMalformed() {
         Dotenv
                 .configure()
-                .useDirectory("./src/test/resources")
+                .directory("./src/test/resources")
                 .build()
     }
 
     @test fun dotenvIgnoreMalformed() {
         val dotEnv = Dotenv
                 .configure()
-                .useDirectory("./src/test/resources")
+                .directory("./src/test/resources")
                 .ignoreIfMalformed()
                 .build()
 
@@ -38,50 +38,34 @@ class DotEnvTest() {
         assertEquals(expectedHome, actualHome)
     }
 
-    @test fun dotenvUseResources() {
-        val dotEnv = Dotenv
-                .configure()
-                .useDirectory("./src/test/resources")
+    @test fun resourceRelative() {
+        val dotenv = Dotenv.configure()
+                .directory("./")
                 .ignoreIfMalformed()
                 .build()
-
-
-        envVars.forEach {
-            val expected = it.value
-            val actual = dotEnv[it.key]
-            assertEquals(expected, actual)
-        }
+        assertEquals("my test ev 1", dotenv["MY_TEST_EV1"])
 
         val expectedHome = System.getProperty("user.home")
-        val actualHome = dotEnv.get("HOME")
+        val actualHome = dotenv.get("HOME")
         assertEquals(expectedHome, actualHome)
-
-    }
-
-    @test(expected = DotEnvException::class) fun useDirectoryMutuallyExclusive() {
-        Dotenv.configure()
-                .useDirectory("/missing/.env")
-                .useResourceDirectory()
-                .build()
     }
 
     @test(expected = DotEnvException::class) fun dotenvMissing() {
         Dotenv.configure()
-                .useDirectory("/missing/.env")
+                .directory("/missing/.env")
                 .build()
     }
 
     @test fun dotenvIgnoreMissing() {
-        Dotenv.configure()
-                .useDirectory("/missing/.env")
-                .ingoreIfMissing()
+        val dotenv = Dotenv.configure()
+                .directory("/missing/.env")
+                .ignoreIfMissing()
                 .build()
-    }
 
-    @test fun dotenvAbsolutePath() {
-        Dotenv.configure()
-                .useDirectory("/missing/.env")
-                .ingoreIfMissing()
-                .build()
+        val expectedHome = System.getProperty("user.home")
+        val actualHome = dotenv.get("HOME")
+        assertEquals(expectedHome, actualHome)
+
+        assertNull(dotenv["MY_TEST_EV1"])
     }
 }
