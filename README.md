@@ -43,17 +43,6 @@ Configure `java-dotenv` once in your application. (see below for [Java](#configu
 val dotenv = Dotenv.configure().build()
 ```
 
-or with options:
-
-```kotlin
-val dotenv = Dotenv
-        .configure()
-        .directory("./some/path") // set the directory containing .env
-        .ignoreIfMalformed() // do not throw an error if .env is malformed
-        .ignoreIfMissing() // do not throw an error if .env is missing
-        .build()
-```
-
 see [configuration options](#configuration-options)
 	
 ### Get environment variable
@@ -69,16 +58,6 @@ Configure `java-dotenv` once in your application.
 
 ```kotlin
 Dotenv dotenv = Dotenv.configure().build();
-```
-
-or with options:
-
-```java
-Dotenv dotenv = Dotenv.Instance
-        .configure()
-        .directory("./src/test/resources")
-        .ignoreIfMalformed()
-        .build();
 ```
 
 see [configuration options](#configuration-options)
@@ -102,6 +81,30 @@ Do not throw when `.env` entries are malformed. Malformed entries are skipped.
 ### *optional* `ignoreIfMissing()` 
 
 Do not throw when `.env` does not exist. Dotenv will continue to retrieve environment variables that are set in the environment e.g. `dotenv["HOME"]`
+
+## Configuration Examples
+
+### Kotlin
+
+```kotlin
+val dotenv = Dotenv
+        .configure()
+        .directory("./some/path") // set the directory containing .env
+        .ignoreIfMalformed() // do not throw an error if .env is malformed
+        .ignoreIfMissing() // do not throw an error if .env is missing
+        .build()
+```
+
+### Java 8
+
+```java
+Dotenv dotenv = Dotenv.Instance
+        .configure()
+        .directory("./src/test/resources")
+        .ignoreIfMalformed()
+        .build();
+```
+
 
 ## License
 
