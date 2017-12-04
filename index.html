@@ -2,7 +2,8 @@
 <p><img src="https://img.shields.io/badge/build-passing-green.svg" /><img src="https://img.shields.io/badge/tests-passing-green.svg" /> <img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" /></p>
 <p><img src="https://raw.githubusercontent.com/cdimascio/java-dotenv/master/assets/java-dotenv.png" /> </p>
 <p>Dotenv is a zero-dependency module that loads environment variables from a <code>.env</code>. Storing configuration in the environment separate from code is based on The <a href="http://12factor.net/config">The Twelve-Factor App</a> methodology.</p>
-<p><strong>Note:</strong> Java does not provide a way to set environment variables on a currently running process. Thus, once <code>java-dotenv</code> is configured, you can use the <code>dotenv.get(&quot;...&quot;)</code> API to get environment variables, instead of <code>System.getenv(...)</code>. <code>dotenv</code>  should be used to retrieve all environment variables. Those listed in the host environment override those listed in <code>.env</code>.  </p>
+<p><strong>Note:</strong> Java does not provide a way to set environment variables on a currently running process. Thus, once <code>java-dotenv</code> is configured, you can use the <code>dotenv.get(&quot;...&quot;)</code> API to get environment variables, instead of <code>System.getenv(...)</code>. <code>dotenv</code>  should be used to retrieve all environment variables. </p>
+<p>Environment variables listed in the host environment override those listed in <code>.env</code>.  </p>
 <h2>Install</h2>
 <h3>Maven</h3>
 <pre><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
