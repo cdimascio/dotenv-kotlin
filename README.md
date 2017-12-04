@@ -16,14 +16,14 @@ Environment variables listed in the host environment override those in `.env`.
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>java-dotenv</artifactId>
-    <version>1.2.0</version>
+    <version>2.0.0</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-compile 'io.github.cdimascio:java-dotenv:1.2.0'
+compile 'io.github.cdimascio:java-dotenv:2.0.0'
 ```
 
 
@@ -42,6 +42,8 @@ Configure `java-dotenv` once in your application.
 See below for [Kotlin usage](#kotlin-usage)
 
 ```kotlin
+import io.github.cdimascio.dotenv.Dotenv;
+
 Dotenv dotenv = Dotenv.Instance
     .configure()
     .build();
@@ -102,6 +104,8 @@ dotenv["MY_ENV_VAR1"]
 with configuration options
 
 ```kotlin
+import io.github.cdimascio.dotenv.Dotenv
+
 val dotenv = Dotenv
         .configure()
         .directory("./some/path") // set the directory containing .env

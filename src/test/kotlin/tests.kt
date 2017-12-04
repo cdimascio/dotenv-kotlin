@@ -1,7 +1,7 @@
 package tests
 
-import io.github.cdimascio.DotEnvException
-import io.github.cdimascio.Dotenv
+import io.github.cdimascio.dotenv.DotEnvException
+import io.github.cdimascio.dotenv.Dotenv
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import org.junit.Test as test

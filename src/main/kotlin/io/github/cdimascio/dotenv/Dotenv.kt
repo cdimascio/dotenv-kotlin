@@ -1,4 +1,4 @@
-package io.github.cdimascio
+package io.github.cdimascio.dotenv
 
 import java.io.IOException
 import java.io.InputStream
