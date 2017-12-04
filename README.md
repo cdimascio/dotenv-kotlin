@@ -8,7 +8,7 @@ Dotenv is a zero-dependency module that loads environment variables from a `.env
 
 **Note:** Java does not provide a way to set environment variables on a currently running process. Thus, once `java-dotenv` is configured, you can use the `dotenv.get("...")` API to get environment variables, instead of `System.getenv(...)`. `dotenv`  should be used to retrieve all environment variables. 
 
-Environment variables listed in the host environment override those listed in `.env`.  
+Environment variables listed in the host environment override those in `.env`.  
 ## Install
 
 ### Maven 
