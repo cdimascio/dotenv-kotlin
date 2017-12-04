@@ -14,14 +14,14 @@ Dotenv is a zero-dependency module that loads environment variables from a `.env
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>java-dotenv</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-compile 'io.github.cdimascio:java-dotenv:1.1.0'
+compile 'io.github.cdimascio:java-dotenv:1.2.0'
 ```
 
 
