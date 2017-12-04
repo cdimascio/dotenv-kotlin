@@ -54,7 +54,7 @@ class DotenvBuilder internal constructor() {
 private class DotenvImpl(envVars: List<Pair<String, String>>) : Dotenv {
     val map = envVars.associateBy({ it.first }, { it.second })
 
-    override fun get(envVar: String): String? = map[envVar] ?: System.getenv(envVar)
+    override fun get(envVar: String): String? = System.getenv(envVar) ?: map[envVar]
 }
 
 private class DotEnvReader(
