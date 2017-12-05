@@ -20,12 +20,10 @@ class DotEnvTest() {
     }
 
     @test fun dotenvIgnoreMalformed() {
-        val dotEnv = Dotenv
-                .configure()
-                .directory("./src/test/resources")
-                .ignoreIfMalformed()
-                .build()
-
+        val dotEnv = Dotenv.configure().apply {
+                    directory("./src/test/resources")
+                    ignoreIfMalformed()
+                }.build()
 
         envVars.forEach {
             val expected = it.value
