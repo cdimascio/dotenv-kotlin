@@ -41,7 +41,7 @@ MY_EVV_VAR2=My second env var
 Configure `java-dotenv` once in your application. 
 See below for [Kotlin usage](#kotlin-usage)
 
-```kotlin
+```java
 import io.github.cdimascio.dotenv.Dotenv;
 
 Dotenv dotenv = Dotenv.Instance
