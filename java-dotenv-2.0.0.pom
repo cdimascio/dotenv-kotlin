@@ -12,7 +12,6 @@
     <artifactId>java-dotenv</artifactId>
     <version>2.0.0</version>
 
-
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -26,7 +25,6 @@
         <name>Carmine DiMascio OSS</name>
         <url>https://github.com/cdimascio</url>
     </organization>
-
 
     <scm>
         <connection>scm:github:https://github.com/cdimascio/java-dotenv</connection>
@@ -52,7 +50,7 @@
 
 
     <properties>
-        <kotlin.version>1.2.0</kotlin.version>
+        <kotlin.version>1.2.10</kotlin.version>
         <main.class>io.cdimascio.DotenvKt</main.class>
         <junit.version>4.12</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -70,15 +68,6 @@
             <url>https://jcenter.bintray.com/</url>
         </pluginRepository>
     </pluginRepositories>
-
-    <!--<distributionManagement>-->
-    <!--<repository>-->
-    <!--<id>bintray-cdimascio-maven</id>-->
-    <!--&lt;!&ndash;<name>cdimascio-maven</name>&ndash;&gt;-->
-    <!--<url>https://api.bintray.com/maven/cdimascio/maven/java-dotenv/;publish=1</url>-->
-    <!--&lt;!&ndash;<url>https://api.bintray.com/maven/${bintray.subject}/${bintray.repo}/${bintray.package}/;publish=1</url>&ndash;&gt;-->
-    <!--</repository>-->
-    <!--</distributionManagement>-->
 
     <dependencies>
         <dependency>
@@ -183,6 +172,13 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>4.3.0</version>
+                <configuration>
+                </configuration>
             </plugin>
         </plugins>
     </build>
