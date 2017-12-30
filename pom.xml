@@ -55,6 +55,8 @@
         <junit.version>4.12</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <maven.source.plugin>3.0.1</maven.source.plugin>
+        <maven.javadoc.plugin>3.0.0</maven.javadoc.plugin>
         <dokka.version>0.9.15</dokka.version>
         <bintray.subject>cdimascio</bintray.subject>
         <bintray.repo>maven</bintray.repo>
@@ -139,6 +141,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.plugin}</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -151,6 +154,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.plugin}</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -174,6 +178,19 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.6.201602180812</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <version>4.3.0</version>
@@ -182,6 +199,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>
