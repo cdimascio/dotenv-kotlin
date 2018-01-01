@@ -1,31 +1,22 @@
 package io.github.cdimascio.dotenv
 
-import java.io.IOException
-import java.io.InputStream
-import java.net.URI
-import java.nio.file.Files
-import java.nio.file.Paths
-import java.util.*
-import java.util.stream.Collectors
-import java.util.stream.Stream
+import io.github.cdimascio.dotenv.internal.DotenvParser
+import io.github.cdimascio.dotenv.internal.DotenvReader
 
-
-interface Dotenv {
+abstract class Dotenv {
     companion object Instance {
-        fun configure(): DotenvBuilder = DotenvBuilder()
+        @JvmStatic fun configure(): DotenvBuilder = DotenvBuilder()
+        @JvmStatic fun load(): Dotenv = DotenvBuilder().load()
     }
 
-    operator fun get(envVar: String): String?
+    operator abstract fun get(envVar: String): String?
 }
 
-class DotEnvException : Exception {
-    constructor(message: String) : super(message)
-    constructor(throwable: Throwable) : super(throwable)
-}
+class DotEnvException(message: String) : Exception(message)
 
 class DotenvBuilder internal constructor() {
     private var filename = ".env"
-    private var directoryPath = "" //System.getProperty("user.home")
+    private var directoryPath = ""
     private var throwIfMissing = true
     private var throwIfMalformed = true
 
@@ -44,91 +35,18 @@ class DotenvBuilder internal constructor() {
         return this
     }
 
-    fun build(): Dotenv {
-        val reader = DotEnvReader(directoryPath, filename, throwIfMalformed, throwIfMissing)
-        val env = reader.read()
+    fun load(): Dotenv {
+        val reader = DotenvParser(
+                DotenvReader(directoryPath, filename),
+                throwIfMalformed,
+                throwIfMissing)
+        val env = reader.parse()
         return DotenvImpl(env)
     }
 }
 
-private class DotenvImpl(envVars: List<Pair<String, String>>) : Dotenv {
-    val map = envVars.associateBy({ it.first }, { it.second })
+private class DotenvImpl(envVars: List<Pair<String, String>>) : Dotenv() {
+    private val map = envVars.associateBy({ it.first }, { it.second })
 
     override fun get(envVar: String): String? = System.getenv(envVar) ?: map[envVar]
-}
-
-private class DotEnvReader(
-        val directory: String,
-        val filename: String = ".env",
-        val throwIfMalformed: Boolean,
-        val throwIfMissing: Boolean
-) {
-    val isWhiteSpace = { s: String -> """^\s*${'$'}""".toRegex().matches(s) }
-    val isComment = { s: String -> s.startsWith("#") || s.startsWith("""//""") }
-    val parseLine = { s: String -> """^\s*([\w.\-]+)\s*(=)\s*(.*)?\s*$""".toRegex().matchEntire(s) }
-
-    fun read() = parse()
-
-    private fun parse(): List<Pair<String, String>> {
-        val lines = try {
-            DotenvParser.parse(directory, filename)
-        } catch (e: DotEnvException) {
-            if (throwIfMissing) throw e
-            else return listOf()
-        }.collect(Collectors.toList())
-
-        return lines
-                .map { it.trim() }
-                .filter { !isWhiteSpace(it) }
-                .filter { !isComment(it) }
-                .mapNotNull {
-                    val match = parseLine(it)
-                    if (match != null) {
-                        val (key, _, value) = match.destructured
-                        Pair(key, value)
-                    } else {
-                        if (throwIfMalformed) throw DotEnvException("Malformed entry: $it")
-                        else null
-                    }
-                }
-    }
-}
-
-private object DotenvParser {
-    fun parse(directory: String, filename: String): Stream<String> {
-        var dir = directory.replace("""\\""".toRegex(), "/")
-        dir = if (dir.endsWith("/")) dir.substring(0, dir.length - 1) else dir
-        dir = if (dir.endsWith(".env")) dir.substring(0, dir.length - 4) else dir
-        val location = "$dir/$filename"
-        val path = if (location.toLowerCase().startsWith("file:")) {
-            Paths.get(URI.create(location))
-        } else {
-            Paths.get(location)
-        }
-        return if (Files.exists(path)) Files.lines(path)
-        else ClasspathHelper.loadFileFromClasspath(location)
-    }
-}
-
-private object ClasspathHelper {
-    fun loadFileFromClasspath(location: String): Stream<String> {
-        val loader = ClasspathHelper::class.java
-        val inputStream: InputStream? =
-                loader.getResourceAsStream(location)
-                ?: loader.getResourceAsStream(location)
-                ?: ClassLoader.getSystemResourceAsStream(location)
-        if (inputStream != null) {
-            try {
-                val scanner = Scanner(inputStream, "utf-8")
-                val lines = mutableListOf<String>()
-                while (scanner.hasNext()) {
-                    lines.add(scanner.nextLine())
-                }
-                return lines.stream()
-            } catch (e: IOException) {
-                throw DotEnvException("Could not read $location from the classpath")
-            }
-        }
-        throw DotEnvException("Could not find $location on the classpath")
-    }
 }
