@@ -24,7 +24,7 @@ MY_EVV_VAR2=some_value</pre><p>With <strong>Java</strong></p>
 <pre><span class="hljs-keyword">import</span> io.github.cdimascio.dotenv.Dotenv;
 
 Dotenv dotenv = Dotenv.load();
-dotenv.get(<span class="hljs-string">&quot;MY_ENV_VAR1&quot;</span>)</pre><p>or with <strong>Kotlin</strong></p>
+dotenv.get(<span class="hljs-string">&quot;MY_ENV_VAR1&quot;</span>)</pre><p>or with <strong>Kotlin</strong> </p>
 <pre><span class="hljs-keyword">import</span> io.github.cdimascio.dotenv.dotenv
 
 <span class="hljs-keyword">val</span> dotenv = dotenv()
@@ -52,21 +52,44 @@ dotenv[<span class="hljs-string">&quot;MY_ENV_VAR1&quot;</span>]</pre><h2>Advanc
 <p>With <strong>Java</strong></p>
 <pre>dotenv.get(<span class="hljs-string">&quot;MY_ENV_VAR1&quot;</span>);
 dotenv.get(<span class="hljs-string">&quot;HOME&quot;</span>);</pre><p>or with <strong>Kotlin</strong></p>
-<pre>dotenv[&quot;MY_ENV_VAR1&quot;]
-dotenv[&quot;HOME&quot;]</pre><h2>Configuration options</h2>
-<h3><em>optional</em> <code>directory(path: String)</code></h3>
-<p><code>path</code> specifies the directory containing <code>.env</code>. Dotenv first searches for <code>.env</code> using the given path on the filesystem. If not found, it searches the given path on the classpath. If <code>directory</code> is not specified it defaults to searching the current working directory on the filesystem. If not found, it searches the current directory on the classpath.</p>
-<h3><em>optional</em> <code>ignoreIfMalformed()</code></h3>
-<p>Do not throw when <code>.env</code> entries are malformed. Malformed entries are skipped.</p>
-<h3><em>optional</em> <code>ignoreIfMissing()</code></h3>
-<p>Do not throw when <code>.env</code> does not exist. Dotenv will continue to retrieve environment variables that are set in the environment e.g. <code>dotenv[&quot;HOME&quot;]</code></p>
-<h2>Kotlin Dsl Configuration Options</h2>
-<h3><em>optional</em> <code>directory: String</code></h3>
-<p>Specifies the directory containing <code>.env</code>. Dotenv first searches for <code>.env</code> using the given path on the filesystem. If not found, it searches the given path on the classpath. If <code>directory</code> is not specified it defaults to searching the current working directory on the filesystem. If not found, it searches the current directory on the classpath.</p>
-<h3><em>optional</em> <code>ignoreIfMalformed: Boolean</code></h3>
-<p>Do not throw when <code>.env</code> entries are malformed. Malformed entries are skipped.</p>
-<h3><em>optional</em> <code>ignoreIfMissing: Boolean</code></h3>
-<p>Do not throw when <code>.env</code> does not exist. Dotenv will continue to retrieve environment variables that are set in the environment e.g. <code>dotenv[&quot;HOME&quot;]</code></p>
+<pre>dotenv[<span class="hljs-string">&quot;MY_ENV_VAR1&quot;</span>]
+dotenv[<span class="hljs-string">&quot;HOME&quot;</span>]</pre><h2>Configuration options</h2>
+<h3><em>optional</em> <code>directory</code></h3>
+<ul>
+<li><p><code>path</code> specifies the directory containing <code>.env</code>. Dotenv first searches for <code>.env</code> using the given path on the filesystem. If not found, it searches the given path on the classpath. If <code>directory</code> is not specified it defaults to searching the current working directory on the filesystem. If not found, it searches the current directory on the classpath.</p>
+<p>  <strong>Java example</strong></p>
+<pre>  Dotenv
+    .configure()
+    .directory(<span class="hljs-string">&quot;/some/path&quot;</span>)
+    .load()</pre><p>  <strong>Kotlin Dsl example</strong></p>
+<pre>  dotenv {
+    directory = <span class="hljs-string">&quot;/some/path&quot;</span>
+  }</pre></li>
+</ul>
+<h3><em>optional</em> <code>ignoreIfMalformed</code></h3>
+<ul>
+<li><p>Do not throw when <code>.env</code> entries are malformed. Malformed entries are skipped.</p>
+<p>  <strong>Java example</strong></p>
+<pre>  Dotenv
+    .configure()
+    .ignoreIfMalformed()
+    .load()</pre><p>  <strong>Kotlin Dsl example</strong></p>
+<pre>  dotenv {
+    ignoreIfMalformed = <span class="hljs-keyword">true</span>
+  }</pre></li>
+</ul>
+<h3><em>optional</em> <code>ignoreIfMissing</code></h3>
+<ul>
+<li><p>Do not throw when <code>.env</code> does not exist. Dotenv will continue to retrieve environment variables that are set in the environment e.g. <code>dotenv[&quot;HOME&quot;]</code></p>
+<p>  <strong>Java example</strong></p>
+<pre>  Dotenv
+    .configure()
+    .ignoreIfMissing()
+    .load()</pre><p>  <strong>Kotlin Dsl example</strong></p>
+<pre>  dotenv {
+    ignoreIfMissing = <span class="hljs-keyword">true</span>
+  }</pre></li>
+</ul>
 <h2>Examples</h2>
 <ul>
 <li>with <a href="https://github.com/cdimascio/kotlin-swagger-spring-functional-template">Spring Framework</a> </li>
