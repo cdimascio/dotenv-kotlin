@@ -138,8 +138,8 @@ Do not throw when `.env` does not exist. Dotenv will continue to retrieve enviro
 ## Examples
 
 - with [Spring Framework](https://github.com/cdimascio/kotlin-swagger-spring-functional-template) 
-- see [Kotlin DSL tests](./src/test/kotlin/DslTests.kt)
-- see [Java tests](./src/test/java/JavaTests.java)
+- see [Kotlin DSL tests](./src/test/kotlin/tests/DslTests.kt)
+- see [Java tests](./src/test/java/tests/JavaTests.java)
 
 ## FAQ
 
