@@ -22,7 +22,7 @@
 .idea/**/libraries
 
 # CMake
-cmake-build-debug/
+cmake-load-debug/
 
 # Mongo Explorer plugin:
 .idea/**/mongoSettings.xml
@@ -47,7 +47,7 @@ atlassian-ide-plugin.xml
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
 crashlytics.properties
-crashlytics-build.properties
+crashlytics-load.properties
 fabric.properties
 ### Kotlin template
 # Compiled class file
