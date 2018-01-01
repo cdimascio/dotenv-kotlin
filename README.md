@@ -52,7 +52,7 @@ Dotenv dotenv = Dotenv.load();
 dotenv.get("MY_ENV_VAR1")
 ```
 
-or with **Kotlin**
+or with **Kotlin** 
 
 ```kotlin
 import io.github.cdimascio.dotenv.dotenv
@@ -102,38 +102,74 @@ dotenv.get("HOME");
 
 or with **Kotlin**
 
-```kotline
+```kotlin
 dotenv["MY_ENV_VAR1"]
 dotenv["HOME"]
 ```
 
 ## Configuration options
 
-### *optional* `directory(path: String)` 
-`path` specifies the directory containing `.env`. Dotenv first searches for `.env` using the given path on the filesystem. If not found, it searches the given path on the classpath. If `directory` is not specified it defaults to searching the current working directory on the filesystem. If not found, it searches the current directory on the classpath.
+### *optional* `directory` 
+* `path` specifies the directory containing `.env`. Dotenv first searches for `.env` using the given path on the filesystem. If not found, it searches the given path on the classpath. If `directory` is not specified it defaults to searching the current working directory on the filesystem. If not found, it searches the current directory on the classpath.
 
-### *optional* `ignoreIfMalformed()`
+	**Java example**
+	
+	```java
+	Dotenv
+	  .configure()
+	  .directory("/some/path")
+	  .load()
+	```
 
-Do not throw when `.env` entries are malformed. Malformed entries are skipped.
+	**Kotlin Dsl example**
+	
+	```java
+	dotenv {
+	  directory = "/some/path"
+	}
+    ```
 
-### *optional* `ignoreIfMissing()` 
 
-Do not throw when `.env` does not exist. Dotenv will continue to retrieve environment variables that are set in the environment e.g. `dotenv["HOME"]`
+### *optional* `ignoreIfMalformed`
 
+* Do not throw when `.env` entries are malformed. Malformed entries are skipped.
 
-## Kotlin Dsl Configuration Options
+	**Java example**
+	
+	```java
+	Dotenv
+	  .configure()
+	  .ignoreIfMalformed()
+	  .load()
+	```
+	**Kotlin Dsl example**
+	
+	```java
+	dotenv {
+	  ignoreIfMalformed = true
+	}
+	```
 
+### *optional* `ignoreIfMissing` 
 
-### *optional* `directory: String` 
-Specifies the directory containing `.env`. Dotenv first searches for `.env` using the given path on the filesystem. If not found, it searches the given path on the classpath. If `directory` is not specified it defaults to searching the current working directory on the filesystem. If not found, it searches the current directory on the classpath.
+* Do not throw when `.env` does not exist. Dotenv will continue to retrieve environment variables that are set in the environment e.g. `dotenv["HOME"]`
 
-### *optional* `ignoreIfMalformed: Boolean`
+	**Java example**
+	
+	```java
+	Dotenv
+	  .configure()
+	  .ignoreIfMissing()
+	  .load()
+	```
+	**Kotlin Dsl example**
+	
+	```java
+	dotenv {
+	  ignoreIfMissing = true
+	}
+	```
 
-Do not throw when `.env` entries are malformed. Malformed entries are skipped.
-
-### *optional* `ignoreIfMissing: Boolean` 
-
-Do not throw when `.env` does not exist. Dotenv will continue to retrieve environment variables that are set in the environment e.g. `dotenv["HOME"]`
 
 ## Examples
 
@@ -150,3 +186,4 @@ Do not throw when `.env` does not exist. Dotenv will continue to retrieve enviro
 ## License
 
 [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+
