@@ -30,7 +30,7 @@ Use `dotenv.get("...")` instead of Java's `System.getenv(...)`.
 ### Gradle
 
 ```groovy
-compile 'io.github.cdimascio:java-dotenv:2.0.0'
+compile 'io.github.cdimascio:java-dotenv:3.0.0'
 ```
 
 ## Usage
