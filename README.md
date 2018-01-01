@@ -1,14 +1,21 @@
 # java-dotenv 
 
-![](https://img.shields.io/badge/build-passing-green.svg)![](https://img.shields.io/badge/tests-passing-green.svg) ![](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
+![](https://img.shields.io/badge/build-passing-green.svg) ![](https://img.shields.io/badge/tests-passing-green.svg) ![](https://img.shields.io/badge/coverage-94%25-blue.svg) ![](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
 
 <img src="https://raw.githubusercontent.com/cdimascio/java-dotenv/master/assets/java-dotenv.png" alt="dotenv" align="right" /> 
 
-Dotenv is a zero-dependency module that loads environment variables from a `.env`. Storing configuration in the environment separate from code is based on The [The Twelve-Factor App](http://12factor.net/config) methodology.
+A zero-dependency Java port of the Ruby dotenv project (which loads environment variables from a `.env` file). java-dotenv also offers a [Kotlin DSL](#kotlin-dsl).
 
-**Note:** Java does not provide a way to set environment variables on a currently running process. Thus, once `java-dotenv` is configured, you can use the `dotenv.get("...")` API to get environment variables, instead of `System.getenv(...)`. `dotenv`  should be used to retrieve all environment variables. 
+From the original Library:
+
+>Storing configuration in the environment is one of the tenets of a [twelve-factor](http://12factor.net/config) app. Anything that is likely to change between deployment environments–such as resource handles for databases or credentials for external services–should be extracted from the code into environment variables.
+
+>But it is not always practical to set environment variables on development machines or continuous integration servers where multiple projects are run. Dotenv load variables from a .env file into ENV when the environment is bootstrapped.
 
 Environment variables listed in the host environment override those in `.env`.  
+
+Use `dotenv.get("...")` instead of Java's `System.getenv(...)`.  
+
 ## Install
 
 ### Maven 
@@ -16,7 +23,7 @@ Environment variables listed in the host environment override those in `.env`.
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>java-dotenv</artifactId>
-    <version>2.0.0</version>
+    <version>3.0.0</version>
 </dependency>
 ```
 
@@ -26,36 +33,78 @@ Environment variables listed in the host environment override those in `.env`.
 compile 'io.github.cdimascio:java-dotenv:2.0.0'
 ```
 
-
 ## Usage
 
-### Create a `.env` file
+Create a `.env` file in the root of your project
 
 ```dosini
 # formatted as key=value
-MY_ENV_VAR1=My first env var configure dotenv
-MY_EVV_VAR2=My second env var
+MY_ENV_VAR1=some_value
+MY_EVV_VAR2=some_value
 ```
 
-### Configure
-Configure `java-dotenv` once in your application. 
-See below for [Kotlin usage](#kotlin-usage)
+With **Java**
 
 ```java
 import io.github.cdimascio.dotenv.Dotenv;
 
-Dotenv dotenv = Dotenv.Instance
-    .configure()
-    .build();
+Dotenv dotenv = Dotenv.load();
+dotenv.get("MY_ENV_VAR1")
 ```
 
-see [configuration options](#configuration-options)
+or with **Kotlin**
+
+```kotlin
+import io.github.cdimascio.dotenv.dotenv
+
+val dotenv = dotenv()
+dotenv["MY_ENV_VAR1"]
+```
+
+## Advanced Usage
+
+### Configure
+Configure `java-dotenv` once in your application. 
+
+With **Java**
+
+```java
+Dotenv dotenv = Dotenv.configure()
+        .directory("./some/path")
+        .ignoreIfMalformed()
+        .ignoreIfMissing()
+        .load();
+```
+
+- see [configuration options](#configuration-options)
+
+or with **Kotlin**
+
+```kotlin
+val dotenv = dotenv {
+    directory = "./some/path"
+    ignoreIfMalformed = true
+    ignoreIfMissing = true
+}
+```
+
+- see [Kotlin DSL configuration options](#kotlin-dsl-configuration-options)
 
 ### Get environment variables
-Note, environment variables specified in `.env` take precedence over those configured in the actual environment.
+Note, environment variables specified in the host environment take precedence over those in `.env`.
+
+With **Java**
 
 ```java
 dotenv.get("MY_ENV_VAR1");
+dotenv.get("HOME");
+```
+
+or with **Kotlin**
+
+```kotline
+dotenv["MY_ENV_VAR1"]
+dotenv["HOME"]
 ```
 
 ## Configuration options
@@ -71,52 +120,32 @@ Do not throw when `.env` entries are malformed. Malformed entries are skipped.
 
 Do not throw when `.env` does not exist. Dotenv will continue to retrieve environment variables that are set in the environment e.g. `dotenv["HOME"]`
 
-## Configuration examples
 
-```java
-Dotenv dotenv = Dotenv.Instance
-        .configure()
-        .directory("./some/path")
-        .ignoreIfMalformed()
-        .ignoreIfMissing()
-        .build();
-```
+## Kotlin Dsl Configuration Options
 
-## Kotlin usage
 
-### Configure
+### *optional* `directory: String` 
+Specifies the directory containing `.env`. Dotenv first searches for `.env` using the given path on the filesystem. If not found, it searches the given path on the classpath. If `directory` is not specified it defaults to searching the current working directory on the filesystem. If not found, it searches the current directory on the classpath.
 
-Configure `java-dotenv` once in your application. (see below for [Java](#configure-(using-java-8)) usage)
+### *optional* `ignoreIfMalformed: Boolean`
 
-```kotlin
-val dotenv = Dotenv.configure().build()
-```
+Do not throw when `.env` entries are malformed. Malformed entries are skipped.
 
-see [configuration options](#configuration-options)
-	
-### Get environment variable
-Note, environment variables specified in `.env` take precedence over those configured in the actual environment.
+### *optional* `ignoreIfMissing: Boolean` 
 
-```kotlin
-dotenv["MY_ENV_VAR1"]
-```
-
-with configuration options
-
-```kotlin
-import io.github.cdimascio.dotenv.Dotenv
-
-val dotenv = Dotenv
-        .configure()
-        .directory("./some/path") // set the directory containing .env
-        .ignoreIfMalformed() // do not throw an error if .env is malformed
-        .ignoreIfMissing() // do not throw an error if .env is missing
-        .build()
-```
+Do not throw when `.env` does not exist. Dotenv will continue to retrieve environment variables that are set in the environment e.g. `dotenv["HOME"]`
 
 ## Examples
 
 - with [Spring Framework](https://github.com/cdimascio/kotlin-swagger-spring-functional-template) 
+- see [Kotlin DSL tests](./src/test/kotlin/DslTests.kt)
+- see [Java tests](./src/test/java/JavaTests.java)
+
+## FAQ
+
+**Q:** Why should I use `dotenv.get("MY_ENV_VAR")` instead of `System.getenv("MY_ENV_VAR")`
+
+**A**: Since Java does not provide a way to set environment variables on a currently running process, vars listed in `.env` cannot be set and thus cannot be retrieved using `System.getenv(...)`.
 
 ## License
 
