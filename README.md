@@ -1,6 +1,6 @@
 # java-dotenv 
 
-![](https://img.shields.io/badge/build-passing-green.svg) ![](https://img.shields.io/badge/tests-passing-green.svg) ![](https://img.shields.io/badge/coverage-94%25-blue.svg) ![](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
+![](https://travis-ci.org/cdimascio/java-dotenv.svg?branch=master) ![](https://img.shields.io/badge/status-stable-green.svg) ![](https://img.shields.io/badge/coverage-94%25-blue.svg) ![](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
 
 <img src="https://raw.githubusercontent.com/cdimascio/java-dotenv/master/assets/java-dotenv.png" alt="dotenv" align="right" /> 
 
