@@ -34,6 +34,7 @@ compile 'io.github.cdimascio:java-dotenv:3.0.0'
 ```
 
 ## Usage
+Use dotenv.get("...") instead of Java's System.getenv(...). Here's [why](#faq).
 
 Create a `.env` file in the root of your project
 
@@ -88,7 +89,7 @@ val dotenv = dotenv {
 }
 ```
 
-- see [Kotlin DSL configuration options](#kotlin-dsl-configuration-options)
+- see [Kotlin DSL configuration options](#configuration-options)
 
 ### Get environment variables
 Note, environment variables specified in the host environment take precedence over those in `.env`.
