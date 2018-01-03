@@ -17,6 +17,7 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></pre><h3>Gradle</h3>
 <pre>compile <span class="hljs-string">'io.github.cdimascio:java-dotenv:3.0.0'</span></pre><h2>Usage</h2>
+<p>Use dotenv.get(&quot;...&quot;) instead of Java's System.getenv(...). Here's <a href="#faq">why</a>.</p>
 <p>Create a <code>.env</code> file in the root of your project</p>
 <pre># formatted as key=value
 MY_ENV_VAR1=some_value
@@ -45,7 +46,7 @@ dotenv[<span class="hljs-string">&quot;MY_ENV_VAR1&quot;</span>]</pre><h2>Advanc
     ignoreIfMalformed = <span class="hljs-literal">true</span>
     ignoreIfMissing = <span class="hljs-literal">true</span>
 }</pre><ul>
-<li>see <a href="#kotlin-dsl-configuration-options">Kotlin DSL configuration options</a></li>
+<li>see <a href="#configuration-options">Kotlin DSL configuration options</a></li>
 </ul>
 <h3>Get environment variables</h3>
 <p>Note, environment variables specified in the host environment take precedence over those in <code>.env</code>.</p>
