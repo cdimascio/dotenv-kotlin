@@ -184,6 +184,21 @@ dotenv["HOME"]
 
 **A**: Since Java does not provide a way to set environment variables on a currently running process, vars listed in `.env` cannot be set and thus cannot be retrieved using `System.getenv(...)`.
 
+**Q**: Should I commit my `.env` file?
+
+**A**: No. We strongly recommend against committing your `.env` file to version control. It should only include environment-specific values such as database passwords or API keys. Your production database should have a different password than your development database.
+
+**Q**: What happens to environment variables that were already set?
+
+**A**: java-dotenv will never modify any environment variables that have already been set. In particular, if there is a variable in your `.env` file which collides with one that already exists in your environment, then that variable will be skipped. This behavior allows you to override all `.env` configurations with a machine-specific environment, although it is not recommended.
+
+**Q**: What about variable expansion in `.env`? 
+
+**A**: We haven't been presented with a compelling use case for expanding variables and believe it leads to env vars that are not "fully orthogonal" as [The Twelve-Factor App outlines](https://12factor.net/config). Please open an issue if you have a compelling use case.
+
+
+**Note and reference**: The FAQs present on [motdotla's dotenv](https://github.com/motdotla/dotenv#faq) node project page are so well done that I've included those that are relevant in the FAQs above.
+
 ## License
 
 [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
