@@ -199,6 +199,27 @@ dotenv["HOME"]
 
 **Note and reference**: The FAQs present on [motdotla's dotenv](https://github.com/motdotla/dotenv#faq) node project page are so well done that I've included those that are relevant in the FAQs above.
 
+## Contributors
+Contributions are welcome!
+
+Build the project
+
+```shell
+mvn build
+```
+
+Run the Tests
+
+```shell
+mvn test
+```
+
+Package
+
+```shell
+mvn clean package dokka:javadocJar
+```
+
 ## License
 
 [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
