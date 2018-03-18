@@ -23,14 +23,14 @@ Use `dotenv.get("...")` instead of Java's `System.getenv(...)`.
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>java-dotenv</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-compile 'io.github.cdimascio:java-dotenv:3.0.0'
+compile 'io.github.cdimascio:java-dotenv:3.0.1'
 ```
 
 ## Usage
@@ -202,23 +202,7 @@ dotenv["HOME"]
 ## Contributors
 Contributions are welcome!
 
-Build the project
-
-```shell
-mvn build
-```
-
-Run the Tests
-
-```shell
-mvn test
-```
-
-Package
-
-```shell
-mvn clean package dokka:javadocJar
-```
+see [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
 
