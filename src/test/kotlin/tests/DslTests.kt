@@ -48,6 +48,19 @@ class DotEnvDslTest() {
     }
 
     @test
+    fun resourceFilename() {
+        val env = dotenv {
+            filename = "env"
+            ignoreIfMalformed = true
+        }
+        assertEquals("my test ev 1", env["MY_TEST_EV1"])
+
+        val expectedHome = System.getProperty("user.home")
+        val actualHome = env["HOME"]
+        assertEquals(expectedHome, actualHome)
+    }
+
+    @test
     fun resourceCurrent() {
         val env = dotenv {
             ignoreIfMalformed = true
