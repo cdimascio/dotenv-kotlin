@@ -14,9 +14,9 @@
 <pre><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.github.cdimascio<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>java-dotenv<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.0.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></pre><h3>Gradle</h3>
-<pre>compile <span class="hljs-string">'io.github.cdimascio:java-dotenv:3.0.1'</span></pre><h2>Usage</h2>
+<pre>compile <span class="hljs-string">'io.github.cdimascio:java-dotenv:3.1.0'</span></pre><h2>Usage</h2>
 <p>Use dotenv.get(&quot;...&quot;) instead of Java's System.getenv(...). Here's <a href="#faq">why</a>.</p>
 <p>Create a <code>.env</code> file in the root of your project</p>
 <pre># formatted as key=value
@@ -29,7 +29,23 @@ dotenv.get(<span class="hljs-string">&quot;MY_ENV_VAR1&quot;</span>)</pre><p>or 
 <pre><span class="hljs-keyword">import</span> io.github.cdimascio.dotenv.dotenv
 
 <span class="hljs-keyword">val</span> dotenv = dotenv()
-dotenv[<span class="hljs-string">&quot;MY_ENV_VAR1&quot;</span>]</pre><h2>Advanced Usage</h2>
+dotenv[<span class="hljs-string">&quot;MY_ENV_VAR1&quot;</span>]</pre><h2>Android Usage</h2>
+<ul>
+<li><p>Create an assets folder</p>
+<p>  <img src="android-dotenv.png" /></p>
+</li>
+<li><p>Add <code>env</code> <em>(no dot)</em> to the assets folder.</p>
+</li>
+<li><p>Configure dotenv to search <code>/assets</code> for a file with name <code>env</code></p>
+<pre>  val dotenv = <span class="hljs-keyword">dotenv</span> {
+      <span class="hljs-literal">directory</span> = <span class="hljs-string">&quot;/assets&quot;</span>
+      filename = <span class="hljs-string">&quot;env&quot;</span> // instead of <span class="hljs-string">'.env'</span>, <span class="hljs-literal">use</span> <span class="hljs-string">'env'</span>
+  }
+  <span class="hljs-keyword">dotenv</span>[<span class="hljs-string">&quot;MY_ENV_VAR1&quot;</span>]</pre></li>
+</ul>
+<p><strong>Note:</strong> The above configuration is required because dot files in <code>/assets</code> do not appear to resolve on Android. <em>(Seeking assistance from an Android expert if there is a better way)</em></p>
+<p>Alternatively, if you are using Provider <code>android.resource</code> you may specify</p>
+<pre><span class="hljs-attribute"> directory</span> = <span class="hljs-string">&quot;android.resource://com.example.dimascio.myapp/raw&quot;</span></pre><h2>Advanced Usage</h2>
 <h3>Configure</h3>
 <p>Configure <code>java-dotenv</code> once in your application. </p>
 <p>With <strong>Java</strong></p>
