@@ -36,11 +36,11 @@ dotenv[<span class="hljs-string">&quot;MY_ENV_VAR1&quot;</span>]</pre><h2>Androi
 <p>  <img src="assets/android-dotenv.png" /></p>
 </li>
 <li><p>Configure dotenv to search <code>/assets</code> for a file with name <code>env</code></p>
-<pre>  val dotenv = <span class="hljs-keyword">dotenv</span> {
-      <span class="hljs-literal">directory</span> = <span class="hljs-string">&quot;/assets&quot;</span>
-      filename = <span class="hljs-string">&quot;env&quot;</span> // instead of <span class="hljs-string">'.env'</span>, <span class="hljs-literal">use</span> <span class="hljs-string">'env'</span>
+<pre>  <span class="hljs-keyword">val</span> dotenv = dotenv {
+      directory = <span class="hljs-string">&quot;/assets&quot;</span>
+      filename = <span class="hljs-string">&quot;env&quot;</span> <span class="hljs-comment">// instead of '.env', use 'env'</span>
   }
-  <span class="hljs-keyword">dotenv</span>[<span class="hljs-string">&quot;MY_ENV_VAR1&quot;</span>]</pre></li>
+  dotenv[<span class="hljs-string">&quot;MY_ENV_VAR1&quot;</span>]</pre></li>
 </ul>
 <p><strong>Note:</strong> The above configuration is required because dot files in <code>/assets</code> do not appear to resolve on Android. <em>(Seeking assistance from an Android expert if there is a better way)</em></p>
 <p>Alternatively, if you are using Provider <code>android.resource</code> you may specify</p>
