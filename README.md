@@ -157,8 +157,7 @@ dotenv["HOME"]
 
 ### *optional* `filename`
 
-* Recommended for use with Android (see [details](#android-usage)) 
-* Optionally use a filename other than `.env`
+* Use a filename other than `.env`. Recommended for use with Android (see [details](#android-usage)) 
 
 	**Java example**
 	
