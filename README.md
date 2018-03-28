@@ -71,7 +71,7 @@ dotenv["MY_ENV_VAR1"]
 
 - Configure dotenv to search `/assets` for a file with name `env`
 
-	```
+	```kotlin
 	val dotenv = dotenv {
 	    directory = "/assets"
 	    filename = "env" // instead of '.env', use 'env'
