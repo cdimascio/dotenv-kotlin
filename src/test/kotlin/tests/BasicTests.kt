@@ -39,6 +39,25 @@ class DotEnvTest() {
     }
 
     @test
+    fun dotenvFilename() {
+        val dotEnv = Dotenv.configure().apply {
+            directory("./src/test/resources")
+            filename("env")
+            ignoreIfMalformed()
+        }.load()
+
+        envVars.forEach {
+            val expected = it.value
+            val actual = dotEnv[it.key]
+            assertEquals(expected, actual)
+        }
+
+        val expectedHome = System.getProperty("user.home")
+        val actualHome = dotEnv.get("HOME")
+        assertEquals(expectedHome, actualHome)
+    }
+
+    @test
     fun resourceRelative() {
         val dotenv = Dotenv.configure()
                 .directory("./")

@@ -25,6 +25,11 @@ class DotenvBuilder internal constructor() {
         return this
     }
 
+    fun filename(name: String = ".env"): DotenvBuilder {
+        filename = name
+        return this
+    }
+
     fun ignoreIfMissing(): DotenvBuilder {
         throwIfMissing = false
         return this

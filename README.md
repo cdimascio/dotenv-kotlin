@@ -23,14 +23,14 @@ Use `dotenv.get("...")` instead of Java's `System.getenv(...)`.
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>java-dotenv</artifactId>
-    <version>3.0.1</version>
+    <version>3.1.0</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-compile 'io.github.cdimascio:java-dotenv:3.0.1'
+compile 'io.github.cdimascio:java-dotenv:3.1.0'
 ```
 
 ## Usage
@@ -60,6 +60,31 @@ import io.github.cdimascio.dotenv.dotenv
 
 val dotenv = dotenv()
 dotenv["MY_ENV_VAR1"]
+```
+
+## Android Usage
+
+- Create an assets folder
+
+	<img src="android-dotenv.png" width="350">
+
+- Add `env` *(no dot)* to the assets folder.
+- Configure dotenv to search `/assets` for a file with name `env`
+
+	```
+	val dotenv = dotenv {
+	    directory = "/assets"
+	    filename = "env" // instead of '.env', use 'env'
+	}
+	dotenv["MY_ENV_VAR1"]
+	```
+
+**Note:** The above configuration is required because dot files in `/assets` do not appear to resolve on Android. *(Seeking assistance from an Android expert if there is a better way)*
+
+Alternatively, if you are using Provider `android.resource` you may specify
+
+```
+ directory = "android.resource://com.example.dimascio.myapp/raw"
 ```
 
 ## Advanced Usage

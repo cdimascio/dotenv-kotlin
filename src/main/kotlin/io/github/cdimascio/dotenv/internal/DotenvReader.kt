@@ -14,7 +14,10 @@ internal class DotenvReader(
         dir = if (dir.endsWith("/")) dir.substring(0, dir.length - 1) else dir
         dir = if (dir.endsWith(".env")) dir.substring(0, dir.length - 4) else dir
         val location = "$dir/$filename"
-        val path = if (location.toLowerCase().startsWith("file:")) {
+        val path = if (
+                location.toLowerCase().startsWith("file:") ||
+                location.toLowerCase().startsWith("android.resource:")
+        ) {
             Paths.get(URI.create(location))
         } else {
             Paths.get(location)
