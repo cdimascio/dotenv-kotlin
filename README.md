@@ -221,7 +221,7 @@ dotenv["HOME"]
 - with [Spring Framework](https://github.com/cdimascio/kotlin-swagger-spring-functional-template) 
 - see [Kotlin DSL tests](./src/test/kotlin/tests/DslTests.kt)
 - see [Java tests](./src/test/java/tests/JavaTests.java)
-
+- with [Android](https://github.com/cdimascio/android-example/blob/master/app/src/main/java/com/example/dimascio/myapp/MainActivity.kt)
 ## FAQ
 
 **Q:** Why should I use `dotenv.get("MY_ENV_VAR")` instead of `System.getenv("MY_ENV_VAR")`
