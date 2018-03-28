@@ -149,12 +149,32 @@ dotenv["HOME"]
 
 	**Kotlin Dsl example**
 	
-	```java
+	```kotlin
 	dotenv {
 	  directory = "/some/path"
 	}
     ```
 
+### *optional* `filename`
+
+* Recommended for use with Android (see [details](#android-usage)) 
+* Optionally use a filename other than `.env`
+
+	**Java example**
+	
+	```java
+	Dotenv
+	  .configure()
+	  .filename("myenv")
+	  .load()
+	```
+	**Kotlin Dsl example**
+	
+	```kotlin
+	dotenv {
+		filename = "myenv"
+	}
+	```
 
 ### *optional* `ignoreIfMalformed`
 
@@ -170,7 +190,7 @@ dotenv["HOME"]
 	```
 	**Kotlin Dsl example**
 	
-	```java
+	```kotlin
 	dotenv {
 	  ignoreIfMalformed = true
 	}
@@ -190,7 +210,7 @@ dotenv["HOME"]
 	```
 	**Kotlin Dsl example**
 	
-	```java
+	```kotlin
 	dotenv {
 	  ignoreIfMissing = true
 	}
@@ -208,6 +228,14 @@ dotenv["HOME"]
 **Q:** Why should I use `dotenv.get("MY_ENV_VAR")` instead of `System.getenv("MY_ENV_VAR")`
 
 **A**: Since Java does not provide a way to set environment variables on a currently running process, vars listed in `.env` cannot be set and thus cannot be retrieved using `System.getenv(...)`.
+
+**Q:** Should I have multiple .env files?
+
+**A**: No. We strongly recommend against having a "main" .env file and an "environment" .env file like .env.test. Your config should vary between deploys, and you should not be sharing values between environments.
+
+> In a twelve-factor app, env vars are granular controls, each fully orthogonal to other env vars. They are never grouped together as “environments”, but instead are independently managed for each deploy. This is a model that scales up smoothly as the app naturally expands into more deploys over its lifetime.
+
+>– The Twelve-Factor App
 
 **Q**: Should I commit my `.env` file?
 
@@ -232,6 +260,4 @@ see [CONTRIBUTING.md](CONTRIBUTING.md)
 ## License
 
  see [LICENSE](LICENSE) ([Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0))
-
-
 
