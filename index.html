@@ -82,6 +82,19 @@ dotenv[<span class="hljs-string">&quot;HOME&quot;</span>]</pre><h2>Configuration
     directory = <span class="hljs-string">&quot;/some/path&quot;</span>
   }</pre></li>
 </ul>
+<h3><em>optional</em> <code>filename</code></h3>
+<ul>
+<li>Recommended for use with Android (see <a href="#android-usage">details</a>) </li>
+<li><p>Optionally use a filename other than <code>.env</code></p>
+<p>  <strong>Java example</strong></p>
+<pre>  Dotenv
+    .configure()
+    .filename(<span class="hljs-string">&quot;myenv&quot;</span>)
+    .load()</pre><p>  <strong>Kotlin Dsl example</strong></p>
+<pre>  dotenv {
+      filename = <span class="hljs-string">&quot;myenv&quot;</span>
+  }</pre></li>
+</ul>
 <h3><em>optional</em> <code>ignoreIfMalformed</code></h3>
 <ul>
 <li><p>Do not throw when <code>.env</code> entries are malformed. Malformed entries are skipped.</p>
@@ -91,7 +104,7 @@ dotenv[<span class="hljs-string">&quot;HOME&quot;</span>]</pre><h2>Configuration
     .ignoreIfMalformed()
     .load()</pre><p>  <strong>Kotlin Dsl example</strong></p>
 <pre>  dotenv {
-    ignoreIfMalformed = <span class="hljs-keyword">true</span>
+    ignoreIfMalformed = <span class="hljs-literal">true</span>
   }</pre></li>
 </ul>
 <h3><em>optional</em> <code>ignoreIfMissing</code></h3>
@@ -103,7 +116,7 @@ dotenv[<span class="hljs-string">&quot;HOME&quot;</span>]</pre><h2>Configuration
     .ignoreIfMissing()
     .load()</pre><p>  <strong>Kotlin Dsl example</strong></p>
 <pre>  dotenv {
-    ignoreIfMissing = <span class="hljs-keyword">true</span>
+    ignoreIfMissing = <span class="hljs-literal">true</span>
   }</pre></li>
 </ul>
 <h2>Examples</h2>
@@ -115,6 +128,12 @@ dotenv[<span class="hljs-string">&quot;HOME&quot;</span>]</pre><h2>Configuration
 <h2>FAQ</h2>
 <p><strong>Q:</strong> Why should I use <code>dotenv.get(&quot;MY_ENV_VAR&quot;)</code> instead of <code>System.getenv(&quot;MY_ENV_VAR&quot;)</code></p>
 <p><strong>A</strong>: Since Java does not provide a way to set environment variables on a currently running process, vars listed in <code>.env</code> cannot be set and thus cannot be retrieved using <code>System.getenv(...)</code>.</p>
+<p><strong>Q:</strong> Should I have multiple .env files?</p>
+<p><strong>A</strong>: No. We strongly recommend against having a &quot;main&quot; .env file and an &quot;environment&quot; .env file like .env.test. Your config should vary between deploys, and you should not be sharing values between environments.</p>
+<blockquote>
+<p>In a twelve-factor app, env vars are granular controls, each fully orthogonal to other env vars. They are never grouped together as “environments”, but instead are independently managed for each deploy. This is a model that scales up smoothly as the app naturally expands into more deploys over its lifetime.</p>
+<p>– The Twelve-Factor App</p>
+</blockquote>
 <p><strong>Q</strong>: Should I commit my <code>.env</code> file?</p>
 <p><strong>A</strong>: No. We strongly recommend against committing your <code>.env</code> file to version control. It should only include environment-specific values such as database passwords or API keys. Your production database should have a different password than your development database.</p>
 <p><strong>Q</strong>: What happens to environment variables that were already set?</p>
