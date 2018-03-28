@@ -65,10 +65,10 @@ dotenv["MY_ENV_VAR1"]
 ## Android Usage
 
 - Create an assets folder
+- Add `env` *(no dot)* to the assets folder.
 
 	<img src="assets/android-dotenv.png" width="350">
 
-- Add `env` *(no dot)* to the assets folder.
 - Configure dotenv to search `/assets` for a file with name `env`
 
 	```
