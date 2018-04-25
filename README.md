@@ -79,7 +79,7 @@ dotenv["MY_ENV_VAR1"]
 	dotenv["MY_ENV_VAR1"]
 	```
 
-**Note:** The above configuration is required because dot files in `/assets` do not appear to resolve on Android. *(Seeking assistance from an Android expert if there is a better way)*
+**Note:** The above configuration is required because dot files in `/assets` do not appear to resolve on Android. *(Seeking recommendations from the Android community on how `java-dotenv` configuration should work in order to provide the best experience for Android developers)*
 
 Alternatively, if you are using Provider `android.resource` you may specify
 
@@ -217,11 +217,12 @@ dotenv["HOME"]
 
 
 ## Examples
-
-- with [Spring Framework](https://github.com/cdimascio/kotlin-swagger-spring-functional-template) 
+- with [Maven (simple)](https://github.com/cdimascio/java-dotenv-example)
+- with [Spring Framework](https://github.com/cdimascio/kotlin-swagger-spring-functional-template)
+- with [Android](https://github.com/cdimascio/android-example/blob/master/app/src/main/java/com/example/dimascio/myapp/MainActivity.kt) 
 - see [Kotlin DSL tests](./src/test/kotlin/tests/DslTests.kt)
 - see [Java tests](./src/test/java/tests/JavaTests.java)
-- with [Android](https://github.com/cdimascio/android-example/blob/master/app/src/main/java/com/example/dimascio/myapp/MainActivity.kt)
+
 ## FAQ
 
 **Q:** Why should I use `dotenv.get("MY_ENV_VAR")` instead of `System.getenv("MY_ENV_VAR")`
