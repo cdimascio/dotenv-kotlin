@@ -10,7 +10,7 @@
 
     <groupId>io.github.cdimascio</groupId>
     <artifactId>java-dotenv</artifactId>
-    <version>3.1.1</version>
+    <version>3.1.2</version>
 
     <licenses>
         <license>
@@ -50,7 +50,7 @@
 
 
     <properties>
-        <kotlin.version>1.2.21</kotlin.version>
+        <kotlin.version>1.2.60</kotlin.version>
         <main.class>io.cdimascio.DotenvKt</main.class>
         <junit.version>4.12</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
