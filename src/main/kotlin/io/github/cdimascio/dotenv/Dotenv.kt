@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) Carmine DiMascio 2017 - 2018
+ * License: MIT
+ */
 package io.github.cdimascio.dotenv
 
 import io.github.cdimascio.dotenv.internal.DotenvParser
