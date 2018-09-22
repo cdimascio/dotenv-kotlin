@@ -2,7 +2,9 @@
 
 ![](https://travis-ci.org/cdimascio/java-dotenv.svg?branch=master) ![](https://img.shields.io/badge/status-stable-green.svg) ![](https://img.shields.io/badge/coverage-94%25-blue.svg) ![](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
 
-<img src="https://raw.githubusercontent.com/cdimascio/java-dotenv/master/assets/java-dotenv.png" alt="dotenv" align="right" /> 
+<p align="center">
+	<img src="https://raw.githubusercontent.com/cdimascio/java-dotenv/master/assets/java-dotenv.png" alt="dotenv" /> 
+</p>
 
 A Java port of the Ruby dotenv project (which loads environment variables from a `.env` file). java-dotenv also offers a Kotlin DSL.
 
