@@ -4,7 +4,7 @@
 
 <img src="https://raw.githubusercontent.com/cdimascio/java-dotenv/master/assets/java-dotenv.png" alt="dotenv" align="right" /> 
 
-A Java port of the Ruby dotenv project (which loads environment variables from a `.env` file). java-dotenv also offers a [Kotlin DSL](#kotlin-dsl).
+A Java port of the Ruby dotenv project (which loads environment variables from a `.env` file). java-dotenv also offers a Kotlin DSL.
 
 From the original Library:
 
