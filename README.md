@@ -1,8 +1,6 @@
 # java-dotenv 
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/66b8195f0da544f1ad9ed1352c0ea66f)](https://app.codacy.com/app/cdimascio/java-dotenv?utm_source=github.com&utm_medium=referral&utm_content=cdimascio/java-dotenv&utm_campaign=Badge_Grade_Dashboard)
-
-![](https://travis-ci.org/cdimascio/java-dotenv.svg?branch=master) ![](https://img.shields.io/badge/status-stable-green.svg) ![](https://img.shields.io/badge/coverage-94%25-blue.svg) ![](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
+![](https://travis-ci.org/cdimascio/java-dotenv.svg?branch=master) ![](https://img.shields.io/badge/status-stable-green.svg) ![](https://img.shields.io/badge/coverage-94%25-blue.svg) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66b8195f0da544f1ad9ed1352c0ea66f)](https://app.codacy.com/app/cdimascio/java-dotenv?utm_source=github.com&utm_medium=referral&utm_content=cdimascio/java-dotenv&utm_campaign=Badge_Grade_Dashboard) ![](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
 
 A Java port of the Ruby dotenv project (which loads environment variables from a `.env` file). java-dotenv also offers a Kotlin DSL.
 
