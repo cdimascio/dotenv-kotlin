@@ -34,6 +34,6 @@ public class JavaTests {
                 .ignoreIfMalformed()
                 .ignoreIfMissing()
                 .load();
-        assertNotNull(dotenv.get("HOME"));
+        assertNotNull(dotenv.get("PATH"));
     }
 }

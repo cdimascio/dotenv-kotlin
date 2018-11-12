@@ -3,10 +3,12 @@ package tests
 import io.github.cdimascio.dotenv.DotEnvException
 import io.github.cdimascio.dotenv.Dotenv
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import org.junit.Test as test
 
 class DotEnvTest {
+    private val isWindows = System.getProperty("os.name").toLowerCase().indexOf("win") >= 0
     private val envVars = mapOf(
         "MY_TEST_EV1" to "my test ev 1",
         "MY_TEST_EV2" to "my test ev 2"
@@ -22,25 +24,23 @@ class DotEnvTest {
 
     @test
     fun dotenvIgnoreMalformed() {
-        val dotEnv = Dotenv.configure().apply {
+        val dotenv = Dotenv.configure().apply {
             directory("./src/test/resources")
             ignoreIfMalformed()
         }.load()
 
         envVars.forEach {
             val expected = it.value
-            val actual = dotEnv[it.key]
+            val actual = dotenv[it.key]
             assertEquals(expected, actual)
         }
 
-        val expectedHome = System.getProperty("user.home")
-        val actualHome = dotEnv.get("HOME")
-        assertEquals(expectedHome, actualHome)
+        assertHostEnvVar(dotenv)
     }
 
     @test
     fun dotenvFilename() {
-        val dotEnv = Dotenv.configure().apply {
+        val dotenv = Dotenv.configure().apply {
             directory("./src/test/resources")
             filename("env")
             ignoreIfMalformed()
@@ -48,13 +48,11 @@ class DotEnvTest {
 
         envVars.forEach {
             val expected = it.value
-            val actual = dotEnv[it.key]
+            val actual = dotenv[it.key]
             assertEquals(expected, actual)
         }
 
-        val expectedHome = System.getProperty("user.home")
-        val actualHome = dotEnv.get("HOME")
-        assertEquals(expectedHome, actualHome)
+        assertHostEnvVar(dotenv)
     }
 
     @test
@@ -65,9 +63,7 @@ class DotEnvTest {
             .load()
         assertEquals("my test ev 1", dotenv["MY_TEST_EV1"])
 
-        val expectedHome = System.getProperty("user.home")
-        val actualHome = dotenv["HOME"]
-        assertEquals(expectedHome, actualHome)
+        assertHostEnvVar(dotenv)
     }
 
     @test
@@ -77,9 +73,7 @@ class DotEnvTest {
             .load()
         assertEquals("my test ev 1", dotenv["MY_TEST_EV1"])
 
-        val expectedHome = System.getProperty("user.home")
-        val actualHome = dotenv["HOME"]
-        assertEquals(expectedHome, actualHome)
+        assertHostEnvVar(dotenv)
     }
 
     @test(expected = DotEnvException::class)
@@ -96,10 +90,20 @@ class DotEnvTest {
             .ignoreIfMissing()
             .load()
 
-        val expectedHome = System.getProperty("user.home")
-        val actualHome = dotenv.get("HOME")
-        assertEquals(expectedHome, actualHome)
+        assertHostEnvVar(dotenv)
 
         assertNull(dotenv["MY_TEST_EV1"])
+    }
+
+    private fun assertHostEnvVar(env: Dotenv) {
+        val isWindows = System.getProperty("os.name").toLowerCase().indexOf("win") >= 0
+        if (isWindows) {
+            val path = env["PATH"]
+            assertNotNull(path)
+        } else {
+            val expectedHome = System.getProperty("user.home")
+            val actualHome = env["HOME"]
+            assertEquals(expectedHome, actualHome)
+        }
     }
 }

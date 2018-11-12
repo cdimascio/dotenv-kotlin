@@ -1,8 +1,10 @@
 package tests
 
 import io.github.cdimascio.dotenv.DotEnvException
+import io.github.cdimascio.dotenv.Dotenv
 import io.github.cdimascio.dotenv.dotenv
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import org.junit.Test as test
 
@@ -29,9 +31,7 @@ class DotEnvDslTest {
             assertEquals(expected, actual)
         }
 
-        val expectedHome = System.getProperty("user.home")
-        val actualHome = env.get("HOME")
-        assertEquals(expectedHome, actualHome)
+        assertHostEnvVar(env)
     }
 
     @test
@@ -42,9 +42,7 @@ class DotEnvDslTest {
         }
         assertEquals("my test ev 1", env["MY_TEST_EV1"])
 
-        val expectedHome = System.getProperty("user.home")
-        val actualHome = env["HOME"]
-        assertEquals(expectedHome, actualHome)
+        assertHostEnvVar(env)
     }
 
     @test
@@ -55,9 +53,7 @@ class DotEnvDslTest {
         }
         assertEquals("my test ev 1", env["MY_TEST_EV1"])
 
-        val expectedHome = System.getProperty("user.home")
-        val actualHome = env["HOME"]
-        assertEquals(expectedHome, actualHome)
+        assertHostEnvVar(env)
     }
 
     @test
@@ -67,9 +63,7 @@ class DotEnvDslTest {
         }
         assertEquals("my test ev 1", env["MY_TEST_EV1"])
 
-        val expectedHome = System.getProperty("user.home")
-        val actualHome = env["HOME"]
-        assertEquals(expectedHome, actualHome)
+        assertHostEnvVar(env)
     }
 
     @test(expected = DotEnvException::class)
@@ -86,9 +80,19 @@ class DotEnvDslTest {
             ignoreIfMissing = true
         }
 
-        val expectedHome = System.getProperty("user.home")
-        val actualHome = env["HOME"]
-        assertEquals(expectedHome, actualHome)
+        assertHostEnvVar(env)
         assertNull(env["MY_TEST_EV1"])
+    }
+
+    private fun assertHostEnvVar(env: Dotenv) {
+        val isWindows = System.getProperty("os.name").toLowerCase().indexOf("win") >= 0
+        if (isWindows) {
+            val path = env["PATH"]
+            assertNotNull(path)
+        } else {
+            val expectedHome = System.getProperty("user.home")
+            val actualHome = env["HOME"]
+            assertEquals(expectedHome, actualHome)
+        }
     }
 }
