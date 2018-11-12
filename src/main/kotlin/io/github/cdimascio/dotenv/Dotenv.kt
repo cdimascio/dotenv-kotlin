@@ -36,6 +36,9 @@ abstract class Dotenv {
     operator abstract fun get(envVar: String): String?
 }
 
+/**
+ * Dotenv exception
+ */
 class DotEnvException(message: String) : Exception(message)
 
 /**

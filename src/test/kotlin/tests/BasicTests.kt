@@ -6,18 +6,18 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import org.junit.Test as test
 
-class DotEnvTest() {
+class DotEnvTest {
     private val envVars = mapOf(
-            "MY_TEST_EV1" to "my test ev 1",
-            "MY_TEST_EV2" to "my test ev 2"
+        "MY_TEST_EV1" to "my test ev 1",
+        "MY_TEST_EV2" to "my test ev 2"
     )
 
     @test(expected = DotEnvException::class)
 
     fun dotenvMalformed() {
         Dotenv.configure()
-                .directory("./src/test/resources")
-                .load()
+            .directory("./src/test/resources")
+            .load()
     }
 
     @test
@@ -60,9 +60,9 @@ class DotEnvTest() {
     @test
     fun resourceRelative() {
         val dotenv = Dotenv.configure()
-                .directory("./")
-                .ignoreIfMalformed()
-                .load()
+            .directory("./")
+            .ignoreIfMalformed()
+            .load()
         assertEquals("my test ev 1", dotenv["MY_TEST_EV1"])
 
         val expectedHome = System.getProperty("user.home")
@@ -73,8 +73,8 @@ class DotEnvTest() {
     @test
     fun resourceCurrent() {
         val dotenv = Dotenv.configure()
-                .ignoreIfMalformed()
-                .load()
+            .ignoreIfMalformed()
+            .load()
         assertEquals("my test ev 1", dotenv["MY_TEST_EV1"])
 
         val expectedHome = System.getProperty("user.home")
@@ -85,16 +85,16 @@ class DotEnvTest() {
     @test(expected = DotEnvException::class)
     fun dotenvMissing() {
         Dotenv.configure()
-                .directory("/missing/.env")
-                .load()
+            .directory("/missing/.env")
+            .load()
     }
 
     @test
     fun dotenvIgnoreMissing() {
         val dotenv = Dotenv.configure()
-                .directory("/missing/.env")
-                .ignoreIfMissing()
-                .load()
+            .directory("/missing/.env")
+            .ignoreIfMissing()
+            .load()
 
         val expectedHome = System.getProperty("user.home")
         val actualHome = dotenv.get("HOME")
