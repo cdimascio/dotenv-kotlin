@@ -4,6 +4,9 @@
  */
 package io.github.cdimascio.dotenv
 
+/**
+ * Configure dotenv
+ */
 fun dotenv(block: Configuration.() -> Unit = {}): Dotenv {
     val config = Configuration()
     block(config)
@@ -15,6 +18,9 @@ fun dotenv(block: Configuration.() -> Unit = {}): Dotenv {
     return dotenv.load()
 }
 
+/**
+ * The dotenv configuration
+ */
 class Configuration {
     var directory: String = ""
     var filename: String = ".env"

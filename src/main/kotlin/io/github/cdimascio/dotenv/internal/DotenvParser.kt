@@ -17,6 +17,10 @@ internal class DotenvParser(
     private val isComment = { s: String -> s.startsWith("#") || s.startsWith("""//""") }
     private val parseLine = { s: String -> """^\s*([\w.\-]+)\s*(=)\s*(.*)?\s*$""".toRegex().matchEntire(s) }
 
+    /**
+     * Parses the contents of .env and returns the environment variable and associated value as a list of pairs
+     * @return a list of pair representing the values .env is contributing to the virtual environment
+     */
     fun parse(): List<Pair<String, String>> {
         val lines = try {
             reader.read()

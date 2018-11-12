@@ -15,6 +15,9 @@ internal class DotenvReader(
         private val directory: String,
         private val filename: String
 ) {
+    /**
+     * Reads the contents of the .env file
+     */
     fun read(): Stream<String> {
         var dir = directory.replace("""\\""".toRegex(), "/")
         dir = if (dir.endsWith("/")) dir.substring(0, dir.length - 1) else dir

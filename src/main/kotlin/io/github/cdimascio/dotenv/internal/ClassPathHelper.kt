@@ -11,6 +11,11 @@ import java.util.*
 import java.util.stream.Stream
 
 internal object ClasspathHelper {
+    /**
+     * Loads the contents of a file at the specified location and returns
+     * the contents of that file as a Stream of Strings
+     * @return A Stream<String> contain the contents of the file at location
+     */
     fun loadFileFromClasspath(location: String): Stream<String> {
         val loader = ClasspathHelper::class.java
         val inputStream: InputStream? =
