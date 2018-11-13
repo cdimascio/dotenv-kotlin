@@ -20,8 +20,9 @@ internal class DotenvReader(
      */
     fun read(): Stream<String> {
         var dir = directory.replace("""\\""".toRegex(), "/")
+        dir = if (dir.endsWith(".env")) dir.substring(0, dir.length - 5) else dir
         dir = if (dir.endsWith("/")) dir.substring(0, dir.length - 1) else dir
-        dir = if (dir.endsWith(".env")) dir.substring(0, dir.length - 4) else dir
+
         val location = "$dir/$filename"
         val path = if (
                 location.toLowerCase().startsWith("file:") ||
