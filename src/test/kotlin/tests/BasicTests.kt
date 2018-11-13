@@ -8,7 +8,6 @@ import kotlin.test.assertNull
 import org.junit.Test as test
 
 class DotEnvTest {
-    private val isWindows = System.getProperty("os.name").toLowerCase().indexOf("win") >= 0
     private val envVars = mapOf(
         "MY_TEST_EV1" to "my test ev 1",
         "MY_TEST_EV2" to "my test ev 2"
