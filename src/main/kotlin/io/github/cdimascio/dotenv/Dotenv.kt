@@ -51,7 +51,7 @@ class DotenvBuilder internal constructor() {
     private var throwIfMalformed = true
 
     /**
-     * Set the directory containing the .env file
+     * Sets the directory containing the .env file
      * @param directoryPath The path
      */
     fun directory(path: String = directoryPath): DotenvBuilder {
@@ -60,7 +60,7 @@ class DotenvBuilder internal constructor() {
     }
 
     /**
-     * Set the name of the .env, if not .env
+     * Sets the name of the .env. The default is not .env
      * @param filename The filename
      */
     fun filename(name: String = ".env"): DotenvBuilder {
@@ -69,7 +69,7 @@ class DotenvBuilder internal constructor() {
     }
 
     /**
-     * Do not throw an error when .env is not presents
+     * Do not throw an exception when .env is missing
      */
     fun ignoreIfMissing(): DotenvBuilder {
         throwIfMissing = false
@@ -77,7 +77,7 @@ class DotenvBuilder internal constructor() {
     }
 
     /**
-     * Do not throw an error when .env is malformed
+     * Do not throw an exception when .env is malformed
      */
     fun ignoreIfMalformed(): DotenvBuilder {
         throwIfMalformed = false

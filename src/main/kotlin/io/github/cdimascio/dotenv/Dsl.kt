@@ -22,8 +22,20 @@ fun dotenv(block: Configuration.() -> Unit = {}): Dotenv {
  * The dotenv configuration
  */
 class Configuration {
-    var directory: String = ""
+    /**
+     * Set the directory containing the .env file
+     */
+    var directory: String = "./"
+    /**
+     * Sets the name of the .env. The default is .env
+     */
     var filename: String = ".env"
+    /**
+     * Do not throw an exception when .env is malformed
+     */
     var ignoreIfMalformed = false
+    /**
+     * Do not throw an exception when .env is missing
+     */
     var ignoreIfMissing = false
 }
