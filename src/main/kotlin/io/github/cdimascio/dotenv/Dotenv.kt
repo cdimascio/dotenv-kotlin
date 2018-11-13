@@ -46,7 +46,7 @@ class DotEnvException(message: String) : Exception(message)
  */
 class DotenvBuilder internal constructor() {
     private var filename = ".env"
-    private var directoryPath = ""
+    private var directoryPath = "./"
     private var throwIfMissing = true
     private var throwIfMalformed = true
 
