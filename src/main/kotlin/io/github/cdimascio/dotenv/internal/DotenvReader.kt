@@ -19,14 +19,12 @@ internal class DotenvReader(
      * Reads the contents of the .env file
      */
     fun read(): Stream<String> {
-        var dir = directory.replace("""\\""".toRegex(), "/")
-        dir = if (dir.endsWith(".env")) dir.substring(0, dir.length - 5) else dir
-        dir = if (dir.endsWith("/")) dir.substring(0, dir.length - 1) else dir
+        val dir = directory.replace("""\\""".toRegex(), "/").removeSuffix(".env").removeSuffix("/")
 
         val location = "$dir/$filename"
         val path = if (
-                location.toLowerCase().startsWith("file:") ||
-                location.toLowerCase().startsWith("android.resource:")
+                location.startsWith("file:", ignoreCase = true) ||
+                location.startsWith("android.resource:", ignoreCase = true)
         ) {
             Paths.get(URI.create(location))
         } else {
