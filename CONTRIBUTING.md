@@ -10,6 +10,8 @@ mvn build
 
 #### Make a change
 
+fix a bug, add a feature, update the doc, etc
+
 #### Run the Tests
 
 ```shell
