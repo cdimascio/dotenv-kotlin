@@ -228,6 +228,12 @@ dotenv["HOME"]
 
 ## FAQ
 
+**Q:** Should I deploy a `.env` to e.g. production?
+
+**A**: Tenant III of the [12 factor app methodoy](https://12factor.net/config) states "The twelve-factor app stores config in environment variables". Thus, for deployed environments e.g. production, it is not recommended to use the .env file. dotenv is super useful in e.g a local development environment. It enables a developer to manage the environment via a file which is more convenient.
+
+Using dotenv in production would be cheating. This type of usage, however is an anti-pattern.
+
 **Q:** Why should I use `dotenv.get("MY_ENV_VAR")` instead of `System.getenv("MY_ENV_VAR")`
 
 **A**: Since Java does not provide a way to set environment variables on a currently running process, vars listed in `.env` cannot be set and thus cannot be retrieved using `System.getenv(...)`.
