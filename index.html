@@ -131,6 +131,9 @@ dotenv[<span class="hljs-string">&quot;HOME&quot;</span>]</pre><h2>Configuration
 <li>see <a href="./src/test/java/tests/JavaTests.java">Java tests</a></li>
 </ul>
 <h2>FAQ</h2>
+<p><strong>Q:</strong> Should I deploy a <code>.env</code> to e.g. production?</p>
+<p><strong>A</strong>: Tenant III of the <a href="https://12factor.net/config">12 factor app methodoy</a> states &quot;The twelve-factor app stores config in environment variables&quot;. Thus, for deployed environments e.g. production, it is not recommended to use the .env file. dotenv is super useful in e.g a local development environment. It enables a developer to manage the environment via a file which is more convenient.</p>
+<p>Using dotenv in production would be cheating. This type of usage, however is an anti-pattern.</p>
 <p><strong>Q:</strong> Why should I use <code>dotenv.get(&quot;MY_ENV_VAR&quot;)</code> instead of <code>System.getenv(&quot;MY_ENV_VAR&quot;)</code></p>
 <p><strong>A</strong>: Since Java does not provide a way to set environment variables on a currently running process, vars listed in <code>.env</code> cannot be set and thus cannot be retrieved using <code>System.getenv(...)</code>.</p>
 <p><strong>Q:</strong> Should I have multiple .env files?</p>
