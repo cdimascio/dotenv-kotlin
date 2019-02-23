@@ -31,9 +31,20 @@ abstract class Dotenv {
 
     /**
      * Returns the value for the specified environment variable
-     * @param get The environment variable name
+     *
+     * @param envName The environment variable name
      */
-    operator abstract fun get(envVar: String): String?
+    abstract operator fun get(envName: String): String?
+
+    /**
+     * Returns the value for the environment variable, or the default value if absent
+     *
+     * @param envName The environment variable name
+     * @param defValue The default value
+     */
+    fun get(envName: String, defValue: String): String {
+        return get(envName) ?: defValue
+    }
 }
 
 /**
@@ -100,5 +111,5 @@ class DotenvBuilder internal constructor() {
 private class DotenvImpl(envVars: List<Pair<String, String>>) : Dotenv() {
     private val map = envVars.associateBy({ it.first }, { it.second })
 
-    override fun get(envVar: String): String? = System.getenv(envVar) ?: map[envVar]
+    override fun get(envName: String): String? = System.getenv(envName) ?: map[envName]
 }
