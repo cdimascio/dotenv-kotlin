@@ -10,8 +10,9 @@ import org.junit.Test as test
 
 class DotEnvDslTest {
     private val envVars = mapOf(
-            "MY_TEST_EV1" to "my test ev 1",
-            "MY_TEST_EV2" to "my test ev 2"
+        "MY_TEST_EV1" to "my test ev 1",
+        "MY_TEST_EV2" to "my test ev 2",
+        "WITHOUT_VALUE" to ""
     )
 
     @test(expected = DotEnvException::class)
