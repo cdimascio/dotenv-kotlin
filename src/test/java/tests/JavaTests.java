@@ -2,6 +2,7 @@ package tests;
 
 import io.github.cdimascio.dotenv.DotEnvException;
 import io.github.cdimascio.dotenv.Dotenv;
+import io.github.cdimascio.dotenv.DotenvEntry;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,39 +37,28 @@ public class JavaTests {
         }
     }
 
-//    @Test
-//    public void iteratorOverDotenv() {
-//        Dotenv dotenv = Dotenv.configure()
-//            .ignoreIfMalformed()
-//            .load();
-//        Iterator<Map.Entry<String,String>> iter = dotenv.iterator();
-//        while (iter.hasNext()) {
-//            Map.Entry<String, String> entry = iter.next();
-//            assertEquals(dotenv.get(entry.getKey()), entry.getValue());
-//        }
-//    }
-//
-//    @Test(expected = UnsupportedOperationException.class)
-//    public void failToSetValueFromIterator() {
-//        Dotenv dotenv = Dotenv.configure()
-//            .ignoreIfMalformed()
-//            .load();
-//        Iterator<Map.Entry<String,String>> iter = dotenv.iterator();
-//        while (iter.hasNext()) {
-//            Map.Entry<String,String> entry = iter.next();
-//            entry.setValue("This operation must fail");
-//        }
-//    }
+    @Test
+    public void iteratorOverDotenv() {
+        Dotenv dotenv = Dotenv.configure()
+            .ignoreIfMalformed()
+            .load();
 
-//    @Test(expected = UnsupportedOperationException.class)
-//    public void failToRemoveFromIterator() {
-//        Dotenv dotenv = Dotenv.configure()
-//            .ignoreIfMalformed()
-//            .load();
-//        while (dotenv.iterator().hasNext()) {
-//            dotenv.iterator().remove();
-//        }
-//    }
+        dotenv.forEach(e -> assertEquals(dotenv.get(e.getKey()), e.getValue()));
+
+        for (DotenvEntry e : dotenv) {
+            assertEquals(dotenv.get(e.getKey()), e.getValue());
+        }
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void failToRemoveFromIterator() {
+        Dotenv dotenv = Dotenv.configure()
+            .ignoreIfMalformed()
+            .load();
+        while (dotenv.iterator().hasNext()) {
+            dotenv.iterator().remove();
+        }
+    }
 
     @Test
     public void configureWithIgnoreMalformed() {
