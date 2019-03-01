@@ -135,25 +135,6 @@ dotenv["HOME"]
 dotenv["MY_ENV_VAR1"] ?: "default value"
 ```
 
-### Iterate over environment variables
-
-With **Java**
-
-```java
-Iterator<Map.Entry<String,String>> iter = dotenv.iterator();
-while (iter.hasNext()) {
-    System.out.println(iter.next())
-}
-```
-
-or with **Kotlin**
-
-```kotlin
-for (e in dotenv) {
-    println(e)
-}
-```
-
 ## Configuration options
 
 ### *optional* `directory` 

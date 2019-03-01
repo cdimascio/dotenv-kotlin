@@ -77,17 +77,17 @@ class DotEnvTest {
         assertHostEnvVar(dotenv)
     }
 
-    @test
-    fun iterateOverDotenv() {
-        val dotenv = Dotenv.configure()
-            .ignoreIfMalformed()
-            .load()
-        assertEquals("my test ev 1", dotenv["MY_TEST_EV1"])
-
-        for (e in dotenv) {
-            assertEquals(dotenv[e.key], e.value)
-        }
-    }
+//    @test
+//    fun iterateOverDotenv() {
+//        val dotenv = Dotenv.configure()
+//            .ignoreIfMalformed()
+//            .load()
+//        assertEquals("my test ev 1", dotenv["MY_TEST_EV1"])
+//
+//        for (e in dotenv) {
+//            assertEquals(dotenv[e.key], e.value)
+//        }
+//    }
 
     @test(expected = DotEnvException::class)
     fun dotenvMissing() {

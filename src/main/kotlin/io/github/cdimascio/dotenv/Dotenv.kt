@@ -6,13 +6,12 @@ package io.github.cdimascio.dotenv
 
 import io.github.cdimascio.dotenv.internal.DotenvParser
 import io.github.cdimascio.dotenv.internal.DotenvReader
-import java.util.Collections
 
 /**
  * Dotenv
  * @see <a href="https://github.com/cdimascio/java-dotenv">The complete dotenv documentation</a>
  */
-abstract class Dotenv: Iterable<Map.Entry<String, String>> {
+abstract class Dotenv {//}: Iterable<Map.Entry<String, String>> {
     /**
      * The dotenv instance
      */
@@ -21,13 +20,15 @@ abstract class Dotenv: Iterable<Map.Entry<String, String>> {
          * Configure dotenv
          * @return A dotenv builder
          */
-        @JvmStatic fun configure(): DotenvBuilder = DotenvBuilder()
+        @JvmStatic
+        fun configure(): DotenvBuilder = DotenvBuilder()
 
         /**
          * Load the the contents of .env into the virtual nvironment.
          * Environment variables in the host environment override those in .env
          */
-        @JvmStatic fun load(): Dotenv = DotenvBuilder().load()
+        @JvmStatic
+        fun load(): Dotenv = DotenvBuilder().load()
     }
 
     /**
@@ -37,7 +38,7 @@ abstract class Dotenv: Iterable<Map.Entry<String, String>> {
      */
     abstract operator fun get(envName: String): String?
 
-    abstract override operator fun iterator(): Iterator<Map.Entry<String, String>>
+//    abstract override operator fun iterator(): Iterator<Map.Entry<String, String>>
 
     /**
      * Returns the value for the environment variable, or the default value if absent
@@ -103,9 +104,9 @@ class DotenvBuilder internal constructor() {
      */
     fun load(): Dotenv {
         val reader = DotenvParser(
-                DotenvReader(directoryPath, filename),
-                throwIfMalformed,
-                throwIfMissing)
+            DotenvReader(directoryPath, filename),
+            throwIfMalformed,
+            throwIfMissing)
         val env = reader.parse()
         return DotenvImpl(env)
     }
@@ -115,7 +116,7 @@ private class DotenvImpl(envVars: List<Pair<String, String>>) : Dotenv() {
 
     private val map = envVars.associateBy({ it.first }, { it.second })
 
-    override fun iterator() = Collections.unmodifiableMap(map).iterator()
+//    override fun iterator() = Collections.unmodifiableMap(map).iterator()
 
     override fun get(envName: String): String? = System.getenv(envName) ?: map[envName]
 }

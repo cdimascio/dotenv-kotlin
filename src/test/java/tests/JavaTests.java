@@ -44,39 +44,39 @@ public class JavaTests {
         assertNull(dotenv.get(envName, defValue));
     }
 
-    @Test
-    public void iteratorOverDotenv() {
-        Dotenv dotenv = Dotenv.configure()
-            .ignoreIfMalformed()
-            .load();
-        Iterator<Map.Entry<String,String>> iter = dotenv.iterator();
-        while (iter.hasNext()) {
-            Map.Entry<String, String> entry = iter.next();
-            assertEquals(dotenv.get(entry.getKey()), entry.getValue());
-        }
-    }
+//    @Test
+//    public void iteratorOverDotenv() {
+//        Dotenv dotenv = Dotenv.configure()
+//            .ignoreIfMalformed()
+//            .load();
+//        Iterator<Map.Entry<String,String>> iter = dotenv.iterator();
+//        while (iter.hasNext()) {
+//            Map.Entry<String, String> entry = iter.next();
+//            assertEquals(dotenv.get(entry.getKey()), entry.getValue());
+//        }
+//    }
+//
+//    @Test(expected = UnsupportedOperationException.class)
+//    public void failToSetValueFromIterator() {
+//        Dotenv dotenv = Dotenv.configure()
+//            .ignoreIfMalformed()
+//            .load();
+//        Iterator<Map.Entry<String,String>> iter = dotenv.iterator();
+//        while (iter.hasNext()) {
+//            Map.Entry<String,String> entry = iter.next();
+//            entry.setValue("This operation must fail");
+//        }
+//    }
 
-    @Test(expected = UnsupportedOperationException.class)
-    public void failToSetValueFromIterator() {
-        Dotenv dotenv = Dotenv.configure()
-            .ignoreIfMalformed()
-            .load();
-        Iterator<Map.Entry<String,String>> iter = dotenv.iterator();
-        while (iter.hasNext()) {
-            Map.Entry<String,String> entry = iter.next();
-            entry.setValue("This operation must fail");
-        }
-    }
-
-    @Test(expected = UnsupportedOperationException.class)
-    public void failToRemoveFromIterator() {
-        Dotenv dotenv = Dotenv.configure()
-            .ignoreIfMalformed()
-            .load();
-        while (dotenv.iterator().hasNext()) {
-            dotenv.iterator().remove();
-        }
-    }
+//    @Test(expected = UnsupportedOperationException.class)
+//    public void failToRemoveFromIterator() {
+//        Dotenv dotenv = Dotenv.configure()
+//            .ignoreIfMalformed()
+//            .load();
+//        while (dotenv.iterator().hasNext()) {
+//            dotenv.iterator().remove();
+//        }
+//    }
 
     @Test
     public void configureWithIgnoreMalformed() {
