@@ -41,6 +41,13 @@ abstract class Dotenv {//}: Iterable<Map.Entry<String, String>> {
 //    abstract override operator fun iterator(): Iterator<Map.Entry<String, String>>
 
     /**
+     * Returns a list of the environment variables defined in the loaded .env file
+     *
+     * @return a list of key=>value pairs
+     */
+    abstract fun list(): List<Pair<String, String>>
+
+    /**
      * Returns the value for the environment variable, or the default value if absent
      *
      * @param envName The environment variable name
@@ -119,4 +126,6 @@ private class DotenvImpl(envVars: List<Pair<String, String>>) : Dotenv() {
 //    override fun iterator() = Collections.unmodifiableMap(map).iterator()
 
     override fun get(envName: String): String? = System.getenv(envName) ?: map[envName]
+
+    override fun list() = map.entries.map { it.key to it.value }
 }

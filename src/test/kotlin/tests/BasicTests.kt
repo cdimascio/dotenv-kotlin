@@ -89,6 +89,15 @@ class DotEnvTest {
 //        }
 //    }
 
+    @test
+    fun dotenvList() {
+        val dotenv = Dotenv.configure()
+            .ignoreIfMalformed()
+            .load()
+        val envVars = dotenv.list()
+        assertEquals(envVars.size, 3)
+    }
+
     @test(expected = DotEnvException::class)
     fun dotenvMissing() {
         Dotenv.configure()
