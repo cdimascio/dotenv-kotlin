@@ -12,12 +12,28 @@ class DotEnvDslTest {
     private val envVars = mapOf(
         "MY_TEST_EV1" to "my test ev 1",
         "MY_TEST_EV2" to "my test ev 2",
-        "WITHOUT_VALUE" to ""
+        "WITHOUT_VALUE" to "",
+        "QUOTED_EV1" to "jdbc:hive2://[domain]:10000/default;principal=hive/_HOST@[REALM]"
     )
 
     @test(expected = DotEnvException::class)
     fun dotenvMalformed() {
         dotenv()
+    }
+
+    @test
+    fun dotenvQuotedEv() {
+        val env = dotenv {
+            ignoreIfMalformed = true
+        }
+
+        envVars.forEach {
+            val expected = it.value
+            val actual = env[it.key]
+            assertEquals(expected, actual)
+        }
+
+        assertEquals("jdbc:hive2://[domain]:10000/default;principal=hive/_HOST@[REALM]", env["QUOTED_EV1"])
     }
 
     @test
