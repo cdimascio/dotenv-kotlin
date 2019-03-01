@@ -6,12 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 public class JavaTests {
     private Map<String, String> envVars;
@@ -21,7 +19,6 @@ public class JavaTests {
         envVars = new HashMap<String, String>();
         envVars.put("MY_TEST_EV1", "my test ev 1");
         envVars.put("MY_TEST_EV2", "my test ev 2");
-        envVars.put("ABSENT_ENV_VARIABLE", null);
         envVars.put("WITHOUT_VALUE", "");
     }
 
@@ -37,11 +34,6 @@ public class JavaTests {
         for (String envName : envVars.keySet()) {
             assertEquals(envVars.get(envName), dotenv.get(envName));
         }
-
-        String envName = "ABSENT_ENV_VARIABLE";
-        String defValue = "This is the default value";
-        assertEquals(defValue, dotenv.get(envName, defValue));
-        assertNull(dotenv.get(envName, defValue));
     }
 
 //    @Test
@@ -96,6 +88,7 @@ public class JavaTests {
             .ignoreIfMalformed()
             .ignoreIfMissing()
             .load();
+
         assertNotNull(dotenv.get("PATH"));
     }
 }
