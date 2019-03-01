@@ -150,7 +150,7 @@ or with **Kotlin**
 
 ```kotlin
 for (e in dotenv) {
-    print(e)
+    println(e)
 }
 ```
 
