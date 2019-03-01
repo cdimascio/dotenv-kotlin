@@ -150,7 +150,7 @@ for (DotenvEntry e : dotenv) {
 or with **Kotlin**
 
 ```kotlin
-for (e in env) {
+for (e in dotenv) {
     println(e.key)
     println(e.value)
 }
