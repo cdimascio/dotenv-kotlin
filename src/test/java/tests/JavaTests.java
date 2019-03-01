@@ -19,7 +19,6 @@ public class JavaTests {
         envVars = new HashMap<String, String>();
         envVars.put("MY_TEST_EV1", "my test ev 1");
         envVars.put("MY_TEST_EV2", "my test ev 2");
-        envVars.put("ABSENT_ENV_VARIABLE", null);
         envVars.put("WITHOUT_VALUE", "");
     }
 
@@ -36,6 +35,40 @@ public class JavaTests {
             assertEquals(envVars.get(envName), dotenv.get(envName));
         }
     }
+
+//    @Test
+//    public void iteratorOverDotenv() {
+//        Dotenv dotenv = Dotenv.configure()
+//            .ignoreIfMalformed()
+//            .load();
+//        Iterator<Map.Entry<String,String>> iter = dotenv.iterator();
+//        while (iter.hasNext()) {
+//            Map.Entry<String, String> entry = iter.next();
+//            assertEquals(dotenv.get(entry.getKey()), entry.getValue());
+//        }
+//    }
+//
+//    @Test(expected = UnsupportedOperationException.class)
+//    public void failToSetValueFromIterator() {
+//        Dotenv dotenv = Dotenv.configure()
+//            .ignoreIfMalformed()
+//            .load();
+//        Iterator<Map.Entry<String,String>> iter = dotenv.iterator();
+//        while (iter.hasNext()) {
+//            Map.Entry<String,String> entry = iter.next();
+//            entry.setValue("This operation must fail");
+//        }
+//    }
+
+//    @Test(expected = UnsupportedOperationException.class)
+//    public void failToRemoveFromIterator() {
+//        Dotenv dotenv = Dotenv.configure()
+//            .ignoreIfMalformed()
+//            .load();
+//        while (dotenv.iterator().hasNext()) {
+//            dotenv.iterator().remove();
+//        }
+//    }
 
     @Test
     public void configureWithIgnoreMalformed() {
