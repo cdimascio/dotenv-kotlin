@@ -61,6 +61,7 @@
     <bintray.subject>cdimascio</bintray.subject>
     <bintray.repo>maven</bintray.repo>
     <bintray.package>java-dotenv</bintray.package>
+      <!--<kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>-->
   </properties>
 
   <pluginRepositories>

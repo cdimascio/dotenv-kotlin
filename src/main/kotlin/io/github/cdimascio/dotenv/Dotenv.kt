@@ -6,12 +6,13 @@ package io.github.cdimascio.dotenv
 
 import io.github.cdimascio.dotenv.internal.DotenvParser
 import io.github.cdimascio.dotenv.internal.DotenvReader
+import java.util.Collections
 
 /**
  * Dotenv
  * @see <a href="https://github.com/cdimascio/java-dotenv">The complete dotenv documentation</a>
  */
-abstract class Dotenv {
+abstract class Dotenv: Iterable<Map.Entry<String, String>> {
     /**
      * The dotenv instance
      */
@@ -35,6 +36,8 @@ abstract class Dotenv {
      * @param envName The environment variable name
      */
     abstract operator fun get(envName: String): String?
+
+    abstract override operator fun iterator(): Iterator<Map.Entry<String, String>>
 
     /**
      * Returns the value for the environment variable, or the default value if absent
@@ -63,7 +66,7 @@ class DotenvBuilder internal constructor() {
 
     /**
      * Sets the directory containing the .env file
-     * @param directoryPath The path
+     * @param path The path
      */
     fun directory(path: String = directoryPath): DotenvBuilder {
         directoryPath = path
@@ -72,7 +75,7 @@ class DotenvBuilder internal constructor() {
 
     /**
      * Sets the name of the .env. The default is not .env
-     * @param filename The filename
+     * @param name The filename
      */
     fun filename(name: String = ".env"): DotenvBuilder {
         filename = name
@@ -109,7 +112,10 @@ class DotenvBuilder internal constructor() {
 }
 
 private class DotenvImpl(envVars: List<Pair<String, String>>) : Dotenv() {
+
     private val map = envVars.associateBy({ it.first }, { it.second })
+
+    override fun iterator() = Collections.unmodifiableMap(map).iterator()
 
     override fun get(envName: String): String? = System.getenv(envName) ?: map[envName]
 }

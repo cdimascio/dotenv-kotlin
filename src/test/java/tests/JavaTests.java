@@ -6,9 +6,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class JavaTests {
     private Map<String, String> envVars;
@@ -18,6 +21,7 @@ public class JavaTests {
         envVars = new HashMap<String, String>();
         envVars.put("MY_TEST_EV1", "my test ev 1");
         envVars.put("MY_TEST_EV2", "my test ev 2");
+        envVars.put("ABSENT_ENV_VARIABLE", null);
         envVars.put("WITHOUT_VALUE", "");
     }
 
@@ -41,7 +45,41 @@ public class JavaTests {
     }
 
     @Test
-    public void configurWithIgnoreMalformed() {
+    public void iteratorOverDotenv() {
+        Dotenv dotenv = Dotenv.configure()
+            .ignoreIfMalformed()
+            .load();
+        Iterator<Map.Entry<String,String>> iter = dotenv.iterator();
+        while (iter.hasNext()) {
+            Map.Entry<String, String> entry = iter.next();
+            assertEquals(dotenv.get(entry.getKey()), entry.getValue());
+        }
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void failToSetValueFromIterator() {
+        Dotenv dotenv = Dotenv.configure()
+            .ignoreIfMalformed()
+            .load();
+        Iterator<Map.Entry<String,String>> iter = dotenv.iterator();
+        while (iter.hasNext()) {
+            Map.Entry<String,String> entry = iter.next();
+            entry.setValue("This operation must fail");
+        }
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void failToRemoveFromIterator() {
+        Dotenv dotenv = Dotenv.configure()
+            .ignoreIfMalformed()
+            .load();
+        while (dotenv.iterator().hasNext()) {
+            dotenv.iterator().remove();
+        }
+    }
+
+    @Test
+    public void configureWithIgnoreMalformed() {
         Dotenv dotenv = Dotenv.configure()
             .ignoreIfMalformed()
             .load();
@@ -52,7 +90,7 @@ public class JavaTests {
     }
 
     @Test
-    public void configurWithIgnoreMissingAndMalformed() {
+    public void configureWithIgnoreMissingAndMalformed() {
         Dotenv dotenv = Dotenv.configure()
             .directory("/missing/dir")
             .ignoreIfMalformed()
