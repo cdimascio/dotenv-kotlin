@@ -142,8 +142,8 @@ With **Java**
 
 ```java
 for (DotenvEntry e : dotenv.entries()) {
-	System.out.println(e.getKey());
-	System.out.println(e.getValue());
+    System.out.println(e.getKey());
+    System.out.println(e.getValue());
 }
 ```
 
