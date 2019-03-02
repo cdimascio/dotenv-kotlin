@@ -25,14 +25,14 @@ Use `dotenv.get("...")` instead of Java's `System.getenv(...)`.
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>java-dotenv</artifactId>
-    <version>4.0.1</version>
+    <version>4.1.0</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-compile 'io.github.cdimascio:java-dotenv:4.0.1'
+compile 'io.github.cdimascio:java-dotenv:4.1.0'
 ```
 
 ## Usage
@@ -133,6 +133,27 @@ or with **Kotlin**
 ```kotlin
 dotenv["HOME"]
 dotenv["MY_ENV_VAR1"] ?: "default value"
+```
+
+### Iterate over environment variables
+Note, environment variables specified in the host environment take precedence over those in `.env`.
+
+With **Java**
+
+```java
+for (DotenvEntry e : dotenv.entries()) {
+	System.out.println(e.getKey());
+	System.out.println(e.getValue());
+}
+```
+
+or with **Kotlin**
+
+```kotlin
+for (e in dotenv.entries()) {
+    println(e.key)
+    println(e.value)
+}
 ```
 
 ## Configuration options

@@ -6,12 +6,13 @@ package io.github.cdimascio.dotenv
 
 import io.github.cdimascio.dotenv.internal.DotenvParser
 import io.github.cdimascio.dotenv.internal.DotenvReader
+import java.util.Collections
 
 /**
  * Dotenv
  * @see <a href="https://github.com/cdimascio/java-dotenv">The complete dotenv documentation</a>
  */
-abstract class Dotenv {//}: Iterable<Map.Entry<String, String>> {
+abstract class Dotenv {
     /**
      * The dotenv instance
      */
@@ -38,7 +39,7 @@ abstract class Dotenv {//}: Iterable<Map.Entry<String, String>> {
      */
     abstract operator fun get(envName: String): String?
 
-//    abstract override operator fun iterator(): Iterator<Map.Entry<String, String>>
+    abstract fun entries(): Set<DotenvEntry>
 
     /**
      * Returns the value for the environment variable, or the default value if absent
@@ -112,11 +113,17 @@ class DotenvBuilder internal constructor() {
     }
 }
 
+/**
+ * A dotenv entry containing a key, value pair
+ */
+data class DotenvEntry(val key: String, val value: String)
+
 private class DotenvImpl(envVars: List<Pair<String, String>>) : Dotenv() {
-
     private val map = envVars.associateBy({ it.first }, { it.second })
+    private val set = Collections.unmodifiableSet(
+        map.entries.map { DotenvEntry(it.key, it.value) }.toSet()
+    )
 
-//    override fun iterator() = Collections.unmodifiableMap(map).iterator()
-
+    override fun entries() = set
     override fun get(envName: String): String? = System.getenv(envName) ?: map[envName]
 }

@@ -73,18 +73,17 @@ class DotEnvDslTest {
         assertHostEnvVar(env)
     }
 
-//    @test
-//    fun iterateOverDotenv() {
-//        val env = dotenv {
-//            filename = "env"
-//            ignoreIfMalformed = true
-//        }
-//        assertEquals("my test ev 1", env["MY_TEST_EV1"])
-//
-//        for (e in env) {
-//            assertEquals(env[e.key], e.value)
-//        }
-//    }
+    @test
+    fun iterateOverDotenv() {
+        val env = dotenv {
+            filename = "env"
+            ignoreIfMalformed = true
+        }
+
+        for (e in env.entries()) {
+            assertEquals(env[e.key], e.value)
+        }
+    }
 
     @test
     fun resourceCurrent() {
