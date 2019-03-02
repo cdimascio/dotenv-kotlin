@@ -12,7 +12,7 @@ import java.util.Collections
  * Dotenv
  * @see <a href="https://github.com/cdimascio/java-dotenv">The complete dotenv documentation</a>
  */
-abstract class Dotenv : Iterable<DotenvEntry> {
+abstract class Dotenv {
     /**
      * The dotenv instance
      */
@@ -39,7 +39,7 @@ abstract class Dotenv : Iterable<DotenvEntry> {
      */
     abstract operator fun get(envName: String): String?
 
-    abstract override operator fun iterator(): Iterator<DotenvEntry>
+    abstract fun entries(): Set<DotenvEntry>
 
     /**
      * Returns the value for the environment variable, or the default value if absent
@@ -119,11 +119,11 @@ class DotenvBuilder internal constructor() {
 data class DotenvEntry(val key: String, val value: String)
 
 private class DotenvImpl(envVars: List<Pair<String, String>>) : Dotenv() {
-
     private val map = envVars.associateBy({ it.first }, { it.second })
-    private val iter = Collections.unmodifiableList(envVars.map { DotenvEntry(it.first, it.second) }).iterator()
+    private val set = Collections.unmodifiableSet(
+        map.entries.map { DotenvEntry(it.key, it.value) }.toSet()
+    )
 
-    override fun iterator(): Iterator<DotenvEntry> = iter
-
+    override fun entries() = set
     override fun get(envName: String): String? = System.getenv(envName) ?: map[envName]
 }

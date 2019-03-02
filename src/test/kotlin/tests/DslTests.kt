@@ -80,7 +80,7 @@ class DotEnvDslTest {
             ignoreIfMalformed = true
         }
 
-        for (e in env) {
+        for (e in env.entries()) {
             assertEquals(env[e.key], e.value)
         }
     }

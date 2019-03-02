@@ -82,7 +82,7 @@ class DotEnvTest {
             .ignoreIfMalformed()
             .load()
 
-        for (e in dotenv) {
+        for (e in dotenv.entries()) {
             assertEquals(dotenv[e.key], e.value)
         }
     }
