@@ -141,7 +141,7 @@ Note, environment variables specified in the host environment take precedence ov
 With **Java**
 
 ```java
-for (DotenvEntry e : dotenv.entries()) {
+for (DotenvEntry e : dotenv) {
     System.out.println(e.getKey());
     System.out.println(e.getValue());
 }
@@ -150,7 +150,7 @@ for (DotenvEntry e : dotenv.entries()) {
 or with **Kotlin**
 
 ```kotlin
-for (e in dotenv.entries()) {
+for (e in dotenv) {
     println(e.key)
     println(e.value)
 }
