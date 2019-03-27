@@ -120,10 +120,18 @@ data class DotenvEntry(val key: String, val value: String)
 
 private class DotenvImpl(envVars: List<Pair<String, String>>) : Dotenv() {
     private val map = envVars.associateBy({ it.first }, { it.second })
-    private val set = Collections.unmodifiableSet(
-        map.entries.map { DotenvEntry(it.key, it.value) }.toSet()
+    private val set: Set<DotenvEntry> = Collections.unmodifiableSet(
+        buildEnvEntries().map { DotenvEntry(it.key, it.value) }.toSet()
     )
 
     override fun entries() = set
     override fun get(envName: String): String? = System.getenv(envName) ?: map[envName]
+
+    private fun buildEnvEntries(): Map<String, String> {
+        val envMap = map.toMap(mutableMapOf())
+        System.getenv().entries.forEach {
+            envMap[it.key] = it.value
+        }
+        return envMap
+    }
 }

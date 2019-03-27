@@ -4,6 +4,7 @@ import io.github.cdimascio.dotenv.DotEnvException
 import io.github.cdimascio.dotenv.Dotenv
 import io.github.cdimascio.dotenv.dotenv
 import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import org.junit.Test as test
@@ -14,6 +15,10 @@ class DotEnvDslTest {
         "MY_TEST_EV2" to "my test ev 2",
         "WITHOUT_VALUE" to "",
         "QUOTED_EV1" to "jdbc:hive2://[domain]:10000/default;principal=hive/_HOST@[REALM]"
+    )
+
+    private val envVarsOverridenByHostEnv = mapOf(
+        "HOME" to "dotenv_test_home"
     )
 
     @test(expected = DotEnvException::class)
@@ -69,7 +74,6 @@ class DotEnvDslTest {
             ignoreIfMalformed = true
         }
         assertEquals("my test ev 1", env["MY_TEST_EV1"])
-
         assertHostEnvVar(env)
     }
 
@@ -83,6 +87,8 @@ class DotEnvDslTest {
         for (e in env.entries()) {
             assertEquals(env[e.key], e.value)
         }
+        assertHostEnvVar(env)
+        assertNotEquals(envVarsOverridenByHostEnv["HOME"], env["HOME"])
     }
 
     @test
