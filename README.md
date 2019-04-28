@@ -2,17 +2,20 @@
 
 ![](https://travis-ci.org/cdimascio/java-dotenv.svg?branch=master) ![](https://img.shields.io/badge/coverage-94%25-blue.svg)  [![Maven Central](https://img.shields.io/maven-central/v/io.github.cdimascio/java-dotenv.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.cdimascio%22%20AND%20a:%22java-dotenv%22)  [ ![Download](https://api.bintray.com/packages/cdimascio/maven/java-dotenv/images/download.svg) ](https://bintray.com/cdimascio/maven/java-dotenv/_latestVersion) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66b8195f0da544f1ad9ed1352c0ea66f)](https://app.codacy.com/app/cdimascio/java-dotenv?utm_source=github.com&utm_medium=referral&utm_content=cdimascio/java-dotenv&utm_campaign=Badge_Grade_Dashboard) ![](https://img.shields.io/badge/license-Apache%202.0-orange.svg)
 
-A Java port of the Ruby dotenv project (which loads environment variables from a `.env` file). java-dotenv also offers a Kotlin DSL.
+A port of the Ruby dotenv project for Java and Kotlin. Load environment variables from a `.env` file.
 
 <p align="center">
 	<img src="https://raw.githubusercontent.com/cdimascio/java-dotenv/master/assets/java-dotenv.png" alt="dotenv" /> 
 </p>
 
-From the original Ruby project:
+Why dotenv?
 
 >Storing configuration in the environment is one of the tenets of a [twelve-factor](http://12factor.net/config) app. Anything that is likely to change between deployment environments–such as resource handles for databases or credentials for external services–should be extracted from the code into environment variables.
 
 >But it is not always practical to set environment variables on development machines or continuous integration servers where multiple projects are run. Dotenv load variables from a .env file into ENV when the environment is bootstrapped.
+
+>-- [Brandon Keepers](https://github.com/bkeepers/dotenv)
+
 
 Environment variables listed in the host environment override those in `.env`.  
 
