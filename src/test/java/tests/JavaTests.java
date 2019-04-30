@@ -2,6 +2,7 @@ package tests;
 
 import io.github.cdimascio.dotenv.DotEnvException;
 import io.github.cdimascio.dotenv.Dotenv;
+import io.github.cdimascio.dotenv.DotenvEntriesFilter;
 import io.github.cdimascio.dotenv.DotenvEntry;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,9 +10,11 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class JavaTests {
     private Map<String, String> envVars;
@@ -52,6 +55,26 @@ public class JavaTests {
         dotenv.entries().forEach(e -> assertEquals(dotenv.get(e.getKey()), e.getValue()));
 
         for (DotenvEntry e : dotenv.entries()) {
+            assertEquals(dotenv.get(e.getKey()), e.getValue());
+        }
+    }
+
+    @Test
+    public void iteratorOverDotenvWithFilter() {
+        Dotenv dotenv = Dotenv.configure()
+            .ignoreIfMalformed()
+            .load();
+
+        Map<String,String> m = new HashMap<String, String>() {{
+            put("test", "hi");
+            put("test1", "hi1");
+        }};
+
+        Set<DotenvEntry> entriesInFile = dotenv.entries(DotenvEntriesFilter.DECLARED_IN_ENV_FILE);
+        Set<DotenvEntry> entriesAll = dotenv.entries();
+        assertTrue(entriesInFile.size() < entriesAll.size());
+
+        for (Map.Entry<String, String> e: envVars.entrySet()) {
             assertEquals(dotenv.get(e.getKey()), e.getValue());
         }
     }
