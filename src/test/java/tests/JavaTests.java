@@ -65,11 +65,6 @@ public class JavaTests {
             .ignoreIfMalformed()
             .load();
 
-        Map<String,String> m = new HashMap<String, String>() {{
-            put("test", "hi");
-            put("test1", "hi1");
-        }};
-
         Set<DotenvEntry> entriesInFile = dotenv.entries(DotenvEntriesFilter.DECLARED_IN_ENV_FILE);
         Set<DotenvEntry> entriesAll = dotenv.entries();
         assertTrue(entriesInFile.size() < entriesAll.size());
