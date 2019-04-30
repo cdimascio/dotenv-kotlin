@@ -11,7 +11,8 @@ class DotEnvTest {
     private val envVars = mapOf(
         "MY_TEST_EV1" to "my test ev 1",
         "MY_TEST_EV2" to "my test ev 2",
-        "WITHOUT_VALUE" to ""
+        "WITHOUT_VALUE" to "",
+        "MULTI_LINE" to "hello\\nworld"
     )
 
     @test(expected = DotEnvException::class)

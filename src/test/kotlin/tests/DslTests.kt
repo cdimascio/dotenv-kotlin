@@ -16,7 +16,8 @@ class DotEnvDslTest {
         "MY_TEST_EV1" to "my test ev 1",
         "MY_TEST_EV2" to "my test ev 2",
         "WITHOUT_VALUE" to "",
-        "QUOTED_EV1" to "jdbc:hive2://[domain]:10000/default;principal=hive/_HOST@[REALM]"
+        "QUOTED_EV1" to "jdbc:hive2://[domain]:10000/default;principal=hive/_HOST@[REALM]",
+        "MULTI_LINE" to "hello\\nworld"
     )
 
     private val envVarsOverridenByHostEnv = mapOf(
@@ -106,6 +107,15 @@ class DotEnvDslTest {
         for ((key, value) in envVars) {
             assertEquals(dotenv[key], value)
         }
+    }
+
+    @test
+    fun multiLine() {
+        val dotenv = Dotenv.configure()
+            .ignoreIfMalformed()
+            .load()
+
+        assertEquals(dotenv["MULTI_LINE"]!!, envVars["MULTI_LINE"]!!)
     }
 
     @test
