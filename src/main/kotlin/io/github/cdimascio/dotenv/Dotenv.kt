@@ -25,7 +25,7 @@ abstract class Dotenv {
         fun configure(): DotenvBuilder = DotenvBuilder()
 
         /**
-         * Load the the contents of .env into the virtual nvironment.
+         * Load the the contents of .env into the virtual environment.
          * Environment variables in the host environment override those in .env
          */
         @JvmStatic
@@ -39,7 +39,15 @@ abstract class Dotenv {
      */
     abstract operator fun get(envName: String): String?
 
+    /**
+     * Returns all environment entries
+     */
     abstract fun entries(): Set<DotenvEntry>
+
+    /**
+     * Returns all environment entries filtered by {@link DotenvEntriesFilter}
+     */
+    abstract fun entries(filter: DotenvEntriesFilter): Set<DotenvEntry>
 
     /**
      * Returns the value for the environment variable, or the default value if absent
@@ -112,7 +120,9 @@ class DotenvBuilder internal constructor() {
         return DotenvImpl(env)
     }
 }
-
+enum class DotenvEntriesFilter {
+    DECLARED_IN_ENV_FILE
+}
 /**
  * A dotenv entry containing a key, value pair
  */
@@ -125,6 +135,7 @@ private class DotenvImpl(envVars: List<Pair<String, String>>) : Dotenv() {
     )
 
     override fun entries() = set
+    override fun entries(filter: DotenvEntriesFilter) = map.map { DotenvEntry(it.key, it.value) }.toSet()
     override fun get(envName: String): String? = System.getenv(envName) ?: map[envName]
 
     private fun buildEnvEntries(): Map<String, String> {
