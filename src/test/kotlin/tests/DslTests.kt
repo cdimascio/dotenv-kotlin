@@ -4,8 +4,7 @@ import io.github.cdimascio.dotenv.DotEnvException
 import io.github.cdimascio.dotenv.Dotenv
 import io.github.cdimascio.dotenv.DotenvEntriesFilter
 import io.github.cdimascio.dotenv.dotenv
-import junit.framework.Assert.assertTrue
-import java.util.HashMap
+import org.junit.Assert.assertTrue
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 import kotlin.test.assertNotNull
@@ -94,18 +93,11 @@ class DotEnvDslTest {
         assertNotEquals(envVarsOverridenByHostEnv["HOME"], env["HOME"])
     }
 
-    @org.junit.Test
+    @test
     fun iteratorOverDotenvWithFilter() {
         val dotenv = Dotenv.configure()
             .ignoreIfMalformed()
             .load()
-
-        val m = object : HashMap<String, String>() {
-            init {
-                put("test", "hi")
-                put("test1", "hi1")
-            }
-        }
 
         val entriesInFile = dotenv.entries(DotenvEntriesFilter.DECLARED_IN_ENV_FILE)
         val entriesAll = dotenv.entries()
