@@ -282,6 +282,9 @@ Using dotenv in production would be cheating. This type of usage, however is an 
 
 **A**: We haven't been presented with a compelling use case for expanding variables and believe it leads to env vars that are not "fully orthogonal" as [The Twelve-Factor App outlines](https://12factor.net/config). Please open an issue if you have a compelling use case.
 
+**Q**: Can I use a multi-line value?
+**A**: java-dotenv exhibits the same behavior as Java's `System.getenv(...)`, thus if a multi-line value is needed you might consider encoding it via e.g. Base64. see this [comment](https://github.com/cdimascio/java-dotenv/issues/28#issuecomment-489443975) for details.
+
 
 **Note and reference**: The FAQs present on [motdotla's dotenv](https://github.com/motdotla/dotenv#faq) node project page are so well done that I've included those that are relevant in the FAQs above.
 
