@@ -22,6 +22,8 @@ mvn test
 
 #### Add yourself as a contributor
 
+after your Pr has been merged, add yourself as a contributor by creating a comment like the following on your PR:
+
 @all-contributors please add @username for code
 
 replace code with doc or test or infra or some combination depending on your contribution.
