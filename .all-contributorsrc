@@ -15,6 +15,17 @@
         "doc",
         "infra"
       ]
+    },
+    {
+      "login": "arniu",
+      "name": "Arniu Tseng",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1286674?v=4",
+      "profile": "https://github.com/arniu",
+      "contributions": [
+        "code",
+        "doc",
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
