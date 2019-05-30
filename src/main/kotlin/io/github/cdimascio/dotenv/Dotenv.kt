@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Carmine DiMascio 2017 - 2018
+ * Copyright (c) Carmine DiMascio 2017 - 2019
  * License: MIT
  */
 package io.github.cdimascio.dotenv
