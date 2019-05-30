@@ -1,4 +1,5 @@
 # java-dotenv 
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 ![](https://travis-ci.org/cdimascio/java-dotenv.svg?branch=master) ![](https://img.shields.io/badge/coverage-94%25-blue.svg)  [![Maven Central](https://img.shields.io/maven-central/v/io.github.cdimascio/java-dotenv.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.cdimascio%22%20AND%20a:%22java-dotenv%22)  [ ![Download](https://api.bintray.com/packages/cdimascio/maven/java-dotenv/images/download.svg) ](https://bintray.com/cdimascio/maven/java-dotenv/_latestVersion) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66b8195f0da544f1ad9ed1352c0ea66f)](https://app.codacy.com/app/cdimascio/java-dotenv?utm_source=github.com&utm_medium=referral&utm_content=cdimascio/java-dotenv&utm_campaign=Badge_Grade_Dashboard) ![](https://img.shields.io/badge/license-Apache%202.0-orange.svg)
 
@@ -291,6 +292,11 @@ Using dotenv in production would be cheating. This type of usage, however is an 
 
 ## Contributors
 Contributions are welcome!
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table><tr><td align="center"><a href="http://www.twitter.com/carminedimascio"><img src="https://avatars1.githubusercontent.com/u/4706618?v=4" width="100px;" alt="Carmine DiMascio"/><br /><sub><b>Carmine DiMascio</b></sub></a><br /><a href="https://github.com/cdimascio/java-dotenv/commits?author=cdimascio" title="Code">💻</a> <a href="https://github.com/cdimascio/java-dotenv/commits?author=cdimascio" title="Documentation">📖</a> <a href="#infra-cdimascio" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td></tr></table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 see [CONTRIBUTING.md](CONTRIBUTING.md)
 
