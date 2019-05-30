@@ -26,6 +26,15 @@
         "doc",
         "infra"
       ]
+    },
+    {
+      "login": "pwoolcoc",
+      "name": "Paul Woolcock",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/620392?v=4",
+      "profile": "http://pwoolcoc.gitlab.io",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
