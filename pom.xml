@@ -10,7 +10,7 @@
 
     <groupId>io.github.cdimascio</groupId>
     <artifactId>java-dotenv</artifactId>
-    <version>5.1.0</version>
+    <version>5.1.1</version>
 
     <licenses>
         <license>
@@ -53,14 +53,14 @@
         <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-        <kotlin.version>1.3.21</kotlin.version>
+        <kotlin.version>1.3.41</kotlin.version>
         <main.class>io.cdimascio.DotenvKt</main.class>
         <junit.version>4.12</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <maven.source.plugin>3.0.1</maven.source.plugin>
         <maven.javadoc.plugin>3.0.0</maven.javadoc.plugin>
-        <dokka.version>0.9.15</dokka.version>
+        <dokka.version>0.9.18</dokka.version>
         <bintray.subject>cdimascio</bintray.subject>
         <bintray.repo>maven</bintray.repo>
         <bintray.package>java-dotenv</bintray.package>
