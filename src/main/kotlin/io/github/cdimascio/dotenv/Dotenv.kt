@@ -84,7 +84,7 @@ class DotenvBuilder internal constructor() {
     }
 
     /**
-     * Sets the name of the .env. The default is not .env
+     * Sets the name of the .env file. The default is .env
      * @param name The filename
      */
     fun filename(name: String = ".env"): DotenvBuilder {
