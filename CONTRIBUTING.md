@@ -1,24 +1,24 @@
 # Contributing
 
-#### Fork it
+#### 1. Fork it
 
-#### Build the project
+#### 2. Build the project
 
 ```shell
 mvn build
 ```
 
-#### Make a change
+#### 3. Make a change
 
 fix a bug, add a feature, update the doc, etc
 
-#### Run the Tests
+#### 4. Run the Tests
 
 ```shell
 mvn test
 ```
 
-#### Create a PR
+#### 5. Create a PR
 
 #### Add yourself as a contributor
 
