@@ -1,5 +1,7 @@
 # Contributing
 
+## Develop
+
 #### 1. Fork it
 
 #### 2. Build the project
@@ -19,6 +21,8 @@ mvn test
 ```
 
 #### 5. Create a PR
+
+## Misc
 
 #### Add yourself as a contributor
 
