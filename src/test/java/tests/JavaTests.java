@@ -47,7 +47,9 @@ public class JavaTests {
             .ignoreIfMalformed()
             .load();
 
-        dotenv.entries().forEach(e -> assertEquals(dotenv.get(e.getKey()), e.getValue()));
+        dotenv
+            .entries()
+            .forEach(e -> assertEquals(dotenv.get(e.getKey()), e.getValue()));
 
         for (DotenvEntry e : dotenv.entries()) {
             assertEquals(dotenv.get(e.getKey()), e.getValue());
