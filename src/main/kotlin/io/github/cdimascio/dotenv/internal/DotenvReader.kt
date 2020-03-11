@@ -33,7 +33,7 @@ internal class DotenvReader(
 
         return if (Files.exists(path)) Files.lines(path)
             else try {
-                ClasspathHelper.loadFileFromClasspath(location)
+                ClasspathHelper.loadFileFromClasspath(location.replaceFirst("./", "/"))
             } catch (e: DotEnvException) {
                 val cwd = FileSystems.getDefault().getPath(".").toAbsolutePath().normalize()
                 val cwdMessage = if (!path.isAbsolute) "(working directory: $cwd)" else ""
