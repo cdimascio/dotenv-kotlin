@@ -241,6 +241,25 @@ for (e in dotenv.entries()) {
 	}
 	```
 
+### *optional* `systemProperties` 
+
+* Load environment variables into System properties, thus making all environment variables accessible via `System.getProperty(...)`
+
+	**Java example**
+	
+	```java
+	Dotenv
+	  .configure()
+	  .systemProperties()
+	  .load()
+	```
+	**Kotlin Dsl example**
+	
+	```kotlin
+	dotenv {
+	  systemProperties = true
+	}
+	```
 
 ## Examples
 - with [Maven (simple)](https://github.com/cdimascio/java-dotenv-example)
