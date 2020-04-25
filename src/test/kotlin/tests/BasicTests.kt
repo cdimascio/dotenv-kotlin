@@ -78,6 +78,32 @@ class DotEnvTest {
     }
 
     @test
+    fun systemProperties() {
+        val dotenv = Dotenv.configure()
+            .ignoreIfMalformed()
+            .systemProperties()
+            .load()
+
+        assertHostEnvVar(dotenv)
+        assertEquals("my test ev 1", dotenv["MY_TEST_EV1"])
+        assertEquals("my test ev 1", System.getProperty("MY_TEST_EV1"))
+        dotenv.entries().forEach {
+            System.clearProperty(it.key)
+        }
+    }
+
+    @test
+    fun noSystemProperties() {
+        val dotenv = Dotenv.configure()
+            .ignoreIfMalformed()
+            .load()
+
+        assertHostEnvVar(dotenv)
+        assertEquals("my test ev 1", dotenv["MY_TEST_EV1"])
+        assertNull(System.getProperty("MY_TEST_EV1"))
+    }
+
+    @test
     fun iterateOverDotenv() {
         val dotenv = Dotenv.configure()
             .ignoreIfMalformed()

@@ -71,8 +71,10 @@ class DotEnvException(message: String) : Exception(message)
 class DotenvBuilder internal constructor() {
     private var filename = ".env"
     private var directoryPath = "./"
+    private var systemProperties = false
     private var throwIfMissing = true
     private var throwIfMalformed = true
+
 
     /**
      * Sets the directory containing the .env file
@@ -109,6 +111,14 @@ class DotenvBuilder internal constructor() {
     }
 
     /**
+     * Do not throw an exception when .env is malformed
+     */
+    fun systemProperties(): DotenvBuilder {
+        systemProperties = true
+        return this
+    }
+
+    /**
      * Load the contents of .env into the virtual environment
      */
     fun load(): Dotenv {
@@ -117,6 +127,9 @@ class DotenvBuilder internal constructor() {
             throwIfMalformed,
             throwIfMissing)
         val env = reader.parse()
+        if (systemProperties) {
+            env.forEach { System.setProperty(it.first, it.second) }
+        }
         return DotenvImpl(env)
     }
 }

@@ -15,6 +15,7 @@ fun dotenv(block: Configuration.() -> Unit = {}): Dotenv {
     dotenv.filename(config.filename)
     if (config.ignoreIfMalformed) dotenv.ignoreIfMalformed()
     if (config.ignoreIfMissing) dotenv.ignoreIfMissing()
+    if (config.systemProperties) dotenv.systemProperties()
     return dotenv.load()
 }
 
@@ -38,4 +39,9 @@ class Configuration {
      * Do not throw an exception when .env is missing
      */
     var ignoreIfMissing = false
+
+    /**
+     * Set env vars into System properties. Enables fetch them via e.g. System.getProperty(...)
+     */
+    var systemProperties = false
 }
