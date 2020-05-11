@@ -111,7 +111,7 @@ class DotenvBuilder internal constructor() {
     }
 
     /**
-     * Do not throw an exception when .env is malformed
+     * Adds environment variables into system properties
      */
     fun systemProperties(): DotenvBuilder {
         systemProperties = true
