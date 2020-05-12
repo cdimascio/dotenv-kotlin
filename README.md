@@ -269,16 +269,13 @@ Using dotenv in production would be cheating. This type of usage, however is an 
 Java
 ```java
 Dotenv dotenv = Dotenv.configure().load();
-
 dotenv.entries().forEach(e -> System.setProperty(e.getKey(), e.getValue()));
-
 System.getProperty("MY_VAR");
 ```
 
 Kotlin
 ```kotlin
 val dotenv = dotenv()
-
 dotenv.entries().forEach { (key, value) -> System.setProperty(key, value) }
 ```
 
