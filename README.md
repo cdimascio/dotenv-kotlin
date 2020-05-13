@@ -281,6 +281,26 @@ Using dotenv in production would be cheating. This type of usage, however is an 
 
 **A**: Since Java does not provide a way to set environment variables on a currently running process, vars listed in `.env` cannot be set and thus cannot be retrieved using `System.getenv(...)`.
 
+**Q**: Can I use `System.getProperty(...)` to retrieve environment variables?
+
+**A**: Sure. After initializing dotenv set each env var into system properties. For example:
+
+Java
+```java
+Dotenv dotenv = Dotenv.configure().load();
+
+dotenv.entries().forEach(e -> System.setProperty(e.getKey(), e.getValue()));
+
+System.getProperty("MY_VAR");
+```
+
+Kotlin
+```kotlin
+val dotenv = dotenv()
+
+dotenv.entries().forEach { (key, value) -> System.setProperty(key, value) }
+```
+
 **Q:** Should I have multiple .env files?
 
 **A**: No. We strongly recommend against having a "main" .env file and an "environment" .env file like .env.test. Your config should vary between deploys, and you should not be sharing values between environments.
