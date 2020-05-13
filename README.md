@@ -283,7 +283,7 @@ Using dotenv in production would be cheating. This type of usage, however is an 
 
 **Q**: Can I use `System.getProperty(...)` to retrieve environment variables?
 
-**A**: Sure. After initializing dotenv set each env var into system properties. For example:
+**A**: Sure. Use the `systemProperties` option. Or after initializing dotenv set each env var into system properties manually. For example:
 
 Java
 ```java
