@@ -39,7 +39,7 @@ compile 'io.github.cdimascio:java-dotenv:5.2.1'
 ```
 
 ## Usage
-Use dotenv.get("...") instead of Java's System.getenv(...). Here's [why](#faq).
+Use `dotenv.get("...")` instead of Java's `System.getenv(...)`. Here's [why](#faq).
 
 Create a `.env` file in the root of your project
 
