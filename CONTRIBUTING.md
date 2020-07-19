@@ -41,3 +41,23 @@ Contributors are not responsible for pushing packages to mavencentral and jcente
 ```shell
 mvn clean package dokka:javadocJar
 ```
+
+### Publish to Github Packages
+
+Add `distributionManagement` to `pom.xml`
+
+```xml
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>Carmine M DiMascio</name>
+      <url>https://maven.pkg.github.com/cdimascio/java-dotenv</url>
+    </repository>
+  </distributionManagement>
+```
+
+```shell
+# deploy to github packages
+mvn deploy -Dregistry=https://maven.pkg.github.com/cdimascio -Dtoken=XXXX
+```
+https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages
