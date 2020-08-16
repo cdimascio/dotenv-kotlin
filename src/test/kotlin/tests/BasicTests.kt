@@ -16,7 +16,6 @@ class DotEnvTest {
     )
 
     @test(expected = DotEnvException::class)
-
     fun dotenvMalformed() {
         Dotenv.configure()
             .directory("./src/test/resources")
