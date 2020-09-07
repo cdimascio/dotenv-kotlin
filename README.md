@@ -28,14 +28,14 @@ Use `dotenv.get("...")` instead of Java's `System.getenv(...)`.
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>java-dotenv</artifactId>
-    <version>5.2.1</version>
+    <version>5.2.2</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-compile 'io.github.cdimascio:java-dotenv:5.2.1'
+compile 'io.github.cdimascio:java-dotenv:5.2.2'
 ```
 
 ## Usage
