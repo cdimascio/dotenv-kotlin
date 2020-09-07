@@ -80,42 +80,37 @@ class DotenvBuilder internal constructor() {
      * Sets the directory containing the .env file
      * @param path The path
      */
-    fun directory(path: String = directoryPath): DotenvBuilder {
+    fun directory(path: String = directoryPath) = apply {
         directoryPath = path
-        return this
     }
 
     /**
      * Sets the name of the .env file. The default is .env
      * @param name The filename
      */
-    fun filename(name: String = ".env"): DotenvBuilder {
+    fun filename(name: String = ".env") = apply {
         filename = name
-        return this
     }
 
     /**
      * Do not throw an exception when .env is missing
      */
-    fun ignoreIfMissing(): DotenvBuilder {
+    fun ignoreIfMissing()= apply {
         throwIfMissing = false
-        return this
     }
 
     /**
      * Do not throw an exception when .env is malformed
      */
-    fun ignoreIfMalformed(): DotenvBuilder {
+    fun ignoreIfMalformed() = apply {
         throwIfMalformed = false
-        return this
     }
 
     /**
      * Adds environment variables into system properties
      */
-    fun systemProperties(): DotenvBuilder {
+    fun systemProperties() = apply {
         systemProperties = true
-        return this
     }
 
     /**
@@ -133,9 +128,11 @@ class DotenvBuilder internal constructor() {
         return DotenvImpl(env)
     }
 }
+
 enum class DotenvEntriesFilter {
     DECLARED_IN_ENV_FILE
 }
+
 /**
  * A dotenv entry containing a key, value pair
  */
