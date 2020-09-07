@@ -210,12 +210,4 @@
             </plugin>
         </plugins>
     </build>
-
-  <distributionManagement>
-    <repository>
-      <id>github</id>
-      <name>Carmine M DiMascio</name>
-      <url>https://maven.pkg.github.com/cdimascio/java-dotenv</url>
-    </repository>
-  </distributionManagement>
 </project>
