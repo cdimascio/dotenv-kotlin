@@ -44,11 +44,21 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Cleymax",
+      "name": "Clément P.",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/24879740?v=4",
+      "profile": "https://cleymax.fr/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "projectName": "java-dotenv",
   "projectOwner": "cdimascio",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
