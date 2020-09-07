@@ -7,6 +7,9 @@
 #### 2. Build the project
 
 ```shell
+# java 8 required
+export JAVA_HOME=/path/to/java8/home
+
 mvn build
 ```
 
