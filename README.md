@@ -23,6 +23,8 @@ Use `dotenv.get("...")` instead of Java's `System.getenv(...)`.
 
 ## Install
 
+Looking for the pure Java variant (no Kotlin), get [dotenv-java](https://github.com/cdimascio/dotenv-java).
+
 ### Maven 
 ```xml
 <dependency>
