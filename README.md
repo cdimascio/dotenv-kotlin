@@ -8,7 +8,7 @@ A port of the Ruby dotenv project for Java and Kotlin. Load environment variable
 	<img src="https://raw.githubusercontent.com/cdimascio/dotenv-kotlin/master/assets/kotlin-dotenv-logo.png" alt="dotenv" /> 
 </p>
 
-Looking for the pure Java alternative? Get [dotenv-java](https://github.com/cdimascio/dotenv-java).
+Looking for the _pure Java_ version? Get **[dotenv-java](https://github.com/cdimascio/dotenv-java)**.
 
 Why dotenv?
 
