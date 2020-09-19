@@ -65,7 +65,7 @@
     <maven.jacoco.plugin>0.8.4</maven.jacoco.plugin>
     <maven.coveralls.plugin>4.3.0</maven.coveralls.plugin>
     <maven.surefire.plugin>2.22.0</maven.surefire.plugin>
-    <dokka.version>0.9.18</dokka.version>
+    <dokka.version>1.4.0</dokka.version>
     <bintray.subject>cdimascio</bintray.subject>
     <bintray.repo>maven</bintray.repo>
     <bintray.package>java-dotenv</bintray.package>
@@ -211,7 +211,29 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <dokkaPlugins>
+            <plugin>
+              <groupId>org.jetbrains.dokka</groupId>
+              <artifactId>kotlin-as-java-plugin</artifactId>
+              <version>${dokka.version}</version>
+            </plugin>
+          </dokkaPlugins>
+        </configuration>
       </plugin>
+      <!--      <plugin>-->
+      <!--        <groupId>org.jetbrains.dokka</groupId>-->
+      <!--        <artifactId>dokka-maven-plugin</artifactId>-->
+      <!--        <version>${dokka.version}</version>-->
+      <!--        <executions>-->
+      <!--          <execution>-->
+      <!--            <phase>pre-site</phase>-->
+      <!--            <goals>-->
+      <!--              <goal>dokka</goal>-->
+      <!--            </goals>-->
+      <!--          </execution>-->
+      <!--        </executions>-->
+      <!--      </plugin>-->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
