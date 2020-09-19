@@ -1,10 +1,10 @@
 package tests
 
-import io.github.cdimascio.dotenv.DotEnvException
+import io.github.cdimascio.dotenv.DotenvException
 import io.github.cdimascio.dotenv.Dotenv
-import io.github.cdimascio.dotenv.DotenvEntriesFilter
+import io.github.cdimascio.dotenv.Dotenv.EntriesFilter
 import io.github.cdimascio.dotenv.dotenv
-import junit.framework.Assert.assertTrue
+import kotlin.test.assertTrue
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 import kotlin.test.assertNotNull
@@ -24,7 +24,7 @@ class DotEnvDslTest {
         "HOME" to "dotenv_test_home"
     )
 
-    @test(expected = DotEnvException::class)
+    @test(expected = DotenvException::class)
     fun dotenvMalformed() {
         dotenv()
     }
@@ -100,7 +100,7 @@ class DotEnvDslTest {
             .ignoreIfMalformed()
             .load()
 
-        val entriesInFile = dotenv.entries(DotenvEntriesFilter.DECLARED_IN_ENV_FILE)
+        val entriesInFile = dotenv.entries(EntriesFilter.DECLARED_IN_ENV_FILE)
         val entriesAll = dotenv.entries()
         assertTrue(entriesInFile.size < entriesAll.size)
 
@@ -128,7 +128,7 @@ class DotEnvDslTest {
         assertHostEnvVar(env)
     }
 
-    @test(expected = DotEnvException::class)
+    @test(expected = DotenvException::class)
     fun dotenvMissing() {
         dotenv {
             directory = "/missing/.env"

@@ -1,11 +1,11 @@
-# 🗝️ java-dotenv 
+# 🗝️ dotenv-kotlin 
 
-![](https://travis-ci.org/cdimascio/java-dotenv.svg?branch=master) ![](https://img.shields.io/badge/coverage-94%25-blue.svg)  [![Maven Central](https://img.shields.io/maven-central/v/io.github.cdimascio/java-dotenv.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.cdimascio%22%20AND%20a:%22java-dotenv%22)  [ ![Download](https://api.bintray.com/packages/cdimascio/maven/java-dotenv/images/download.svg) ](https://bintray.com/cdimascio/maven/java-dotenv/_latestVersion) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66b8195f0da544f1ad9ed1352c0ea66f)](https://app.codacy.com/app/cdimascio/java-dotenv?utm_source=github.com&utm_medium=referral&utm_content=cdimascio/java-dotenv&utm_campaign=Badge_Grade_Dashboard) [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors) [![](https://img.shields.io/gitter/room/cdimascio-oss/community?color=%23eb205a)](https://gitter.im/cdimascio-oss/community) ![](https://img.shields.io/badge/license-Apache%202.0-orange.svg)
+![](https://travis-ci.org/cdimascio/java-dotenv.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/cdimascio/java-dotenv/badge.svg?branch=v6)](https://coveralls.io/github/cdimascio/java-dotenv?branch=v6) [![Maven Central](https://img.shields.io/maven-central/v/io.github.cdimascio/java-dotenv.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.cdimascio%22%20AND%20a:%22java-dotenv%22)  [ ![Download](https://api.bintray.com/packages/cdimascio/maven/java-dotenv/images/download.svg) ](https://bintray.com/cdimascio/maven/java-dotenv/_latestVersion) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66b8195f0da544f1ad9ed1352c0ea66f)](https://app.codacy.com/app/cdimascio/java-dotenv?utm_source=github.com&utm_medium=referral&utm_content=cdimascio/java-dotenv&utm_campaign=Badge_Grade_Dashboard) [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors) [![](https://img.shields.io/gitter/room/cdimascio-oss/community?color=%23eb205a)](https://gitter.im/cdimascio-oss/community) ![](https://img.shields.io/badge/license-Apache%202.0-orange.svg)
 
 A port of the Ruby dotenv project for Java and Kotlin. Load environment variables from a `.env` file.
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/cdimascio/java-dotenv/master/assets/java_dotenv.png" alt="dotenv" /> 
+	<img src="https://raw.githubusercontent.com/cdimascio/dotenv-kotlin/master/assets/kotlin-dotenv-logo.png" alt="dotenv" /> 
 </p>
 
 Why dotenv?
@@ -29,15 +29,15 @@ Looking for the pure Java variant (no Kotlin), get [dotenv-java](https://github.
 ```xml
 <dependency>
     <groupId>io.github.cdimascio</groupId>
-    <artifactId>java-dotenv</artifactId>
-    <version>5.2.2</version>
+    <artifactId>dotenv-kotlin</artifactId>
+    <version>6.0.0</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-compile 'io.github.cdimascio:java-dotenv:5.2.2'
+compile 'io.github.cdimascio:dotenv-kotlin:6.0.0'
 ```
 
 ## Usage
@@ -86,7 +86,7 @@ dotenv["MY_ENV_VAR1"]
 	dotenv["MY_ENV_VAR1"]
 	```
 
-**Note:** The above configuration is required because dot files in `/assets` do not appear to resolve on Android. *(Seeking recommendations from the Android community on how `java-dotenv` configuration should work in order to provide the best experience for Android developers)*
+**Note:** The above configuration is required because dot files in `/assets` do not appear to resolve on Android. *(Seeking recommendations from the Android community on how `dotenv-kotlin` configuration should work in order to provide the best experience for Android developers)*
 
 Alternatively, if you are using Provider `android.resource` you may specify
 
@@ -97,7 +97,7 @@ Alternatively, if you are using Provider `android.resource` you may specify
 ## Advanced Usage
 
 ### Configure
-Configure `java-dotenv` once in your application. 
+Configure `dotenv-kotlin` once in your application. 
 
 With **Java**
 
@@ -264,7 +264,7 @@ for (e in dotenv.entries()) {
 	```
 
 ## Examples
-- with [Maven (simple)](https://github.com/cdimascio/java-dotenv-example)
+- with [Maven (simple)](https://github.com/cdimascio/dotenv-kotlin-example)
 - with [Spring MVC](https://github.com/cdimascio/kotlin-spring-mvc-template)
 - with [Spring Webflux](https://github.com/cdimascio/kotlin-swagger-spring-functional-template)
 - with [Android](https://github.com/cdimascio/android-example/blob/master/app/src/main/java/com/example/dimascio/myapp/MainActivity.kt) 
@@ -314,7 +314,7 @@ dotenv.entries().forEach { (key, value) -> System.setProperty(key, value) }
 
 **Q**: What happens to environment variables that were already set?
 
-**A**: java-dotenv will never modify any environment variables that have already been set. In particular, if there is a variable in your `.env` file which collides with one that already exists in your environment, then that variable will be skipped. This behavior allows you to override all `.env` configurations with a machine-specific environment, although it is not recommended.
+**A**: dotenv-kotlin will never modify any environment variables that have already been set. In particular, if there is a variable in your `.env` file which collides with one that already exists in your environment, then that variable will be skipped. This behavior allows you to override all `.env` configurations with a machine-specific environment, although it is not recommended.
 
 **Q**: What about variable expansion in `.env`? 
 
@@ -322,7 +322,7 @@ dotenv.entries().forEach { (key, value) -> System.setProperty(key, value) }
 
 **Q**: Can I supply a multi-line value?
 
-**A**: java-dotenv exhibits the same behavior as Java's `System.getenv(...)`, thus if a multi-line value is needed you might consider encoding it via e.g. Base64. see this [comment](https://github.com/cdimascio/java-dotenv/issues/28#issuecomment-489443975) for details.
+**A**: dotenv-kotlin exhibits the same behavior as Java's `System.getenv(...)`, thus if a multi-line value is needed you might consider encoding it via e.g. Base64. see this [comment](https://github.com/cdimascio/dotenv-kotlin/issues/28#issuecomment-489443975) for details.
 
 
 **Note and reference**: The FAQs present on [motdotla's dotenv](https://github.com/motdotla/dotenv#faq) node project page are so well done that I've included those that are relevant in the FAQs above.
@@ -334,11 +334,11 @@ Contributions are welcome!
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://www.twitter.com/carminedimascio"><img src="https://avatars1.githubusercontent.com/u/4706618?v=4" width="100px;" alt=""/><br /><sub><b>Carmine DiMascio</b></sub></a><br /><a href="https://github.com/cdimascio/java-dotenv/commits?author=cdimascio" title="Code">💻</a> <a href="https://github.com/cdimascio/java-dotenv/commits?author=cdimascio" title="Documentation">📖</a> <a href="#infra-cdimascio" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
-    <td align="center"><a href="https://github.com/arniu"><img src="https://avatars3.githubusercontent.com/u/1286674?v=4" width="100px;" alt=""/><br /><sub><b>Arniu Tseng</b></sub></a><br /><a href="https://github.com/cdimascio/java-dotenv/commits?author=arniu" title="Code">💻</a> <a href="https://github.com/cdimascio/java-dotenv/commits?author=arniu" title="Documentation">📖</a> <a href="#infra-arniu" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="http://www.twitter.com/carminedimascio"><img src="https://avatars1.githubusercontent.com/u/4706618?v=4" width="100px;" alt=""/><br /><sub><b>Carmine DiMascio</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=cdimascio" title="Code">💻</a> <a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=cdimascio" title="Documentation">📖</a> <a href="#infra-cdimascio" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/arniu"><img src="https://avatars3.githubusercontent.com/u/1286674?v=4" width="100px;" alt=""/><br /><sub><b>Arniu Tseng</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=arniu" title="Code">💻</a> <a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=arniu" title="Documentation">📖</a> <a href="#infra-arniu" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     <td align="center"><a href="http://pwoolcoc.gitlab.io"><img src="https://avatars3.githubusercontent.com/u/620392?v=4" width="100px;" alt=""/><br /><sub><b>Paul Woolcock</b></sub></a><br /><a href="#ideas-pwoolcoc" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="https://github.com/Playacem"><img src="https://avatars3.githubusercontent.com/u/3692093?v=4" width="100px;" alt=""/><br /><sub><b>Playacem</b></sub></a><br /><a href="https://github.com/cdimascio/java-dotenv/commits?author=Playacem" title="Code">💻</a></td>
-    <td align="center"><a href="https://cleymax.fr/"><img src="https://avatars3.githubusercontent.com/u/24879740?v=4" width="100px;" alt=""/><br /><sub><b>Clément P.</b></sub></a><br /><a href="https://github.com/cdimascio/java-dotenv/commits?author=Cleymax" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Playacem"><img src="https://avatars3.githubusercontent.com/u/3692093?v=4" width="100px;" alt=""/><br /><sub><b>Playacem</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=Playacem" title="Code">💻</a></td>
+    <td align="center"><a href="https://cleymax.fr/"><img src="https://avatars3.githubusercontent.com/u/24879740?v=4" width="100px;" alt=""/><br /><sub><b>Clément P.</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=Cleymax" title="Code">💻</a></td>
   </tr>
 </table>
 
