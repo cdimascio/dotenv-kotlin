@@ -1,6 +1,6 @@
 package tests
 
-import io.github.cdimascio.dotenv.DotEnvException
+import io.github.cdimascio.dotenv.DotenvException
 import io.github.cdimascio.dotenv.Dotenv
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -15,7 +15,7 @@ class DotEnvTest {
         "MULTI_LINE" to "hello\\nworld"
     )
 
-    @test(expected = DotEnvException::class)
+    @test(expected = DotenvException::class)
     fun dotenvMalformed() {
         Dotenv.configure()
             .directory("./src/test/resources")
@@ -113,7 +113,7 @@ class DotEnvTest {
         }
     }
 
-    @test(expected = DotEnvException::class)
+    @test(expected = DotenvException::class)
     fun dotenvMissing() {
         Dotenv.configure()
             .directory("/missing/.env")

@@ -1,8 +1,8 @@
 package tests;
 
-import io.github.cdimascio.dotenv.DotEnvException;
+import io.github.cdimascio.dotenv.DotenvException;
 import io.github.cdimascio.dotenv.Dotenv;
-import io.github.cdimascio.dotenv.DotenvEntriesFilter;
+import io.github.cdimascio.dotenv.Dotenv.EntriesFilter;
 import io.github.cdimascio.dotenv.DotenvEntry;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,12 +27,12 @@ public class JavaTests {
         envVars.put("WITHOUT_VALUE", "");
     }
 
-    @Test(expected = DotEnvException.class)
+    @Test(expected = DotenvException.class)
     public void throwIfMalconfigured() {
         Dotenv.configure().load();
     }
 
-    @Test(expected = DotEnvException.class)
+    @Test(expected = DotenvException.class)
     public void load() {
         Dotenv dotenv = Dotenv.load();
 
@@ -62,7 +62,7 @@ public class JavaTests {
             .ignoreIfMalformed()
             .load();
 
-        Set<DotenvEntry> entriesInFile = dotenv.entries(DotenvEntriesFilter.DECLARED_IN_ENV_FILE);
+        Set<DotenvEntry> entriesInFile = dotenv.entries(EntriesFilter.DECLARED_IN_ENV_FILE);
         Set<DotenvEntry> entriesAll = dotenv.entries();
         assertTrue(entriesInFile.size() < entriesAll.size());
 
