@@ -54,7 +54,7 @@ Add `distributionManagement` to `pom.xml`
     <repository>
       <id>github</id>
       <name>Carmine M DiMascio</name>
-      <url>https://maven.pkg.github.com/cdimascio/java-dotenv</url>
+      <url>https://maven.pkg.github.com/cdimascio/dotenv-kotlin</url>
     </repository>
   </distributionManagement>
 ```

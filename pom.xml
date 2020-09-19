@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <name>java-dotenv</name>
+  <name>dotenv-kotlin</name>
   <description>Environment based config for the JVM</description>
-  <url>https://github.com/cdimascio/java-dotenv</url>
+  <url>https://github.com/cdimascio/dotenv-kotlin</url>
 
   <groupId>io.github.cdimascio</groupId>
-  <artifactId>java-dotenv</artifactId>
+  <artifactId>dotenv-kotlin</artifactId>
   <version>6.0.0</version>
 
   <licenses>
@@ -27,10 +27,10 @@
   </organization>
 
   <scm>
-    <connection>scm:github:https://github.com/cdimascio/java-dotenv</connection>
-    <developerConnection>scm:github:https://github.com/cdimascio/java-dotenv</developerConnection>
+    <connection>scm:github:https://github.com/cdimascio/dotenv-kotlin</connection>
+    <developerConnection>scm:github:https://github.com/cdimascio/dotenv-kotlin</developerConnection>
     <tag>master</tag>
-    <url>https://github.com/cdimascio/java-dotenv</url>
+    <url>https://github.com/cdimascio/dotenv-kotlin</url>
   </scm>
 
   <developers>
@@ -68,7 +68,7 @@
     <dokka.version>1.4.0</dokka.version>
     <bintray.subject>cdimascio</bintray.subject>
     <bintray.repo>maven</bintray.repo>
-    <bintray.package>java-dotenv</bintray.package>
+    <bintray.package>dotenv-kotlin</bintray.package>
   </properties>
 
   <pluginRepositories>
@@ -269,7 +269,7 @@
     <repository>
       <id>github</id>
       <name>Carmine M DiMascio</name>
-      <url>https://maven.pkg.github.com/cdimascio/java-dotenv</url>
+      <url>https://maven.pkg.github.com/cdimascio/dotenv-kotlin</url>
     </repository>
   </distributionManagement>
 </project>
