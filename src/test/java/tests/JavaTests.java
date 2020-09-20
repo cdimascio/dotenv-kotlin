@@ -1,9 +1,8 @@
 package tests;
 
-import io.github.cdimascio.dotenv.DotenvException;
 import io.github.cdimascio.dotenv.Dotenv;
-import io.github.cdimascio.dotenv.Dotenv.EntriesFilter;
 import io.github.cdimascio.dotenv.DotenvEntry;
+import io.github.cdimascio.dotenv.DotenvException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,9 +11,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class JavaTests {
     private Map<String, String> envVars;
@@ -62,7 +59,7 @@ public class JavaTests {
             .ignoreIfMalformed()
             .load();
 
-        Set<DotenvEntry> entriesInFile = dotenv.entries(EntriesFilter.DECLARED_IN_ENV_FILE);
+        Set<DotenvEntry> entriesInFile = dotenv.entries(DotenvEntry.Filter.DECLARED_IN_ENV_FILE);
         Set<DotenvEntry> entriesAll = dotenv.entries();
         assertTrue(entriesInFile.size() < entriesAll.size());
 
