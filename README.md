@@ -31,15 +31,17 @@ Looking for the pure Java variant (no Kotlin), get [dotenv-java](https://github.
 ```xml
 <dependency>
     <groupId>io.github.cdimascio</groupId>
-    <artifactId>java-dotenv</artifactId>
+    <artifactId>dotenv-kotlin</artifactId>
     <version>6.0.0</version>
 </dependency>
 ```
 
+[Previous versions](https://github.com/cdimascio/java-dotenv#Previous-Versions-of-java-dotenv)
+
 ### Gradle
 
 ```groovy
-compile 'io.github.cdimascio:java-dotenv:6.0.0'
+compile 'io.github.cdimascio:dotenv-kotlin:6.0.0'
 ```
 
 ## Usage
