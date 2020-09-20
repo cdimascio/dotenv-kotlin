@@ -264,7 +264,7 @@ for (e in dotenv.entries()) {
 	```
 
 ## Examples
-- with [Maven (simple)](https://github.com/cdimascio/dotenv-kotlin-example)
+- with [Maven (simple)](examples/maven-simple)
 - with [Spring MVC](https://github.com/cdimascio/kotlin-spring-mvc-template)
 - with [Spring Webflux](https://github.com/cdimascio/kotlin-swagger-spring-functional-template)
 - with [Android](https://github.com/cdimascio/android-example/blob/master/app/src/main/java/com/example/dimascio/myapp/MainActivity.kt) 
