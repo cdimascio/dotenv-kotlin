@@ -5,7 +5,7 @@
 A port of the Ruby dotenv project for Java and Kotlin. Load environment variables from a `.env` file.
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/cdimascio/dotenv-kotlin/master/assets/dotenv-kotlin-logo.png" alt="dotenv" /> 
+	<img src="https://raw.githubusercontent.com/cdimascio/dotenv-kotlin/master/assets/kotlin-dotenv-logo.png" alt="dotenv" /> 
 </p>
 
 Looking for the _pure Java_ version? Get **[dotenv-java](https://github.com/cdimascio/dotenv-java)**.
