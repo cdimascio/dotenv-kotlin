@@ -1,11 +1,11 @@
 # 🗝️ dotenv-kotlin 
 
-![](https://travis-ci.org/cdimascio/java-dotenv.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/cdimascio/java-dotenv/badge.svg?branch=v6)](https://coveralls.io/github/cdimascio/java-dotenv?branch=v6) [![Maven Central](https://img.shields.io/maven-central/v/io.github.cdimascio/java-dotenv.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.cdimascio%22%20AND%20a:%22java-dotenv%22)  [ ![Download](https://api.bintray.com/packages/cdimascio/maven/java-dotenv/images/download.svg) ](https://bintray.com/cdimascio/maven/java-dotenv/_latestVersion) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66b8195f0da544f1ad9ed1352c0ea66f)](https://app.codacy.com/app/cdimascio/java-dotenv?utm_source=github.com&utm_medium=referral&utm_content=cdimascio/java-dotenv&utm_campaign=Badge_Grade_Dashboard) [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors) [![](https://img.shields.io/gitter/room/cdimascio-oss/community?color=%23eb205a)](https://gitter.im/cdimascio-oss/community) ![](https://img.shields.io/badge/license-Apache%202.0-orange.svg)
+![](https://travis-ci.org/cdimascio/dotenv-kotlin.svg?branch=master) 1 [![Maven Central](https://img.shields.io/maven-central/v/io.github.cdimascio/dotenv-kotlin.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.cdimascio%22%20AND%20a:%22dotenv-kotlin%22)  [ ![Download](https://api.bintray.com/packages/cdimascio/maven/dotenv-kotlin/images/download.svg) ](https://bintray.com/cdimascio/maven/dotenv-kotlin/_latestVersion) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66b8195f0da544f1ad9ed1352c0ea66f)](https://app.codacy.com/app/cdimascio/dotenv-kotlin?utm_source=github.com&utm_medium=referral&utm_content=cdimascio/dotenv-kotlin&utm_campaign=Badge_Grade_Dashboard) [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors) [![](https://img.shields.io/gitter/room/cdimascio-oss/community?color=%23eb205a)](https://gitter.im/cdimascio-oss/community) ![](https://img.shields.io/badge/license-Apache%202.0-orange.svg)
 
 A port of the Ruby dotenv project for Java and Kotlin. Load environment variables from a `.env` file.
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/cdimascio/dotenv-kotlin/master/assets/kotlin-dotenv-logo.png" alt="dotenv" /> 
+	<img src="https://raw.githubusercontent.com/cdimascio/dotenv-kotlin/master/assets/dotenv-kotlin-logo.png" alt="dotenv" /> 
 </p>
 
 Looking for the _pure Java_ version? Get **[dotenv-java](https://github.com/cdimascio/dotenv-java)**.

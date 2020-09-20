@@ -2,7 +2,7 @@ package tests
 
 import io.github.cdimascio.dotenv.DotenvException
 import io.github.cdimascio.dotenv.Dotenv
-import io.github.cdimascio.dotenv.Dotenv.EntriesFilter
+import io.github.cdimascio.dotenv.DotenvEntry
 import io.github.cdimascio.dotenv.dotenv
 import kotlin.test.assertTrue
 import kotlin.test.assertEquals
@@ -100,7 +100,7 @@ class DotEnvDslTest {
             .ignoreIfMalformed()
             .load()
 
-        val entriesInFile = dotenv.entries(EntriesFilter.DECLARED_IN_ENV_FILE)
+        val entriesInFile = dotenv.entries(DotenvEntry.Filter.DECLARED_IN_ENV_FILE)
         val entriesAll = dotenv.entries()
         assertTrue(entriesInFile.size < entriesAll.size)
 
