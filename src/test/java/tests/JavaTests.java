@@ -59,7 +59,7 @@ public class JavaTests {
             .ignoreIfMalformed()
             .load();
 
-        Set<DotenvEntry> entriesInFile = dotenv.entries(DotenvEntry.Filter.DECLARED_IN_ENV_FILE);
+        Set<DotenvEntry> entriesInFile = dotenv.entries(Dotenv.Filter.DECLARED_IN_ENV_FILE);
         Set<DotenvEntry> entriesAll = dotenv.entries();
         assertTrue(entriesInFile.size() < entriesAll.size());
 

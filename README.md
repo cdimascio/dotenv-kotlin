@@ -1,6 +1,6 @@
 # 🗝️ dotenv-kotlin 
 
-![](https://travis-ci.org/cdimascio/dotenv-kotlin.svg?branch=master) [![Maven Central](https://img.shields.io/maven-central/v/io.github.cdimascio/dotenv-kotlin.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.cdimascio%22%20AND%20a:%22dotenv-kotlin%22) [![Download](https://api.bintray.com/packages/cdimascio/maven/dotenv-kotlin/images/download.svg) ](https://bintray.com/cdimascio/maven/dotenv-kotlin/_latestVersion) [![Coverage Status](https://coveralls.io/repos/github/cdimascio/dotenv-kotlin/badge.svg?branch=master)](https://coveralls.io/github/cdimascio/dotenv-kotlin?branch=master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66b8195f0da544f1ad9ed1352c0ea66f)](https://app.codacy.com/app/cdimascio/dotenv-kotlin?utm_source=github.com&utm_medium=referral&utm_content=cdimascio/dotenv-kotlin&utm_campaign=Badge_Grade_Dashboard) [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors) [![](https://img.shields.io/gitter/room/cdimascio-oss/community?color=%23eb205a)](https://gitter.im/cdimascio-oss/community) ![](https://img.shields.io/badge/license-Apache%202.0-orange.svg)
+![](https://travis-ci.org/cdimascio/java-dotenv.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/cdimascio/java-dotenv/badge.svg?branch=v6)](https://coveralls.io/github/cdimascio/java-dotenv?branch=v6) [![Maven Central](https://img.shields.io/maven-central/v/io.github.cdimascio/java-dotenv.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.cdimascio%22%20AND%20a:%22java-dotenv%22)  [ ![Download](https://api.bintray.com/packages/cdimascio/maven/java-dotenv/images/download.svg) ](https://bintray.com/cdimascio/maven/java-dotenv/_latestVersion) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66b8195f0da544f1ad9ed1352c0ea66f)](https://app.codacy.com/app/cdimascio/java-dotenv?utm_source=github.com&utm_medium=referral&utm_content=cdimascio/java-dotenv&utm_campaign=Badge_Grade_Dashboard) [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors) [![](https://img.shields.io/gitter/room/cdimascio-oss/community?color=%23eb205a)](https://gitter.im/cdimascio-oss/community) ![](https://img.shields.io/badge/license-Apache%202.0-orange.svg)
 
 A port of the Ruby dotenv project for Java and Kotlin. Load environment variables from a `.env` file.
 
@@ -32,7 +32,7 @@ Looking for the pure Java variant (no Kotlin), get [dotenv-java](https://github.
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>dotenv-kotlin</artifactId>
-    <version>6.1.0</version>
+    <version>6.1.1</version>
 </dependency>
 ```
 
@@ -41,7 +41,7 @@ Looking for the pure Java variant (no Kotlin), get [dotenv-java](https://github.
 ### Gradle
 
 ```groovy
-compile 'io.github.cdimascio:dotenv-kotlin:6.1.0'
+compile 'io.github.cdimascio:dotenv-kotlin:6.1.1'
 ```
 
 ## Usage
@@ -268,7 +268,7 @@ for (e in dotenv.entries()) {
 	```
 
 ## Examples
-- with [Maven (simple)](https://github.com/cdimascio/java-dotenv-example)
+- with [Maven (simple)](https://github.com/cdimascio/dotenv-kotlin-example)
 - with [Spring MVC](https://github.com/cdimascio/kotlin-spring-mvc-template)
 - with [Spring Webflux](https://github.com/cdimascio/kotlin-swagger-spring-functional-template)
 - with [Android](https://github.com/cdimascio/android-example/blob/master/app/src/main/java/com/example/dimascio/myapp/MainActivity.kt) 

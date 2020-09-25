@@ -100,7 +100,7 @@ class DotEnvDslTest {
             .ignoreIfMalformed()
             .load()
 
-        val entriesInFile = dotenv.entries(DotenvEntry.Filter.DECLARED_IN_ENV_FILE)
+        val entriesInFile = dotenv.entries(Dotenv.Filter.DECLARED_IN_ENV_FILE)
         val entriesAll = dotenv.entries()
         assertTrue(entriesInFile.size < entriesAll.size)
 
