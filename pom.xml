@@ -10,7 +10,7 @@
 
   <groupId>io.github.cdimascio</groupId>
   <artifactId>dotenv-kotlin</artifactId>
-  <version>6.1.1</version>
+  <version>6.2.0</version>
 
   <licenses>
     <license>
@@ -50,7 +50,7 @@
 
 
   <properties>
-    <dotenv.version>2.0.0</dotenv.version>
+    <dotenv.version>2.1.0</dotenv.version>
     <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
     <maven.compiler.target>11</maven.compiler.target>
     <maven.compiler.source>11</maven.compiler.source>
