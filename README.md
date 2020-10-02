@@ -32,7 +32,7 @@ Looking for the pure Java variant (no Kotlin), get [dotenv-java](https://github.
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>dotenv-kotlin</artifactId>
-    <version>6.1.1</version>
+    <version>6.2.1</version>
 </dependency>
 ```
 
@@ -41,7 +41,7 @@ Looking for the pure Java variant (no Kotlin), get [dotenv-java](https://github.
 ### Gradle
 
 ```groovy
-compile 'io.github.cdimascio:dotenv-kotlin:6.1.1'
+compile 'io.github.cdimascio:dotenv-kotlin:6.2.1'
 ```
 
 ## Usage
