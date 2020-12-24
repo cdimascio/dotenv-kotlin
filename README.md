@@ -343,6 +343,7 @@ Contributions are welcome!
     <td align="center"><a href="http://pwoolcoc.gitlab.io"><img src="https://avatars3.githubusercontent.com/u/620392?v=4" width="100px;" alt=""/><br /><sub><b>Paul Woolcock</b></sub></a><br /><a href="#ideas-pwoolcoc" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/Playacem"><img src="https://avatars3.githubusercontent.com/u/3692093?v=4" width="100px;" alt=""/><br /><sub><b>Playacem</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=Playacem" title="Code">💻</a></td>
     <td align="center"><a href="https://cleymax.fr/"><img src="https://avatars3.githubusercontent.com/u/24879740?v=4" width="100px;" alt=""/><br /><sub><b>Clément P.</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=Cleymax" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/HarryHenryGebel"><img src="https://avatars2.githubusercontent.com/u/1482486?v=4" width="100px;" alt=""/><br /><sub><b>Harry Henry Gebel</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=HarryHenryGebel" title="Documentation">📖</a></td>
   </tr>
 </table>
 
