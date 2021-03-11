@@ -39,9 +39,14 @@ Looking for the pure Java variant (no Kotlin), get [dotenv-java](https://github.
 [Previous versions](https://github.com/cdimascio/java-dotenv#Previous-Versions-of-java-dotenv)
 
 ### Gradle
-
+#### Gradle Groovy DSL
 ```groovy
-compile 'io.github.cdimascio:dotenv-kotlin:6.2.2'
+implementation 'io.github.cdimascio:dotenv-kotlin:6.2.2'
+```
+
+#### Gradle Kotlin DSL
+```kotlin
+implementation("io.github.cdimascio:dotenv-kotlin:6.2.2")
 ```
 
 ## Usage
