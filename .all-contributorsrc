@@ -62,6 +62,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "NyCodeGHG",
+      "name": "NyCode",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37078297?v=4",
+      "profile": "https://twitch.tv/NyCodeGHG",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
