@@ -343,17 +343,19 @@ Contributions are welcome!
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://www.twitter.com/carminedimascio"><img src="https://avatars1.githubusercontent.com/u/4706618?v=4" width="100px;" alt=""/><br /><sub><b>Carmine DiMascio</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=cdimascio" title="Code">💻</a> <a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=cdimascio" title="Documentation">📖</a> <a href="#infra-cdimascio" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
-    <td align="center"><a href="https://github.com/arniu"><img src="https://avatars3.githubusercontent.com/u/1286674?v=4" width="100px;" alt=""/><br /><sub><b>Arniu Tseng</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=arniu" title="Code">💻</a> <a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=arniu" title="Documentation">📖</a> <a href="#infra-arniu" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
-    <td align="center"><a href="http://pwoolcoc.gitlab.io"><img src="https://avatars3.githubusercontent.com/u/620392?v=4" width="100px;" alt=""/><br /><sub><b>Paul Woolcock</b></sub></a><br /><a href="#ideas-pwoolcoc" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="https://github.com/Playacem"><img src="https://avatars3.githubusercontent.com/u/3692093?v=4" width="100px;" alt=""/><br /><sub><b>Playacem</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=Playacem" title="Code">💻</a></td>
-    <td align="center"><a href="https://cleymax.fr/"><img src="https://avatars3.githubusercontent.com/u/24879740?v=4" width="100px;" alt=""/><br /><sub><b>Clément P.</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=Cleymax" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/HarryHenryGebel"><img src="https://avatars2.githubusercontent.com/u/1482486?v=4" width="100px;" alt=""/><br /><sub><b>Harry Henry Gebel</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=HarryHenryGebel" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://www.twitter.com/carminedimascio"><img src="https://avatars1.githubusercontent.com/u/4706618?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Carmine DiMascio</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=cdimascio" title="Code">💻</a> <a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=cdimascio" title="Documentation">📖</a> <a href="#infra-cdimascio" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/arniu"><img src="https://avatars3.githubusercontent.com/u/1286674?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arniu Tseng</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=arniu" title="Code">💻</a> <a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=arniu" title="Documentation">📖</a> <a href="#infra-arniu" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="http://pwoolcoc.gitlab.io"><img src="https://avatars3.githubusercontent.com/u/620392?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Paul Woolcock</b></sub></a><br /><a href="#ideas-pwoolcoc" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/Playacem"><img src="https://avatars3.githubusercontent.com/u/3692093?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Playacem</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=Playacem" title="Code">💻</a></td>
+    <td align="center"><a href="https://cleymax.fr/"><img src="https://avatars3.githubusercontent.com/u/24879740?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Clément P.</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=Cleymax" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/HarryHenryGebel"><img src="https://avatars2.githubusercontent.com/u/1482486?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Harry Henry Gebel</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=HarryHenryGebel" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://twitch.tv/NyCodeGHG"><img src="https://avatars.githubusercontent.com/u/37078297?v=4?s=100" width="100px;" alt=""/><br /><sub><b>NyCode</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-kotlin/commits?author=NyCodeGHG" title="Documentation">📖</a></td>
   </tr>
 </table>
 
-<!-- markdownlint-enable -->
+<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 see [CONTRIBUTING.md](CONTRIBUTING.md)
