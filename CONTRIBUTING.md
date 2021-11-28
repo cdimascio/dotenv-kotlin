@@ -8,9 +8,9 @@
 
 ```shell
 # java 8 required
-export JAVA_HOME=/path/to/java8/home
+`export JAVA_HOME=/path/to/java8/home`
 
-mvn build
+mvn clean compile test
 ```
 
 #### 3. Make a change

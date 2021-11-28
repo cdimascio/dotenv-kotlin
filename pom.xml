@@ -10,7 +10,7 @@
 
   <groupId>io.github.cdimascio</groupId>
   <artifactId>dotenv-kotlin</artifactId>
-  <version>6.2.2</version>
+  <version>6.3.0</version>
 
   <licenses>
     <license>
@@ -50,11 +50,11 @@
 
 
   <properties>
-    <dotenv.version>2.2.0</dotenv.version>
+    <dotenv.version>2.2.2</dotenv.version>
     <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
-    <kotlin.version>1.4.0</kotlin.version>
+    <kotlin.version>1.6.0</kotlin.version>
     <main.class>io.cdimascio.DotenvKt</main.class>
     <junit.version>4.13.1</junit.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -264,11 +264,49 @@
     </plugins>
   </build>
 
+
   <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
     <repository>
-      <id>github</id>
-      <name>Carmine M DiMascio</name>
-      <url>https://maven.pkg.github.com/cdimascio/dotenv-kotlin</url>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
     </repository>
+    <!--    <repository>-->
+    <!--      <id>github</id>-->
+    <!--      <name>Carmine M DiMascio</name>-->
+    <!--      <url>https://maven.pkg.github.com/cdimascio/dotenv-kotlin</url>-->
+    <!--    </repository>-->
   </distributionManagement>
+  <profiles>
+    <profile>
+      <id>release-sign-artifacts</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.5</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
