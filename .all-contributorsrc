@@ -53,10 +53,28 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "HarryHenryGebel",
+      "name": "Harry Henry Gebel",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1482486?v=4",
+      "profile": "https://github.com/HarryHenryGebel",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "NyCodeGHG",
+      "name": "NyCode",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37078297?v=4",
+      "profile": "https://twitch.tv/NyCodeGHG",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "projectName": "kotlin-dotenv",
+  "projectName": "dotenv-kotlin",
   "projectOwner": "cdimascio",
   "repoType": "github",
   "repoHost": "https://github.com",
