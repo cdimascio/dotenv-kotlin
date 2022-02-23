@@ -10,7 +10,7 @@
 
   <groupId>io.github.cdimascio</groupId>
   <artifactId>dotenv-kotlin</artifactId>
-  <version>6.3.0</version>
+  <version>6.4.0</version>
 
   <licenses>
     <license>
@@ -137,6 +137,12 @@
             </configuration>
           </execution>
         </executions>
+
+        <configuration>
+          <args>
+            <arg>-opt-in=org.mylibrary.OptInAnnotation</arg>
+          </args>
+        </configuration>
       </plugin>
 
       <plugin>

@@ -4,10 +4,18 @@
  */
 package io.github.cdimascio.dotenv
 
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
+
 /**
  * Configure dotenv
  */
+@OptIn(ExperimentalContracts::class)
 fun dotenv(block: Configuration.() -> Unit = {}): Dotenv {
+    contract {
+        callsInPlace(block, InvocationKind.EXACTLY_ONCE)
+    }
     val config = Configuration()
     block(config)
     val dotenv = Dotenv.configure()
