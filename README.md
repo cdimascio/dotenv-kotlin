@@ -89,7 +89,7 @@ dotenv["MY_ENV_VAR1"]
 
 	```kotlin
 	val dotenv = dotenv {
-	    directory = "/assets"
+	    directory = "./assets"
 	    filename = "env" // instead of '.env', use 'env'
 	}
 	dotenv["MY_ENV_VAR1"]
