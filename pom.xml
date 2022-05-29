@@ -50,11 +50,11 @@
 
 
   <properties>
-    <dotenv.version>2.2.2</dotenv.version>
+    <dotenv.version>2.2.4</dotenv.version>
     <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
-    <kotlin.version>1.6.0</kotlin.version>
+    <kotlin.version>1.6.21</kotlin.version>
     <main.class>io.cdimascio.DotenvKt</main.class>
     <junit.version>4.13.1</junit.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -137,12 +137,6 @@
             </configuration>
           </execution>
         </executions>
-
-        <configuration>
-          <args>
-            <arg>-opt-in=org.mylibrary.OptInAnnotation</arg>
-          </args>
-        </configuration>
       </plugin>
 
       <plugin>
@@ -267,6 +261,17 @@
           </dependency>
         </dependencies>
       </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.sonatype.plugins</groupId>-->
+<!--        <artifactId>nexus-staging-maven-plugin</artifactId>-->
+<!--        <version>1.6.7</version>-->
+<!--        <extensions>true</extensions>-->
+<!--        <configuration>-->
+<!--          <serverId>ossrh</serverId>-->
+<!--          <nexusUrl>https://oss.sonatype.org/</nexusUrl>-->
+<!--          <autoReleaseAfterClose>true</autoReleaseAfterClose>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
     </plugins>
   </build>
 
