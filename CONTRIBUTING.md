@@ -64,3 +64,9 @@ Add `distributionManagement` to `pom.xml`
 mvn deploy -Dregistry=https://maven.pkg.github.com/cdimascio -Dtoken=XXXX
 ```
 https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages
+
+```shell
+# deploy to maven central
+mvn clean package dokka:javadocJar deploy -DperformRelease=true
+```
+
