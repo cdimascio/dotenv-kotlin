@@ -10,7 +10,7 @@
 
   <groupId>io.github.cdimascio</groupId>
   <artifactId>dotenv-kotlin</artifactId>
-  <version>6.3.1</version>
+  <version>6.4.0</version>
 
   <licenses>
     <license>
@@ -50,7 +50,7 @@
 
 
   <properties>
-    <dotenv.version>2.2.4</dotenv.version>
+    <dotenv.version>2.3.1</dotenv.version>
     <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -281,15 +281,15 @@
       <id>ossrh</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-    <!--    <repository>-->
-    <!--      <id>github</id>-->
-    <!--      <name>Carmine M DiMascio</name>-->
-    <!--      <url>https://maven.pkg.github.com/cdimascio/dotenv-kotlin</url>-->
-    <!--    </repository>-->
+<!--    <repository>-->
+<!--      <id>ossrh</id>-->
+<!--      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+<!--    </repository>-->
+        <repository>
+          <id>github</id>
+          <name>Carmine M DiMascio</name>
+          <url>https://maven.pkg.github.com/cdimascio/dotenv-kotlin</url>
+        </repository>
   </distributionManagement>
   <profiles>
     <profile>
