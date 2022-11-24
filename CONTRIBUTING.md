@@ -65,8 +65,10 @@ mvn deploy -Dregistry=https://maven.pkg.github.com/cdimascio -Dtoken=XXXX
 ```
 https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages
 
+
 ```shell
 # deploy to maven central
 mvn clean package dokka:javadocJar deploy -DperformRelease=true
 ```
 
+Go to SonaType: https://oss.sonatype.org/#stagingRepositories - select repository -> close -> (once closed) release
