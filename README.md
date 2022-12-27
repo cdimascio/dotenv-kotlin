@@ -89,7 +89,7 @@ dotenv["MY_ENV_VAR1"]
 
 	```kotlin
 	val dotenv = dotenv {
-	    directory = "./assets"
+	    directory = "/assets"
 	    filename = "env" // instead of '.env', use 'env'
 	}
 	dotenv["MY_ENV_VAR1"]
@@ -103,7 +103,7 @@ Alternatively, if you are using Provider `android.resource` you may specify
  directory = "android.resource://com.example.dimascio.myapp/raw"
 ```
 
-## Fluter Usage
+## Flutter Usage
 Advices to use the package in the native Android layer prior to the flutter initialization.
 
 * Create an assets folder inside `/android/app/src/main/`
