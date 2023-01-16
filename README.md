@@ -103,6 +103,21 @@ Alternatively, if you are using Provider `android.resource` you may specify
  directory = "android.resource://com.example.dimascio.myapp/raw"
 ```
 
+## Flutter Usage
+Advices to use the package in the native Android layer prior to the flutter initialization.
+
+* Create an assets folder inside `/android/app/src/main/`
+* Add `env` (not dot) file to the assets folder.
+* Configure dotenv to search ./assets for a file with name `env`.
+```kotlin
+	val dotenv = dotenv {
+	    directory = "./assets"
+	    filename = "env" // instead of '.env', use 'env'
+	}
+	dotenv["MY_ENV_VAR1"] ?: ""
+```
+* Is a good practice to ignore the env file from the repository. For this purpose you can use the `.gitignore` inside the android folder
+
 ## Advanced Usage
 
 ### Configure
