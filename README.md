@@ -32,7 +32,7 @@ Looking for the pure Java variant (no Kotlin), get [dotenv-java](https://github.
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>dotenv-kotlin</artifactId>
-    <version>6.4.1</version>
+    <version>7.0.0</version>
 </dependency>
 ```
 
@@ -41,12 +41,12 @@ Looking for the pure Java variant (no Kotlin), get [dotenv-java](https://github.
 ### Gradle
 #### Gradle Groovy DSL
 ```groovy
-implementation 'io.github.cdimascio:dotenv-kotlin:6.4.1'
+implementation 'io.github.cdimascio:dotenv-kotlin:7.0.0'
 ```
 
 #### Gradle Kotlin DSL
 ```kotlin
-implementation("io.github.cdimascio:dotenv-kotlin:6.4.1")
+implementation("io.github.cdimascio:dotenv-kotlin:7.0.0")
 ```
 
 ## Usage
@@ -66,7 +66,7 @@ With **Java**
 import io.github.cdimascio.dotenv.Dotenv;
 
 Dotenv dotenv = Dotenv.load();
-dotenv.get("MY_ENV_VAR1")
+dotenv.get("MY_ENV_VAR1");
 ```
 
 or with **Kotlin** 
@@ -217,7 +217,7 @@ for (e in dotenv.entries()) {
 	Dotenv
 	  .configure()
 	  .filename("myenv")
-	  .load()
+	  .load();
 	```
 	**Kotlin Dsl example**
 	
@@ -237,7 +237,7 @@ for (e in dotenv.entries()) {
 	Dotenv
 	  .configure()
 	  .ignoreIfMalformed()
-	  .load()
+	  .load();
 	```
 	**Kotlin Dsl example**
 	
@@ -257,7 +257,7 @@ for (e in dotenv.entries()) {
 	Dotenv
 	  .configure()
 	  .ignoreIfMissing()
-	  .load()
+	  .load();
 	```
 	**Kotlin Dsl example**
 	
@@ -277,7 +277,7 @@ for (e in dotenv.entries()) {
 	Dotenv
 	  .configure()
 	  .systemProperties()
-	  .load()
+	  .load();
 	```
 	**Kotlin Dsl example**
 	

@@ -7,8 +7,8 @@
 #### 2. Build the project
 
 ```shell
-# java 8 required
-`export JAVA_HOME=/path/to/java8/home`
+# java 11 required
+`export JAVA_HOME=/path/to/java11/home`
 
 mvn clean compile test
 ```
@@ -45,7 +45,7 @@ Contributors are not responsible for pushing packages to mavencentral and jcente
 mvn clean package dokka:javadocJar
 ```
 
-### Publish to Github Packages
+### Publish to GitHub Packages
 
 Add `distributionManagement` to `pom.xml`
 
