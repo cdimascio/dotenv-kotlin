@@ -1,15 +1,10 @@
 package tests
 
-import io.github.cdimascio.dotenv.DotenvException
 import io.github.cdimascio.dotenv.Dotenv
-import io.github.cdimascio.dotenv.DotenvEntry
+import io.github.cdimascio.dotenv.DotenvException
 import io.github.cdimascio.dotenv.dotenv
-import kotlin.test.assertTrue
-import kotlin.test.assertEquals
-import kotlin.test.assertNotEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import org.junit.Test as test
+import kotlin.test.*
+import org.junit.jupiter.api.Test as test
 
 class DotEnvDslTest {
     private val envVars = mapOf(
@@ -24,9 +19,11 @@ class DotEnvDslTest {
         "HOME" to "dotenv_test_home"
     )
 
-    @test(expected = DotenvException::class)
+    @test
     fun dotenvMalformed() {
-        dotenv()
+        assertFailsWith<DotenvException> {
+            dotenv()
+        }
     }
 
     @test
@@ -94,7 +91,7 @@ class DotEnvDslTest {
         assertNotEquals(envVarsOverridenByHostEnv["HOME"], env["HOME"])
     }
 
-    @org.junit.Test
+    @test
     fun iteratorOverDotenvWithFilter() {
         val dotenv = Dotenv.configure()
             .ignoreIfMalformed()
@@ -128,10 +125,12 @@ class DotEnvDslTest {
         assertHostEnvVar(env)
     }
 
-    @test(expected = DotenvException::class)
+    @test
     fun dotenvMissing() {
-        dotenv {
-            directory = "/missing/.env"
+        assertFailsWith<DotenvException> {
+            dotenv {
+                directory = "/missing/.env"
+            }
         }
     }
 
