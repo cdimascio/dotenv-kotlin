@@ -55,6 +55,7 @@
     <main.class>io.cdimascio.DotenvKt</main.class>
     <junit.version>5.10.1</junit.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.plugin>3.12.1</maven.compiler.plugin>
     <maven.source.plugin>3.3.0</maven.source.plugin>
     <maven.javadoc.plugin>3.6.3</maven.javadoc.plugin>
     <maven.jar.plugin>3.3.0</maven.jar.plugin>
@@ -106,6 +107,13 @@
   <build>
     <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
     <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven.compiler.plugin}</version>
+      </plugin>
+
       <plugin>
         <artifactId>kotlin-maven-plugin</artifactId>
         <groupId>org.jetbrains.kotlin</groupId>
