@@ -145,6 +145,32 @@ class DotEnvDslTest {
         assertNull(env["MY_TEST_EV1"])
     }
 
+    @test
+    fun systemProperties() {
+        val env = dotenv {
+            ignoreIfMalformed = true
+            systemProperties = true
+        }
+
+        assertHostEnvVar(env)
+        assertEquals("my test ev 1", env["MY_TEST_EV1"])
+        assertEquals("my test ev 1", System.getProperty("MY_TEST_EV1"))
+        env.entries().forEach {
+            System.clearProperty(it.key)
+        }
+    }
+
+    @test
+    fun noSystemProperties() {
+        val env = dotenv {
+            ignoreIfMalformed = true
+        }
+
+        assertHostEnvVar(env)
+        assertEquals("my test ev 1", env["MY_TEST_EV1"])
+        assertNull(System.getProperty("MY_TEST_EV1"))
+    }
+
     private fun assertHostEnvVar(env: Dotenv) {
         val isWindows = System.getProperty("os.name").lowercase().indexOf("win") >= 0
         if (isWindows) {
