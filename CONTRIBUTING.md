@@ -7,8 +7,8 @@
 #### 2. Build the project
 
 ```shell
-# java 11 required
-`export JAVA_HOME=/path/to/java11/home`
+# java 8 required
+`export JAVA_HOME=/path/to/java8/home`
 
 mvn clean compile test
 ```

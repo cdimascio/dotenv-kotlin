@@ -10,7 +10,7 @@
 
   <groupId>io.github.cdimascio</groupId>
   <artifactId>dotenv-kotlin</artifactId>
-  <version>7.0.0</version>
+  <version>6.4.1</version>
 
   <licenses>
     <license>

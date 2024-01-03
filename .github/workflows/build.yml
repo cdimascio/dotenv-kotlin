@@ -2,7 +2,7 @@ name: Build with Maven
 
 on:
   push:
-    branches: [ "master", '*' ]
+    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
