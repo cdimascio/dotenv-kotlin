@@ -1,11 +1,12 @@
 package tests
 
-import io.github.cdimascio.dotenv.DotenvException
 import io.github.cdimascio.dotenv.Dotenv
+import io.github.cdimascio.dotenv.DotenvException
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
-import org.junit.Test as test
+import org.junit.jupiter.api.Test as test
 
 class DotEnvTest {
     private val envVars = mapOf(
@@ -15,11 +16,13 @@ class DotEnvTest {
         "MULTI_LINE" to "hello\\nworld"
     )
 
-    @test(expected = DotenvException::class)
+    @test
     fun dotenvMalformed() {
-        Dotenv.configure()
-            .directory("./src/test/resources")
-            .load()
+        assertFailsWith<DotenvException> {
+            Dotenv.configure()
+                .directory("./src/test/resources")
+                .load()
+        }
     }
 
     @test
@@ -113,11 +116,13 @@ class DotEnvTest {
         }
     }
 
-    @test(expected = DotenvException::class)
+    @test
     fun dotenvMissing() {
-        Dotenv.configure()
-            .directory("/missing/.env")
-            .load()
+        assertFailsWith<DotenvException> {
+            Dotenv.configure()
+                .directory("/missing/.env")
+                .load()
+        }
     }
 
     @test
@@ -133,7 +138,7 @@ class DotEnvTest {
     }
 
     private fun assertHostEnvVar(env: Dotenv) {
-        val isWindows = System.getProperty("os.name").toLowerCase().indexOf("win") >= 0
+        val isWindows = System.getProperty("os.name").lowercase().indexOf("win") >= 0
         if (isWindows) {
             val path = env["PATH"]
             assertNotNull(path)

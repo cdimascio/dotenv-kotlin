@@ -147,7 +147,7 @@ class DotEnvDslTest {
     }
 
     private fun assertHostEnvVar(env: Dotenv) {
-        val isWindows = System.getProperty("os.name").toLowerCase().indexOf("win") >= 0
+        val isWindows = System.getProperty("os.name").lowercase().indexOf("win") >= 0
         if (isWindows) {
             val path = env["PATH"]
             assertNotNull(path)
