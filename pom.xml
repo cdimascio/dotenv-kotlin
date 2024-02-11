@@ -48,35 +48,24 @@
     </developer>
   </developers>
 
-
   <properties>
-    <dotenv.version>2.3.2</dotenv.version>
-    <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <kotlin.version>1.6.0</kotlin.version>
+    <dotenv.version>3.0.0</dotenv.version>
+    <maven.compiler.release>11</maven.compiler.release>
+    <kotlin.version>1.9.22</kotlin.version>
     <main.class>io.cdimascio.DotenvKt</main.class>
-    <junit.version>4.13.1</junit.version>
+    <junit.version>5.10.1</junit.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.source.plugin>3.0.1</maven.source.plugin>
-    <maven.javadoc.plugin>3.0.0</maven.javadoc.plugin>
-    <maven.jar.plugin>2.6</maven.jar.plugin>
-    <maven.jacoco.plugin>0.8.4</maven.jacoco.plugin>
-    <maven.coveralls.plugin>4.3.0</maven.coveralls.plugin>
-    <maven.surefire.plugin>2.22.0</maven.surefire.plugin>
-    <dokka.version>1.4.0</dokka.version>
+    <maven.compiler.plugin>3.12.1</maven.compiler.plugin>
+    <maven.source.plugin>3.3.0</maven.source.plugin>
+    <maven.javadoc.plugin>3.6.3</maven.javadoc.plugin>
+    <maven.jar.plugin>3.3.0</maven.jar.plugin>
+    <maven.jacoco.plugin>0.8.11</maven.jacoco.plugin>
+    <maven.surefire.plugin>3.2.3</maven.surefire.plugin>
+    <dokka.version>1.9.10</dokka.version>
     <bintray.subject>cdimascio</bintray.subject>
     <bintray.repo>maven</bintray.repo>
     <bintray.package>dotenv-kotlin</bintray.package>
   </properties>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>jcenter</id>
-      <name>JCenter</name>
-      <url>https://jcenter.bintray.com/</url>
-    </pluginRepository>
-  </pluginRepositories>
 
   <dependencies>
     <dependency>
@@ -94,8 +83,8 @@
     </dependency>
 
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
@@ -111,6 +100,13 @@
   <build>
     <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
     <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven.compiler.plugin}</version>
+      </plugin>
+
       <plugin>
         <artifactId>kotlin-maven-plugin</artifactId>
         <groupId>org.jetbrains.kotlin</groupId>
@@ -119,6 +115,7 @@
         <executions>
           <execution>
             <id>compile</id>
+            <phase>process-sources</phase>
             <goals>
               <goal>compile</goal>
             </goals>
@@ -156,13 +153,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven.surefire.plugin}</version>
-        <dependencies>
-          <dependency>
-            <groupId>org.apache.maven.surefire</groupId>
-            <artifactId>surefire-junit4</artifactId>
-            <version>2.22.0</version>
-          </dependency>
-        </dependencies>
         <configuration>
           <includes>
             <include>**/*.java</include>
@@ -247,24 +237,9 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.eluder.coveralls</groupId>
-        <artifactId>coveralls-maven-plugin</artifactId>
-        <version>${maven.coveralls.plugin}</version>
-        <configuration>
-          <repoToken>DTE7449Zg7tuwgrV6HeE0et1YB6JPPfeY</repoToken>
-        </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.2.3</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-      <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.7</version>
+        <version>1.6.13</version>
         <extensions>true</extensions>
         <configuration>
           <serverId>ossrh</serverId>
@@ -305,7 +280,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.5</version>
+            <version>3.1.0</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>

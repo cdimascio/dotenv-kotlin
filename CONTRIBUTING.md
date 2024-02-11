@@ -45,7 +45,7 @@ Contributors are not responsible for pushing packages to mavencentral and jcente
 mvn clean package dokka:javadocJar
 ```
 
-### Publish to Github Packages
+### Publish to GitHub Packages
 
 Add `distributionManagement` to `pom.xml`
 

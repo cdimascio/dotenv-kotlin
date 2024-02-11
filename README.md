@@ -66,7 +66,7 @@ With **Java**
 import io.github.cdimascio.dotenv.Dotenv;
 
 Dotenv dotenv = Dotenv.load();
-dotenv.get("MY_ENV_VAR1")
+dotenv.get("MY_ENV_VAR1");
 ```
 
 or with **Kotlin** 
@@ -217,7 +217,7 @@ for (e in dotenv.entries()) {
 	Dotenv
 	  .configure()
 	  .filename("myenv")
-	  .load()
+	  .load();
 	```
 	**Kotlin Dsl example**
 	
@@ -237,7 +237,7 @@ for (e in dotenv.entries()) {
 	Dotenv
 	  .configure()
 	  .ignoreIfMalformed()
-	  .load()
+	  .load();
 	```
 	**Kotlin Dsl example**
 	
@@ -257,7 +257,7 @@ for (e in dotenv.entries()) {
 	Dotenv
 	  .configure()
 	  .ignoreIfMissing()
-	  .load()
+	  .load();
 	```
 	**Kotlin Dsl example**
 	
@@ -277,7 +277,7 @@ for (e in dotenv.entries()) {
 	Dotenv
 	  .configure()
 	  .systemProperties()
-	  .load()
+	  .load();
 	```
 	**Kotlin Dsl example**
 	
