@@ -1,3 +1,11 @@
+##  (2024-09-02)
+
+* Upgrade to dotenv-java v3.0.0 (#69) ([bd94e57](https://github.com/cdimascio/dotenv-kotlin/commit/bd94e57)), closes [#69](https://github.com/cdimascio/dotenv-kotlin/issues/69)
+* v6.4.2 ([68c5514](https://github.com/cdimascio/dotenv-kotlin/commit/68c5514))
+* v6.4.2 - upgrades to latest dotenv-java core ([4a9cc06](https://github.com/cdimascio/dotenv-kotlin/commit/4a9cc06))
+
+
+
 ##  (2023-01-16)
 
 * Add documentation for flutter usage (#67) ([38824db](https://github.com/cdimascio/dotenv-kotlin/commit/38824db)), closes [#67](https://github.com/cdimascio/dotenv-kotlin/issues/67)
