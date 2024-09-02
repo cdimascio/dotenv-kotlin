@@ -10,7 +10,7 @@
 
   <groupId>io.github.cdimascio</groupId>
   <artifactId>dotenv-kotlin</artifactId>
-  <version>6.4.1</version>
+  <version>6.4.2</version>
 
   <licenses>
     <license>
@@ -49,14 +49,14 @@
   </developers>
 
   <properties>
-    <dotenv.version>3.0.0</dotenv.version>
+    <dotenv.version>3.0.2</dotenv.version>
     <maven.compiler.release>11</maven.compiler.release>
     <kotlin.version>1.9.22</kotlin.version>
     <main.class>io.cdimascio.DotenvKt</main.class>
     <junit.version>5.10.1</junit.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.plugin>3.12.1</maven.compiler.plugin>
-    <maven.source.plugin>3.3.0</maven.source.plugin>
+    <maven.source.plugin>3.3.1</maven.source.plugin>
     <maven.javadoc.plugin>3.6.3</maven.javadoc.plugin>
     <maven.jar.plugin>3.3.0</maven.jar.plugin>
     <maven.jacoco.plugin>0.8.11</maven.jacoco.plugin>
@@ -66,6 +66,14 @@
     <bintray.repo>maven</bintray.repo>
     <bintray.package>dotenv-kotlin</bintray.package>
   </properties>
+
+  <pluginRepositories>
+    <pluginRepository>
+        <id>central</id>
+        <name>Maven Central</name>
+        <url>https://repo.maven.apache.org/maven2</url>
+    </pluginRepository>
+  </pluginRepositories>
 
   <dependencies>
     <dependency>
@@ -166,13 +174,13 @@
         <executions>
           <execution>
             <id>attach-sources</id>
+            <phase>verify</phase>
             <goals>
-              <goal>jar</goal>
+              <goal>jar-no-fork</goal>
             </goals>
           </execution>
         </executions>
       </plugin>
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
@@ -182,6 +190,7 @@
         <executions>
           <execution>
             <id>attach-javadocs</id>
+            <phase>compile</phase>
             <goals>
               <goal>jar</goal>
             </goals>
@@ -194,7 +203,7 @@
         <version>${dokka.version}</version>
         <executions>
           <execution>
-            <phase>pre-site</phase>
+            <phase>prepare-package</phase>
             <goals>
               <goal>dokka</goal>
             </goals>
@@ -210,6 +219,7 @@
           </dokkaPlugins>
         </configuration>
       </plugin>
+
       <!--      <plugin>-->
       <!--        <groupId>org.jetbrains.dokka</groupId>-->
       <!--        <artifactId>dokka-maven-plugin</artifactId>-->
@@ -280,7 +290,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>3.1.0</version>
+            <version>3.2.4</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
