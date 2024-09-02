@@ -72,3 +72,16 @@ mvn clean package dokka:javadocJar deploy -DperformRelease=true
 ```
 
 Go to SonaType: https://oss.sonatype.org/#stagingRepositories - select repository -> close -> (once closed) release
+
+## Publish raw artifacts / binaries
+
+### Generate
+Generate signed artifacts locally
+```shell
+ mvn verify -P release-sign-artifacts -DperformRelease=true 
+```
+
+### Publish to github release
+```shell
+gh release upload v6.4.2 target/*.jar.asc --clobber  
+```
