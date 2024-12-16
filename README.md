@@ -41,12 +41,12 @@ Looking for the pure Java variant (no Kotlin), get [dotenv-java](https://github.
 ### Gradle
 #### Gradle Groovy DSL
 ```groovy
-implementation 'io.github.cdimascio:dotenv-kotlin:6.4.2'
+implementation 'io.github.cdimascio:dotenv-kotlin:6.5.0'
 ```
 
 #### Gradle Kotlin DSL
 ```kotlin
-implementation("io.github.cdimascio:dotenv-kotlin:6.4.2")
+implementation("io.github.cdimascio:dotenv-kotlin:6.5.0")
 ```
 
 ## Usage
@@ -58,6 +58,9 @@ Create a `.env` file in the root of your project
 # formatted as key=value
 MY_ENV_VAR1=some_value
 MY_EVV_VAR2=some_value
+MY_ENV_MULTI_LINE="some
+multiline
+value"
 ```
 
 With **Java**
