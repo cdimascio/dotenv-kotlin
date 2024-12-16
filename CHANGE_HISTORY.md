@@ -1,3 +1,9 @@
+##  (2024-12-16)
+
+* v6.5.0 ([e5481ad](https://github.com/cdimascio/dotenv-kotlin/commit/e5481ad))
+
+
+
 ##  (2024-09-02)
 
 * Upgrade to dotenv-java v3.0.0 (#69) ([bd94e57](https://github.com/cdimascio/dotenv-kotlin/commit/bd94e57)), closes [#69](https://github.com/cdimascio/dotenv-kotlin/issues/69)
