@@ -32,7 +32,7 @@ Looking for the pure Java variant (no Kotlin), get [dotenv-java](https://github.
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>dotenv-kotlin</artifactId>
-    <version>6.4.2</version>
+    <version>6.5.0</version>
 </dependency>
 ```
 
