@@ -1,6 +1,13 @@
 ##  (2025-02-22)
 
 * v6.5.0 ([e8008bd](https://github.com/cdimascio/dotenv-kotlin/commit/e8008bd))
+* v6.5.1 ([66d9aa4](https://github.com/cdimascio/dotenv-kotlin/commit/66d9aa4))
+
+
+
+##  (2025-02-22)
+
+* v6.5.0 ([e8008bd](https://github.com/cdimascio/dotenv-kotlin/commit/e8008bd))
 
 
 
